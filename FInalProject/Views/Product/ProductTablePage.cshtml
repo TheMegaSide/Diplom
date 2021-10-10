@@ -14,6 +14,9 @@
         <th style="width: 11.1111%;">Цена</th>
         <th style="width: 11.1111%;">Дата поставки</th>
         <th style="width: 11.1111%;">Количество</th>
+        <th>
+
+        </th>
     </tr>
 
     @foreach (var product in Model)
@@ -28,6 +31,10 @@
             <td style="width: 11.1111%;" contenteditable='true'>@product.ProductPrice</td>
             <td style="width: 11.1111%;" contenteditable='true'>@product.ProductDate</td>
             <td style="width: 11.1111%;" contenteditable='true'>@product.Amount</td>
+            <td>
+                <a asp-action="EditProduct" asp-route-id="@product.ProductId">Изменить</a>
+                <a asp-action="ProductTablePage">Вернуться назад</a>
+            </td>
         </tr>
     }
 

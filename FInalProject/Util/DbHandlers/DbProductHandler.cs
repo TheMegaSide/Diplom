@@ -11,6 +11,7 @@ namespace FInalProject.Util.DbHandlers
         {
             return new Product
             {
+                ProductId = (decimal)rdr["ProductId"],
                 ProductName =  rdr["ProductName"].ToString(),
                 ProductIndex = rdr["ProductIndex"].ToString(),
                 ProductUnit = rdr["ProductUnit"].ToString(),

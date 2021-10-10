@@ -1,11 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
 using FInalProject.Models;
 using FInalProject.Services;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Oracle.ManagedDataAccess.Client;
 
 namespace FInalProject.Controllers
@@ -81,21 +79,21 @@ namespace FInalProject.Controllers
                 string comText = "select * from Products";
                 using (OracleCommand cmd = new OracleCommand(comText, con))
                 {
-                    
                     OracleDataReader rdr = cmd.ExecuteReader();
                     while (rdr.Read())
                     {
                         Product product = new Product
                         {
-                            ProductName =  rdr["ProductName"].ToString(),
+                            ProductId =  (decimal)rdr["ProductId"],
+                            ProductName = rdr["ProductName"].ToString(),
                             ProductIndex = rdr["ProductIndex"].ToString(),
                             ProductUnit = rdr["ProductUnit"].ToString(),
                             CategoryId = (decimal) rdr["CategoryId"],
-                            SellerId = (decimal)rdr["SellerId"],
-                            StockId = (decimal)rdr["StockId"],
-                            ProductPrice = (decimal)rdr["ProductPrice"],
-                            ProductDate = (DateTime)rdr["ProductDate"],
-                            Amount = (decimal)rdr["Amount"]
+                            SellerId = (decimal) rdr["SellerId"],
+                            StockId = (decimal) rdr["StockId"],
+                            ProductPrice = (decimal) rdr["ProductPrice"],
+                            ProductDate = (DateTime) rdr["ProductDate"],
+                            Amount = (decimal) rdr["Amount"]
                         };
                         products.Add(product);
                     }
@@ -104,7 +102,7 @@ namespace FInalProject.Controllers
 
 
             ViewBag.listOfProducts = products;
-        
+
 
             Product prod = Dbservice.GetProductById(id);
             return View(prod);
@@ -113,8 +111,8 @@ namespace FInalProject.Controllers
         [HttpPost]
         public IActionResult Edit(Product product)
         {
-            Dbservice.EditProduct(product);
-            return RedirectToAction(nameof(EditProduct));
+            Dbservice.ProductEdit(product);
+            return RedirectToAction(nameof(ProductTablePage));
         }
         //
         // public IActionResult Delete(int id)

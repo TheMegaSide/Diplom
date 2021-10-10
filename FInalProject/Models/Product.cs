@@ -4,7 +4,7 @@ namespace FInalProject.Models
 {
     public class Product
     {
-        public int ProductId { get; set; }
+        public decimal ProductId { get; set; }
         public string ProductName { get; set; }
         public string ProductIndex { get; set; }
         public string ProductUnit { get; set; }

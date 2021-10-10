@@ -27,16 +27,20 @@ namespace FInalProject.Services
         {
             string comText =
                 "select *  from Products where Productid="+id;
-            return DbExecutor.Execute<Product>(ConnectionString, comText, new DbProductHandler()).First();
+            Console.WriteLine($"INFO:{comText}");
+            return DbExecutor.Execute<Product>(ConnectionString, comText, new DbProductHandler())[0];
         }
-        public void EditProduct(Product product)
+        public void ProductEdit(Product product)
         {
             string comText =
-                "Update Products set Productname="+product.ProductName+",PRODUCTINDEX="+product.ProductIndex+
-                ",PRODUCTUNIT="+product.ProductUnit+",CATEGORYID"+product.CategoryId+",SELLERID"+product.SellerId+
-                ",STOCKID"+product.StockId+",PRODUCTPRICE"+product.ProductPrice+",PRODUCTDATE"+product.ProductDate+
-                ",AMOUNT"+product.Amount+
-                "where productid="+product.ProductId;
+                "Update Products set Productname='" + product.ProductName + "',PRODUCTINDEX='" + product.ProductIndex +
+                "',PRODUCTUNIT='" + product.ProductUnit + "',CATEGORYID=" + product.CategoryId + ",SELLERID=" +
+                product.SellerId +
+                ",STOCKID=" + product.StockId + ",PRODUCTPRICE=" + product.ProductPrice + ",PRODUCTDATE='" +
+                product.ProductDate +
+                "',AMOUNT=" + product.Amount +
+                " where productid=" + product.ProductId;
+            Console.WriteLine($"INFO:{comText}");
             DbExecutor.Execute(ConnectionString, comText, new DbProductHandler());
         }
 
