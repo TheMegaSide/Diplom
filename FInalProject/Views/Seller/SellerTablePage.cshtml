@@ -1,0 +1,27 @@
+﻿@model List<FInalProject.Models.Seller> 
+
+
+<p>Таблица "Поставщики"</p>
+<table border="1" style="border-collapse: collapse; width: 100%;">
+    <tbody>
+    <tr>
+        <th style="width: 11.1111%;">Название</th>
+        <th style="width: 11.1111%;">Телефон</th>
+        <th style="width: 11.1111%;">Адрес</th>
+  
+
+    </tr>
+
+    @foreach (var product in Model)
+    {
+        <tr>
+            <td style="width: 11.1111%;">@product.SellerName</td>
+            <td style="width: 11.1111%;">@product.SellerPhone</td>
+            <td style="width: 11.1111%;">@product.SellerAddress</td>
+   
+
+        </tr>
+    }
+
+    </tbody >
+</table >

@@ -1,0 +1,31 @@
+﻿@model List<FInalProject.Models.Order> 
+
+
+<p>Таблица "Заказы"</p>
+<table border="1" style="border-collapse: collapse; width: 100%;">
+    <tbody>
+    <tr>
+        <th style="width: 11.1111%;">Дата заказа</th>
+        <th style="width: 11.1111%;">Дата выполнения</th>
+        <th style="width: 11.1111%;">Выполнен</th>
+        <th style="width: 11.1111%;">Сумма</th>
+        <th style="width: 11.1111%;">Клиент</th>
+        <th style="width: 11.1111%;">Заказ</th>
+
+    </tr>
+
+    @foreach (var product in Model)
+    {
+        <tr>
+            <td style="width: 11.1111%;" contenteditable='true'>@product.OrderDate</td>
+            <td style="width: 11.1111%;" contenteditable='true'>@product.CompletionDate</td>
+            <td style="width: 11.1111%;" contenteditable='true'>@product.Completion</td>
+            <td style="width: 11.1111%;" contenteditable='true'>@product.TotalPrice</td>
+            <td style="width: 11.1111%;" contenteditable='true'>@product.ClientId</td>
+            <td style="width: 11.1111%;" contenteditable='true'>@product.OrderList</td>
+
+        </tr>
+    }
+
+    </tbody >
+</table >

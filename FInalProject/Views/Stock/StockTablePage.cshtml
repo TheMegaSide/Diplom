@@ -1,0 +1,25 @@
+﻿@model List<FInalProject.Models.Stock> 
+
+
+<p>Таблица "Склады"</p>
+<table border="1" style="border-collapse: collapse; width: 100%;">
+    <tbody>
+    <tr>
+        <th style="width: 11.1111%;">ID</th>
+        <th style="width: 11.1111%;">Адрес</th>
+
+
+    </tr>
+
+    @foreach (var product in Model)
+    {
+        <tr>
+            <td style="width: 11.1111%;">@product.StockId</td>
+            <td style="width: 11.1111%;">@product.StockAddress</td>
+
+
+        </tr>
+    }
+
+    </tbody >
+</table >
