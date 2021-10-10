@@ -36,9 +36,9 @@ namespace FInalProject.Services
                 "Update Products set Productname='" + product.ProductName + "',PRODUCTINDEX='" + product.ProductIndex +
                 "',PRODUCTUNIT='" + product.ProductUnit + "',CATEGORYID=" + product.CategoryId + ",SELLERID=" +
                 product.SellerId +
-                ",STOCKID=" + product.StockId + ",PRODUCTPRICE=" + product.ProductPrice + ",PRODUCTDATE='" +
-                product.ProductDate +
-                "',AMOUNT=" + product.Amount +
+                ",STOCKID=" + product.StockId + ",PRODUCTPRICE=" + product.ProductPrice + ",PRODUCTDATE=" +
+                "TRUNC(TO_DATE('" + product.ProductDate + "','MM-DD-YYYY HH:MI:SS')) "+
+                ",AMOUNT=" + product.Amount +
                 " where productid=" + product.ProductId;
             Console.WriteLine($"INFO:{comText}");
             DbExecutor.Execute(ConnectionString, comText, new DbProductHandler());
