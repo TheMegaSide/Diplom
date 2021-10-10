@@ -84,13 +84,13 @@ namespace FInalProject.Controllers
                     {
                         Product product = new Product
                         {
-                            ProductId =  (decimal)rdr["ProductId"],
+                            ProductId =  Decimal.ToInt32((decimal)rdr["ProductId"]),
                             ProductName = rdr["ProductName"].ToString(),
                             ProductIndex = rdr["ProductIndex"].ToString(),
                             ProductUnit = rdr["ProductUnit"].ToString(),
-                            CategoryId = (decimal) rdr["CategoryId"],
-                            SellerId = (decimal) rdr["SellerId"],
-                            StockId = (decimal) rdr["StockId"],
+                            CategoryId = Decimal.ToInt32((decimal) rdr["CategoryId"]),
+                            SellerId = Decimal.ToInt32((decimal) rdr["SellerId"]),
+                            StockId = Decimal.ToInt32((decimal) rdr["StockId"]),
                             ProductPrice = (decimal) rdr["ProductPrice"],
                             ProductDate = (DateTime) rdr["ProductDate"],
                             Amount = (decimal) rdr["Amount"]
@@ -111,6 +111,7 @@ namespace FInalProject.Controllers
         [HttpPost]
         public IActionResult Edit(Product product)
         {
+           
             Dbservice.ProductEdit(product);
             return RedirectToAction(nameof(ProductTablePage));
         }
