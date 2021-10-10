@@ -105,3 +105,4 @@ C:\Users\Александр\RiderProjects\FInalProject\FInalProject\obj\Debug\ne
 C:\Users\Александр\RiderProjects\FInalProject\FInalProject\obj\Debug\net5.0\Razor\Views\Order\OrderAdd.cshtml.g.cs
 C:\Users\Александр\RiderProjects\FInalProject\FInalProject\obj\Debug\net5.0\Razor\Views\Stock\StockAdd.cshtml.g.cs
 C:\Users\Александр\RiderProjects\FInalProject\FInalProject\obj\Debug\net5.0\Razor\Views\Product\EditProduct.cshtml.g.cs
+C:\Users\Александр\RiderProjects\FInalProject\FInalProject\obj\Debug\net5.0\Razor\Views\Product\ProductDelete.cshtml.g.cs

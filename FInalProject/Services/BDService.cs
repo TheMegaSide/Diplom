@@ -54,6 +54,13 @@ namespace FInalProject.Services
 
             DbExecutor.Execute(ConnectionString, comText, new DbProductHandler());
         }
+        public void DeleteProduct(Product product)
+        {
+            string comText =
+                "delete from Products where Productid="+product.ProductId;
+            Console.WriteLine($"INFO:{comText}");
+            DbExecutor.Execute(ConnectionString, comText, new DbProductHandler());
+        }
 
 
         public List<Client> GetClientList()

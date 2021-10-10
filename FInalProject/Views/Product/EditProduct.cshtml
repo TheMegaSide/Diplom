@@ -7,7 +7,7 @@
 <h1>Изменение данных</h1>
 
 <h4>Товар</h4>
-<hr/>
+
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Edit">
@@ -55,7 +55,7 @@
                 </div>
                 <div class="form-group">
                     <label asp-for="ProductDate" class="control-label">Дата</label>
-                    <input type="text" asp-for="ProductDate" class="form-control"/>
+                    <input asp-for="ProductDate" class="form-control"/>
                     <span asp-validation-for="ProductDate" class="text-danger"></span>
                 </div>
                 <div class="form-group">
