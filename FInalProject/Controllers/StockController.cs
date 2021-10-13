@@ -23,31 +23,6 @@ namespace FInalProject.Controllers
         }
         public ActionResult StockAdd()
         {
-            List<Stock> stocks = new List<Stock>();
-
-            using (OracleConnection con = new OracleConnection(Dbservice.ConnectionString))
-            {
-                con.Open();
-                string comText = "select * from Stocks";
-
-                using (OracleCommand cmd = new OracleCommand(comText, con))
-                {
-                    OracleDataReader rdr = cmd.ExecuteReader();
-                    while (rdr.Read())
-                    {
-                        Stock stock = new Stock
-                        {
-                            StockId =  (int)(long)rdr["StockId"],
-                            StockAddress = rdr["StockAdress"].ToString()
-                        };
-                        stocks.Add(stock);
-                    }
-                }
-            }
-
-
-            ViewBag.listOfProducts = stocks;
-
             return View();
         }
 
@@ -57,6 +32,32 @@ namespace FInalProject.Controllers
         {
             Dbservice.AddStock(stock);
             return RedirectToAction(nameof(StockAdd));
+        }
+        public IActionResult EditStock(int id)
+        {
+            Stock stock = Dbservice.GetStockById(id);
+            return View(stock);
+        }
+
+        [HttpPost]
+        public IActionResult Edit(Stock stock)
+        {
+            Dbservice.EditStock(stock);
+            return RedirectToAction(nameof(StockTablePage));
+        }
+
+        [HttpPost]
+        public IActionResult DeleteStock(int id)
+        {
+            Stock stock = Dbservice.GetStockById(id);
+            return View(stock);
+        }
+
+        [HttpPost]
+        public IActionResult Delete(Stock stock)
+        {
+            Dbservice.DeleteStock(stock);
+            return RedirectToAction(nameof(StockTablePage));
         }
     }
 }

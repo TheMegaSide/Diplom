@@ -191,21 +191,39 @@ namespace FInalProject.Services
 
             return DbExecutor.Execute<Order>(ConnectionString, comText, new DbOrderHandler());
         }
-        public List<Order> GetOrderById(int id)
+        public Order GetOrderById(int id)
         {
             string comText =
                 "select *  from Orders where orderid="+id;
-            return DbExecutor.Execute<Order>(ConnectionString, comText, new DbOrderHandler());
+            return DbExecutor.Execute<Order>(ConnectionString, comText, new DbOrderHandler())[0];
         }
 
         public void AddOrder(Order order)
         {
             string comText =
-                "Insert into Orders(orderid, ORDERDATE,COMPLETIONDATE,COMPLETION,TOTALPRICE,CLIENTID,ORDERLIST) values("+
+                "Insert into Orders(orderid, ORDERDATE,COMPLETIONDATE,COMPLETION,TOTALPRICE,CLIENTID,ORDERLIST) values("+order.OrderId+"+"+
                 "TRUNC(TO_DATE('" +order.OrderDate + "','MM-DD-YYYY HH:MI:SS'))," +
                 "TRUNC(TO_DATE('" + order.CompletionDate + "','MM-DD-YYYY HH:MI:SS'))," +
                 "'" + order.Completion + "'," + order.TotalPrice + "," + order.ClientId + ",(1," + order.productid+"," +order.amount+
                 ")) ";
+        
+            DbExecutor.Execute(ConnectionString, comText, new DbOrderHandler());
+        }
+        public void EditOrder(Order order)
+        {
+            string comText =
+                "update orders(orderid, ORDERDATE,COMPLETIONDATE,COMPLETION,TOTALPRICE,CLIENTID,ORDERLIST) set values("+order.OrderId+"+"+
+                "TRUNC(TO_DATE('" +order.OrderDate + "','MM-DD-YYYY HH:MI:SS'))," +
+                "TRUNC(TO_DATE('" + order.CompletionDate + "','MM-DD-YYYY HH:MI:SS'))," +
+                "'" + order.Completion + "'," + order.TotalPrice + "," + order.ClientId + ",(1," + order.productid+"," +order.amount+
+                ")) where orderid="+order.OrderId+" ";
+        
+            DbExecutor.Execute(ConnectionString, comText, new DbOrderHandler());
+        }
+        public void DeleteOrder(Order order)
+        {
+            string comText =
+                "delete from Orders where orderid="+order.OrderId;
         
             DbExecutor.Execute(ConnectionString, comText, new DbOrderHandler());
         }
@@ -217,16 +235,30 @@ namespace FInalProject.Services
 
             return DbExecutor.Execute<Stock>(ConnectionString, comText, new DbStockHandler());
         }
-        public List<Stock> GetStockById(int id)
+        public Stock GetStockById(int id)
         {
             string comText =
                 "select *  from Stocks where stockid="+id;
-            return DbExecutor.Execute<Stock>(ConnectionString, comText, new DbStockHandler());
+            return DbExecutor.Execute<Stock>(ConnectionString, comText, new DbStockHandler())[0];
         }
         public void AddStock(Stock stock)
         {
             string comText =
                 "Insert into Stocks(Stockadress) values('" + stock.StockAddress + "') ";
+
+            DbExecutor.Execute(ConnectionString, comText, new DbStockHandler());
+        }
+        public void EditStock(Stock stock)
+        {
+            string comText =
+                "update Stocks(Stockadress) set values('" + stock.StockAddress + "') where stockid= "+stock.StockId;
+
+            DbExecutor.Execute(ConnectionString, comText, new DbStockHandler());
+        }
+        public void DeleteStock(Stock stock)
+        {
+            string comText =
+                "delete from Stocks where stockid=" + stock.StockId ;
 
             DbExecutor.Execute(ConnectionString, comText, new DbStockHandler());
         }

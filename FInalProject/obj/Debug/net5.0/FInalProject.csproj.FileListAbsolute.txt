@@ -117,3 +117,7 @@ C:\Users\Александр\RiderProjects\FInalProject\FInalProject\obj\Debug\ne
 C:\Users\Александр\RiderProjects\FInalProject\FInalProject\obj\Debug\net5.0\Razor\Views\Category\CategoryDelete.cshtml.g.cs
 C:\Users\Александр\RiderProjects\FInalProject\FInalProject\obj\Debug\net5.0\Razor\Views\Seller\EditSeller.cshtml.g.cs
 C:\Users\Александр\RiderProjects\FInalProject\FInalProject\obj\Debug\net5.0\Razor\Views\Seller\SellerDelete.cshtml.g.cs
+C:\Users\Александр\RiderProjects\FInalProject\FInalProject\obj\Debug\net5.0\Razor\Views\Order\DeleteOrder.cshtml.g.cs
+C:\Users\Александр\RiderProjects\FInalProject\FInalProject\obj\Debug\net5.0\Razor\Views\Order\EditOrder.cshtml.g.cs
+C:\Users\Александр\RiderProjects\FInalProject\FInalProject\obj\Debug\net5.0\Razor\Views\Stock\DeleteStock.cshtml.g.cs
+C:\Users\Александр\RiderProjects\FInalProject\FInalProject\obj\Debug\net5.0\Razor\Views\Stock\EditStock.cshtml.g.cs
