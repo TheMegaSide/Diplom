@@ -8,6 +8,9 @@ namespace FInalProject.Models
         public string ProductName { get; set; }
         public string ProductIndex { get; set; }
         public string ProductUnit { get; set; }
+        public string CategoryName { get; set; }
+        public string SellerName { get; set; }
+        public string StockAdress { get; set; }
         public decimal CategoryId { get; set; }
         public decimal SellerId { get; set; }
         public decimal StockId { get; set; }

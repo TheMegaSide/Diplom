@@ -15,7 +15,7 @@ namespace FInalProject.Controllers
         {
             Dbservice = dbservice;
         }
-        // GET
+        
         [Authorize]
         public IActionResult ClientTablePage()
         {
@@ -24,33 +24,6 @@ namespace FInalProject.Controllers
         }
         public ActionResult ClientAdd()
         {
-            List<Client> clients= new List<Client>();
-
-            using (OracleConnection con = new OracleConnection(Dbservice.ConnectionString))
-            {
-                con.Open();
-                string comText = "select * from Clients";
-
-                using (OracleCommand cmd = new OracleCommand(comText, con))
-                {
-                    OracleDataReader rdr = cmd.ExecuteReader();
-                    while (rdr.Read())
-                    {
-                        Client client = new Client
-                        {
-                            ClientName =  rdr["ClientName"].ToString(),
-                            ClientPhone = rdr["ClientPhone"].ToString(),
-                            ClientAdress= rdr["ClientAdress"].ToString(),
-                            ClientType =  rdr["ClientType"].ToString()
-                        };
-                        clients.Add(client);
-                    }
-                }
-            }
-
-
-            ViewBag.listOfProducts = clients;
-
             return View();
         }
 
@@ -60,6 +33,31 @@ namespace FInalProject.Controllers
         {
             Dbservice.AddClient(client);
             return RedirectToAction(nameof(ClientAdd));
+        }
+        public IActionResult EditClient(int id)
+        {
+            Client client = Dbservice.GetClientById(id);
+            return View(client);
+        }
+
+        [HttpPost]
+        public IActionResult Edit(Client client)
+        {
+            Dbservice.ClientEdit(client);
+            return RedirectToAction(nameof(ClientTablePage));
+        }
+
+        public IActionResult ClientDelete(int id)
+        {
+            Client client = Dbservice.GetClientById(id);
+            return View(client);
+        }
+        
+        [HttpPost]
+        public IActionResult Delete(Client client)
+        {
+            Dbservice.DeleteClient(client);
+            return RedirectToAction(nameof(ClientTablePage));
         }
     }
 }

@@ -13,8 +13,14 @@ namespace FInalProject.Models
         public string Completion { get; set; }
         public decimal TotalPrice { get; set; }
         public decimal ClientId { get; set; }
-        public string OrderList { get; set; }
+        public int id { get; set; }
+        public decimal productid { get; set; }
+        public decimal amount { get; set; }
+        public string CLientname { get; set; }
+        public string productname { get; set; }
+    }
+
+  
     }
     
 
-}

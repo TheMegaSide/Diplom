@@ -7,6 +7,7 @@
     <tr>
         <th style="width: 11.1111%;">ID</th>
         <th style="width: 11.1111%;">Наименование</th>
+        <th></th>
 
 
     </tr>
@@ -16,6 +17,8 @@
         <tr>
             <td style="width: 11.1111%;">@product.CategoryId</td>
             <td style="width: 11.1111%;">@product.CategoryName</td>
+            <td><a asp-action="CategoryEdit" asp-route-id="@product.CategoryId">Изменить</a>
+                <a asp-action="CategoryDelete" asp-route-id="@product.CategoryId">Удалить</a></td>
 
 
         </tr>

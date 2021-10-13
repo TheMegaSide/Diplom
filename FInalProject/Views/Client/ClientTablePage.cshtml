@@ -9,6 +9,9 @@
         <th style="width: 11.1111%;">Телефон</th>
         <th style="width: 11.1111%;">Адрес</th>
         <th style="width: 11.1111%;">Тип</th>
+        <th>
+            
+        </th>
 
     </tr>
 
@@ -19,6 +22,10 @@
             <td style="width: 11.1111%;">@product.ClientPhone</td>
             <td style="width: 11.1111%;">@product.ClientAdress</td>
             <td style="width: 11.1111%;">@product.ClientType</td>
+            <td>
+                            <a asp-action="EditClient" asp-route-id="@product.ClientId">Изменить</a>
+                            <a asp-action="ClientDelete" asp-route-id="@product.ClientId">Удалить</a>
+                        </td>
 
         </tr>
     }

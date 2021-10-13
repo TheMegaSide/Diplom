@@ -11,7 +11,7 @@
 <header>
     <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
         <div class="container">
-            <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">FInalProject</a>
+            <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Складское предприятие</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -23,8 +23,8 @@
                         <div class="dropdown-menu">
                             <a сlass="dropdown-item nav-link text-dark" asp-area="" asp-controller="Product" asp-action="ProductTablePage">Просмотр</a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item nav-link text-dark" asp-area="" asp-controller="Product" asp-action="ProductAdd">Добавить/изменить товар</a>
-                            
+                            <a class="dropdown-item nav-link text-dark" asp-area="" asp-controller="Product" asp-action="ProductAdd">Добавить товар</a>
+
                         </div>
                     </li>
                     <li class="nav-item dropdown">
@@ -67,6 +67,15 @@
                             <a class="dropdown-item nav-link text-dark" asp-area="" asp-controller="Stock" asp-action="StockAdd">Добавить склад</a>
                         </div>
                     </li>
+                    <li class="nav-item dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Запросы</a>
+                        <div class="dropdown-menu">
+                            <a сlass="dropdown-item nav-link text-dark" asp-area="" asp-controller="Excel" asp-action="GetExcel">Excel</a>
+                            <div class="dropdown-divider"></div>
+                            
+                        </div>
+                    </li>
+                    
                 </ul>
                 <partial name="_LoginPartial"/>
             </div>

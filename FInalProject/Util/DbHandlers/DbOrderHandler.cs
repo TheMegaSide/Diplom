@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using ClosedXML;
 using FInalProject.Models;
 using FInalProject.Services;
 using FInalProject.Util.DB;
@@ -18,8 +19,10 @@ namespace FInalProject.Util.DbHandlers
                 CompletionDate = (DateTime)rdr["CompletionDate"],
                 Completion = rdr["Completion"].ToString(),
                 TotalPrice = (decimal)rdr["TotalPrice"],
-                ClientId = (decimal)rdr["ClientId"],
-                OrderList = rdr["OrderList"].ToString()
+                CLientname = rdr["Clientname"].ToString(),
+                productname = rdr["productname"].ToString(),
+                amount = (decimal)rdr["OrderList.amount"]
+                
                
                 
             };

@@ -16,40 +16,16 @@ namespace FInalProject.Controllers
         {
             Dbservice = dbservice;
         }
+
         [Authorize]
         public IActionResult SellerTablePage()
         {
             List<Seller> sellers = Dbservice.GetSellerList();
             return View(sellers);
         }
+
         public ActionResult SellerAdd()
         {
-            List<Seller> sellers = new List<Seller>();
-
-            using (OracleConnection con = new OracleConnection(Dbservice.ConnectionString))
-            {
-                con.Open();
-                string comText = "select * from Sellers";
-
-                using (OracleCommand cmd = new OracleCommand(comText, con))
-                {
-                    OracleDataReader rdr = cmd.ExecuteReader();
-                    while (rdr.Read())
-                    {
-                        Seller seller = new Seller
-                        {
-                            SellerName =  rdr["SellerName"].ToString(),
-                            SellerPhone = rdr["SellerPhone"].ToString(),
-                            SellerAddress = rdr["SellerAdress"].ToString()
-                        };
-                        sellers.Add(seller);
-                    }
-                }
-            }
-
-
-            ViewBag.listOfProducts = sellers;
-
             return View();
         }
 
@@ -59,6 +35,33 @@ namespace FInalProject.Controllers
         {
             Dbservice.AddSeller(seller);
             return RedirectToAction(nameof(SellerAdd));
+        }
+
+        public IActionResult EditSeller(int id)
+        {
+            Seller seller = Dbservice.GetSellerById(id);
+            return View(seller);
+        }
+
+        [HttpPost]
+        public IActionResult Edit(Seller seller)
+        {
+            Dbservice.SellerEdit(seller);
+            return RedirectToAction(nameof(SellerTablePage));
+        }
+
+        [HttpPost]
+        public IActionResult SellerDelete(int id)
+        {
+            Seller seller = Dbservice.GetSellerById(id);
+            return View(seller);
+        }
+
+        [HttpPost]
+        public IActionResult Delete(Seller seller)
+        {
+            Dbservice.SellerDelete(seller);
+            return RedirectToAction(nameof(SellerTablePage));
         }
     }
 }

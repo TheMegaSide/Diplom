@@ -106,3 +106,14 @@ C:\Users\Александр\RiderProjects\FInalProject\FInalProject\obj\Debug\ne
 C:\Users\Александр\RiderProjects\FInalProject\FInalProject\obj\Debug\net5.0\Razor\Views\Stock\StockAdd.cshtml.g.cs
 C:\Users\Александр\RiderProjects\FInalProject\FInalProject\obj\Debug\net5.0\Razor\Views\Product\EditProduct.cshtml.g.cs
 C:\Users\Александр\RiderProjects\FInalProject\FInalProject\obj\Debug\net5.0\Razor\Views\Product\ProductDelete.cshtml.g.cs
+C:\Users\Александр\RiderProjects\FInalProject\FInalProject\obj\Debug\net5.0\Razor\Views\Client\ClientDelete.cshtml.g.cs
+C:\Users\Александр\RiderProjects\FInalProject\FInalProject\obj\Debug\net5.0\Razor\Views\Client\EditClient.cshtml.g.cs
+C:\Users\Александр\RiderProjects\FInalProject\FInalProject\obj\Debug\net5.0\Razor\Views\Requests\ProdCatReq.cshtml.g.cs
+C:\Users\Александр\RiderProjects\FInalProject\FInalProject\bin\Debug\net5.0\ClosedXML.dll
+C:\Users\Александр\RiderProjects\FInalProject\FInalProject\bin\Debug\net5.0\DocumentFormat.OpenXml.dll
+C:\Users\Александр\RiderProjects\FInalProject\FInalProject\bin\Debug\net5.0\ExcelNumberFormat.dll
+C:\Users\Александр\RiderProjects\FInalProject\FInalProject\bin\Debug\net5.0\System.IO.Packaging.dll
+C:\Users\Александр\RiderProjects\FInalProject\FInalProject\obj\Debug\net5.0\Razor\Views\Category\CategoryEdit.cshtml.g.cs
+C:\Users\Александр\RiderProjects\FInalProject\FInalProject\obj\Debug\net5.0\Razor\Views\Category\CategoryDelete.cshtml.g.cs
+C:\Users\Александр\RiderProjects\FInalProject\FInalProject\obj\Debug\net5.0\Razor\Views\Seller\EditSeller.cshtml.g.cs
+C:\Users\Александр\RiderProjects\FInalProject\FInalProject\obj\Debug\net5.0\Razor\Views\Seller\SellerDelete.cshtml.g.cs

@@ -27,34 +27,7 @@ namespace FInalProject.Controllers
         }
         public ActionResult OrderAdd()
         {
-            List<Order> orders = new List<Order>();
-
-            using (OracleConnection con = new OracleConnection(Dbservice.ConnectionString))
-            {
-                con.Open();
-                string comText = "select * from Orders";
-
-                using (OracleCommand cmd = new OracleCommand(comText, con))
-                {
-                    OracleDataReader rdr = cmd.ExecuteReader();
-                    while (rdr.Read())
-                    {
-                        Order order = new Order
-                        {
-                            OrderDate =  (DateTime)rdr["OrderDate"],
-                            CompletionDate = (DateTime)rdr["CompletionDate"],
-                            Completion = rdr["Completion"].ToString(),
-                            TotalPrice = (decimal)rdr["TotalPrice"],
-                            ClientId = (decimal)rdr["ClientId"],
-                            OrderList = rdr["OrderList"].ToString()
-                        };
-                        orders.Add(order);
-                    }
-                }
-            }
-
-
-            ViewBag.listOfProducts = orders;
+            
 
             return View();
         }

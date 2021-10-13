@@ -23,31 +23,6 @@ namespace FInalProject.Controllers
         }
         public ActionResult CategoryAdd()
         {
-            List<Category> categories= new List<Category>();
-
-            using (OracleConnection con = new OracleConnection(Dbservice.ConnectionString))
-            {
-                con.Open();
-                string comText = "select * from Categories";
-
-                using (OracleCommand cmd = new OracleCommand(comText, con))
-                {
-                    OracleDataReader rdr = cmd.ExecuteReader();
-                    while (rdr.Read())
-                    {
-                        Category product = new Category
-                        {
-                            CategoryId = (int)(long)rdr["CategoryId"],
-                            CategoryName = rdr["CategoryName"].ToString()
-                        };
-                        categories.Add(product);
-                    }
-                }
-            }
-
-
-            ViewBag.listOfProducts = categories;
-
             return View();
         }
 
@@ -57,6 +32,28 @@ namespace FInalProject.Controllers
         {
             Dbservice.AddCategory(category);
             return RedirectToAction(nameof(CategoryAdd));
+        }
+        public IActionResult CategoryEdit(int id)
+        {
+            Category category = Dbservice.GetCategoryById(id);
+            return View(category);
+        }
+        public IActionResult Edit(Category category)
+        {
+            Dbservice.CategoryEdit(category);
+            return RedirectToAction(nameof(CategoryTablePage));
+        }
+        public IActionResult CategoryDelete(int id)
+        {
+            Category category = Dbservice.GetCategoryById(id);
+            return View(category);
+        }
+
+        [HttpPost]
+        public IActionResult Delete(Category category)
+        {
+            Dbservice.DeleteCategory(category);
+            return RedirectToAction(nameof(CategoryTablePage));
         }
     }
 }

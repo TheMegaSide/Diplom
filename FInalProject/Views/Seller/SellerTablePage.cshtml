@@ -5,10 +5,14 @@
 <table border="1" style="border-collapse: collapse; width: 100%;">
     <tbody>
     <tr>
+
         <th style="width: 11.1111%;">Название</th>
         <th style="width: 11.1111%;">Телефон</th>
         <th style="width: 11.1111%;">Адрес</th>
-  
+        <th>
+            
+        </th>
+
 
     </tr>
 
@@ -18,7 +22,11 @@
             <td style="width: 11.1111%;">@product.SellerName</td>
             <td style="width: 11.1111%;">@product.SellerPhone</td>
             <td style="width: 11.1111%;">@product.SellerAddress</td>
-   
+            <td>
+                <a asp-action="EditSeller" asp-route-id="@product.SellerId">Изменить</a>
+                <a asp-action="SellerDelete" asp-route-id="@product.SellerId">Удалить</a>
+            </td>
+
 
         </tr>
     }
