@@ -41,6 +41,7 @@ namespace FInalProject.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public IActionResult Edit(Client client)
         {
             Dbservice.ClientEdit(client);
@@ -54,6 +55,7 @@ namespace FInalProject.Controllers
         }
         
         [HttpPost]
+        [Authorize]
         public IActionResult Delete(Client client)
         {
             Dbservice.DeleteClient(client);

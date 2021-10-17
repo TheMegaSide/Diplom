@@ -16,6 +16,7 @@ namespace FInalProject.Controllers
             Dbservice = dbservice;
         }
         [Authorize]
+        [HttpGet]
         public IActionResult StockTablePage()
         {
             List<Stock> stocks = Dbservice.GetStockList();
@@ -40,6 +41,7 @@ namespace FInalProject.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public IActionResult Edit(Stock stock)
         {
             Dbservice.EditStock(stock);
@@ -47,6 +49,7 @@ namespace FInalProject.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public IActionResult DeleteStock(int id)
         {
             Stock stock = Dbservice.GetStockById(id);
@@ -54,6 +57,7 @@ namespace FInalProject.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public IActionResult Delete(Stock stock)
         {
             Dbservice.DeleteStock(stock);

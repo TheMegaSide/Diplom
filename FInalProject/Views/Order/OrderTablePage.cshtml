@@ -12,6 +12,9 @@
         <th style="width: 11.1111%;">Клиент</th>
         <th style="width: 11.1111%;">Заказ</th>
         <th>Количество</th>
+        <th>
+            
+        </th>
 
     </tr>
 
@@ -25,7 +28,10 @@
             <td style="width: 11.1111%;" contenteditable='true'>@product.CLientname</td>
             <td style="width: 11.1111%;" contenteditable='true'>@product.productname</td>
             <td style="width: 11.1111%;" contenteditable='true'>@product.amount</td>
-
+<td>
+                <a asp-action="EditOrder" asp-route-id="@product.OrderId">Изменить</a>
+                <a asp-action="DeleteOrder" asp-route-id="@product.OrderId">Удалить</a>
+            </td>
         </tr>
     }
 

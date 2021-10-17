@@ -11,6 +11,7 @@ namespace FInalProject.Util.DbHandlers
         {
             return new Seller
             {
+                SellerId =  (int)(long)rdr["SellerId"],
                 SellerName =  rdr["SellerName"].ToString(),
                 SellerPhone = rdr["SellerPhone"].ToString(),
                 SellerAddress = rdr["SellerAdress"].ToString()

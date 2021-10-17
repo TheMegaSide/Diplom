@@ -7,7 +7,7 @@ namespace FInalProject.Models
 {
     public class Order
     {
-        public int OrderId { get; set; }
+        public decimal OrderId { get; set; }
         public DateTime OrderDate { get; set; }
         public DateTime CompletionDate { get; set; }
         public string Completion { get; set; }

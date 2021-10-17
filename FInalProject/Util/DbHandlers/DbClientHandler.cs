@@ -11,6 +11,7 @@ namespace FInalProject.Util.DbHandlers
         {
             return new Client
             {
+                ClientId = (decimal)rdr["ClientId"],
                 ClientName =  rdr["ClientName"].ToString(),
                 ClientPhone = rdr["ClientPhone"].ToString(),
                 ClientAdress= rdr["ClientAdress"].ToString(),

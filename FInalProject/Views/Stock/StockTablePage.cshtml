@@ -7,7 +7,9 @@
     <tr>
         <th style="width: 11.1111%;">ID</th>
         <th style="width: 11.1111%;">Адрес</th>
-
+        <th>
+            
+        </th>
 
     </tr>
 
@@ -16,7 +18,10 @@
         <tr>
             <td style="width: 11.1111%;">@product.StockId</td>
             <td style="width: 11.1111%;">@product.StockAddress</td>
-
+<td>
+                <a asp-action="EditStock" asp-route-id="@product.StockId">Изменить</a>
+                <a asp-action="DeleteStock" asp-route-id="@product.StockId">Удалить</a>
+            </td>
 
         </tr>
     }

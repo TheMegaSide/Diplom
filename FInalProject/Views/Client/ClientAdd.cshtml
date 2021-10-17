@@ -27,8 +27,10 @@
                 <span asp-validation-for="ClientAdress" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="ClientType" class="control-label">Тип</label>
-                <input asp-for="ClientType" class="form-control"/>
+                <label asp-for="ClientType" class="control-label">Категория</label>
+                <select asp-for="ClientType" class="form-control"/>
+                <option>Физический</option>
+                <option>Юридический</option>
                 <span asp-validation-for="ClientType" class="text-danger"></span>
             </div>
             <div class="form-group">

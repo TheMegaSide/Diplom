@@ -43,6 +43,7 @@ namespace FInalProject.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public IActionResult Edit(Product product)
         {
             Dbservice.ProductEdit(product);
@@ -56,6 +57,7 @@ namespace FInalProject.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public IActionResult Delete(Product product)
         {
             Dbservice.DeleteProduct(product);

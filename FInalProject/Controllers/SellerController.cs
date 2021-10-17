@@ -44,6 +44,7 @@ namespace FInalProject.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public IActionResult Edit(Seller seller)
         {
             Dbservice.SellerEdit(seller);
@@ -51,6 +52,7 @@ namespace FInalProject.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public IActionResult SellerDelete(int id)
         {
             Seller seller = Dbservice.GetSellerById(id);
@@ -58,9 +60,10 @@ namespace FInalProject.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public IActionResult Delete(Seller seller)
         {
-            Dbservice.SellerDelete(seller);
+            Dbservice.DeleteSeller(seller);
             return RedirectToAction(nameof(SellerTablePage));
         }
     }

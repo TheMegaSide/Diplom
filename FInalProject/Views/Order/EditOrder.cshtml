@@ -19,41 +19,41 @@
                     <span asp-validation-for="OrderId" class="text-danger"></span>
                 </div>
                 <div>
-                    <label asp-for="OrderDate" class="control-label">Наименование</label>
-                    <input  asp-for="OrderDate" class="form-control"/>
+                    <label asp-for="OrderDate" class="control-label">Дата заказа</label>
+                    <input asp-for="OrderDate" class="form-control"/>
                     <span asp-validation-for="OrderDate" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <label asp-for="CompletionDate" class="control-label">Артикул</label>
-                    <input  asp-for="CompletionDate" class="form-control"/>
+                    <label asp-for="CompletionDate" class="control-label">Дата выполнения</label>
+                    <input asp-for="CompletionDate" class="form-control"/>
                     <span asp-validation-for="CompletionDate" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <label asp-for="Completion" class="control-label">Единица измерения</label>
+                    <label asp-for="Completion" class="control-label">Выполнен</label>
                     <input type="text" asp-for="Completion" class="form-control"/>
                     <span asp-validation-for="Completion" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <label asp-for="TotalPrice" class="control-label">Категория</label>
+                    <label asp-for="TotalPrice" class="control-label">Сумма</label>
                     <input type="text" asp-for="TotalPrice" class="form-control"/>
                     <span asp-validation-for="TotalPrice" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <label asp-for="productname" class="control-label">Поставщик</label>
+                    <label asp-for="productname" class="control-label">Название товара</label>
                     <input type="text" asp-for="productname" class="form-control"/>
                     <span asp-validation-for="productname" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <label asp-for="amount" class="control-label">Склад</label>
+                    <label asp-for="amount" class="control-label">Количество</label>
                     <input type="text" asp-for="amount" class="form-control"/>
                     <span asp-validation-for="amount" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <label asp-for="CLientname" class="control-label">Цена</label>
-                    <input type="text" asp-for="CLientname" class="form-control"/>
+                    <label asp-for="CLientname" class="control-label">Клиент</label>
+                   <input type="text" asp-for="CLientname" class="form-control"/>
                     <span asp-validation-for="CLientname" class="text-danger"></span>
                 </div>
-                
+
             </div>
             <div class="form-group">
                 <input type="submit" value="Сохранить" class="btn btn-primary"/>

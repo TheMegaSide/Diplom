@@ -2,6 +2,7 @@
 using System.IO;
 using ClosedXML.Excel;
 using FInalProject.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FInalProject.Controllers
@@ -18,7 +19,7 @@ namespace FInalProject.Controllers
        
 
         
-
+        [Authorize]
         public IActionResult GetExcel()
         {
             var data = _dbFunctionService.GetOrderList();

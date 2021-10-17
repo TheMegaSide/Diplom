@@ -7,7 +7,7 @@ namespace FInalProject.Models
 {
     public class Client
     {
-        public int ClientId { get; set; }
+        public decimal ClientId { get; set; }
         public string ClientName { get; set; }
         public string ClientPhone { get; set; }
         public string ClientAdress { get; set; }

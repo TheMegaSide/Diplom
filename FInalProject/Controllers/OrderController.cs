@@ -47,6 +47,7 @@ namespace FInalProject.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public IActionResult Edit(Order order)
         {
             Dbservice.EditOrder(order);
@@ -54,6 +55,7 @@ namespace FInalProject.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public IActionResult DeleteOrder(int id)
         {
             Order order = Dbservice.GetOrderById(id);
@@ -61,6 +63,7 @@ namespace FInalProject.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public IActionResult Delete(Order order)
         {
             Dbservice.DeleteOrder(order);

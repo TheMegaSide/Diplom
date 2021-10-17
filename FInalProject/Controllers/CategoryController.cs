@@ -50,6 +50,7 @@ namespace FInalProject.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public IActionResult Delete(Category category)
         {
             Dbservice.DeleteCategory(category);

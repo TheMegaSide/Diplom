@@ -15,13 +15,15 @@ namespace FInalProject.Util.DbHandlers
             
             return new Order
             {
+                OrderId = (decimal)rdr["OrderId"],
                 OrderDate =  (DateTime)rdr["OrderDate"],
                 CompletionDate = (DateTime)rdr["CompletionDate"],
                 Completion = rdr["Completion"].ToString(),
                 TotalPrice = (decimal)rdr["TotalPrice"],
+                ClientId = (decimal)rdr["clientid"],
                 CLientname = rdr["Clientname"].ToString(),
                 productname = rdr["productname"].ToString(),
-                amount = (decimal)rdr["OrderList.amount"]
+                amount = (decimal)rdr["amount"]
                 
                
                 

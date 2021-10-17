@@ -27,7 +27,7 @@ namespace FInalProject.Services
         public Product GetProductById(int id)
         {
             string comText =
-                "select *  from Products where Productid="+id;
+                "Select productid, PRODUCTNAME, PRODUCTINDEX, PRODUCTUNIT, CATEGORYNAME, SELLERNAME, STOCKADRESS, PRODUCTPRICE,PRODUCTDATE,AMOUNT from products, CATEGORIES, sellers,STOCKS where PRODUCTS.CATEGORYID=CATEGORies.CATEGORYID and SELLERS.SELLERID=PRODUCTS.SELLERID and STOCKS.STOCKID=PRODUCTS.STOCKID and Productid="+id;
             Console.WriteLine($"INFO:{comText}");
             return DbExecutor.Execute<Product>(ConnectionString, comText, new DbProductHandler())[0];
         }
@@ -45,7 +45,7 @@ namespace FInalProject.Services
                 "',PRODUCTUNIT='" + product.ProductUnit + "',CATEGORYID=" + product.CategoryId + ",SELLERID=" +
                 product.SellerId +
                 ",STOCKID=" + product.StockId + ",PRODUCTPRICE=" + product.ProductPrice + ",PRODUCTDATE=" +
-                "TRUNC(TO_DATE('" + product.ProductDate + "','MM-DD-YYYY HH:MI:SS')) "+
+                "TRUNC(TO_DATE('" + product.ProductDate + "','DD-MM-YYYY HH24:MI:SS')) "+
                 ",AMOUNT=" + product.Amount +
                 " where productid=" + product.ProductId;
             Console.WriteLine($"INFO:{comText}");
@@ -58,7 +58,7 @@ namespace FInalProject.Services
                 "Insert into Products(PRODUCTNAME,PRODUCTINDEX,PRODUCTUNIT,CATEGORYID,SELLERID,STOCKID,PRODUCTPRICE,PRODUCTDATE,AMOUNT) values('" +
                 product.ProductName + "','" + product.ProductIndex + "','" + product.ProductUnit + "',"
                 + product.CategoryId + "," + product.SellerId + "," + product.StockId + "," + product.ProductPrice +
-                ",TRUNC(TO_DATE('" + product.ProductDate + "','MM-DD-YYYY HH:MI:SS'))," + product.Amount + ") ";
+                ",TRUNC(TO_DATE('" + product.ProductDate + "','DD-MM-YYYY HH24:MI:SS'))," + product.Amount + ") ";
 
             DbExecutor.Execute(ConnectionString, comText, new DbProductHandler());
         }
@@ -87,8 +87,8 @@ namespace FInalProject.Services
         {
             string comText =
                 "Update clients set clientname='" + client.ClientName + "',CLIENTPHONE='" + client.ClientPhone +
-                "',CLIENTADRESS='" + client.ClientAdress + "',CLIENTTYPE=" + client.ClientType + 
-                " where productid=" + client.ClientId;
+                "',CLIENTADRESS='" + client.ClientAdress + "',CLIENTTYPE='" + client.ClientType + 
+                "' where clientid=" + client.ClientId;
             Console.WriteLine($"INFO:{comText}");
             DbExecutor.Execute(ConnectionString, comText, new DbClientHandler());
         }
@@ -155,6 +155,7 @@ namespace FInalProject.Services
         {
             string comText =
                 "select *  from Sellers where sellerid="+id;
+            Console.WriteLine($"INFO:{comText}");
             return DbExecutor.Execute<Seller>(ConnectionString, comText, new DbSellerHandler())[0];
         }
         
@@ -170,11 +171,11 @@ namespace FInalProject.Services
         public void SellerEdit(Seller seller)
         {
             string comText =
-                "Update sellers set sellername='"+seller.SellerName+",SELLERADRESS="+seller.SellerAddress+",SELLERPHONE="+seller.SellerPhone+"' where sellerid="+seller.SellerId;
+                "Update sellers set sellername='"+seller.SellerName+"',SELLERADRESS='"+seller.SellerAddress+"',SELLERPHONE='"+seller.SellerPhone+"' where sellerid="+seller.SellerId;
             Console.WriteLine($"INFO:{comText}");
             DbExecutor.Execute(ConnectionString, comText, new DbSellerHandler());
         }
-        public void SellerDelete(Seller seller)
+        public void DeleteSeller(Seller seller)
         {
             string comText =
                 "delete from sellers  where sellerid="+seller.SellerId;
@@ -186,37 +187,41 @@ namespace FInalProject.Services
         public List<Order> GetOrderList()
         {
             string comText =
-                "select o.ORDERDATE,o.COMPLETIONDATE,o.COMPLETION,o.TOTALPRICE, c.CLIENTNAME, o.\"OrderList\".ID, p.PRODUCTname, o.\"OrderList\".AMOUNT "+  
-                "from orders o, CLIENTS c, PRODUCTS p where c.CLIENTID=o.CLIENTID and p.PRODUCTID=o.\"OrderList\".PRODUCTID";
+                "select * from orders o, CLIENTS c, PRODUCTS p where c.CLIENTID=o.CLIENTID and p.PRODUCTID=o.\"Productid\"";
 
             return DbExecutor.Execute<Order>(ConnectionString, comText, new DbOrderHandler());
         }
         public Order GetOrderById(int id)
         {
             string comText =
-                "select *  from Orders where orderid="+id;
+                "select * from orders o, CLIENTS c, PRODUCTS p where c.CLIENTID=o.CLIENTID and p.PRODUCTID=o.\"Productid\" and orderid="+id;
             return DbExecutor.Execute<Order>(ConnectionString, comText, new DbOrderHandler())[0];
         }
 
         public void AddOrder(Order order)
         {
             string comText =
-                "Insert into Orders(orderid, ORDERDATE,COMPLETIONDATE,COMPLETION,TOTALPRICE,CLIENTID,ORDERLIST) values("+order.OrderId+"+"+
-                "TRUNC(TO_DATE('" +order.OrderDate + "','MM-DD-YYYY HH:MI:SS'))," +
-                "TRUNC(TO_DATE('" + order.CompletionDate + "','MM-DD-YYYY HH:MI:SS'))," +
-                "'" + order.Completion + "'," + order.TotalPrice + "," + order.ClientId + ",(1," + order.productid+"," +order.amount+
-                ")) ";
-        
+                "Insert into Orders(ORDERDATE,COMPLETIONDATE,COMPLETION,TOTALPRICE,CLIENTID,\"Productid\",amount) values(" +
+                "TRUNC(TO_DATE('" + order.OrderDate + "','DD-MM-YYYY HH24:MI:SS'))," +
+                "TRUNC(TO_DATE('" + order.CompletionDate + "','DD-MM-YYYY HH24:MI:SS'))," +
+                "'" + order.Completion + "'," + order.TotalPrice +
+                ",CLIENTID=(Select CLIENTID from CLIENTS  where CLIENTNAME='" + order.CLientname +
+                "') ,\"Productid\"=(Select p.productid from products p where productname='" + order.productname +
+                "'),amount=" + order.amount+")" ;
+            Console.WriteLine($"INFO:{comText}");
             DbExecutor.Execute(ConnectionString, comText, new DbOrderHandler());
         }
         public void EditOrder(Order order)
         {
             string comText =
-                "update orders(orderid, ORDERDATE,COMPLETIONDATE,COMPLETION,TOTALPRICE,CLIENTID,ORDERLIST) set values("+order.OrderId+"+"+
-                "TRUNC(TO_DATE('" +order.OrderDate + "','MM-DD-YYYY HH:MI:SS'))," +
-                "TRUNC(TO_DATE('" + order.CompletionDate + "','MM-DD-YYYY HH:MI:SS'))," +
-                "'" + order.Completion + "'," + order.TotalPrice + "," + order.ClientId + ",(1," + order.productid+"," +order.amount+
-                ")) where orderid="+order.OrderId+" ";
+                "update orders set orderid="+order.OrderId+", orderdate="+
+                "TRUNC(TO_DATE('" +order.OrderDate + "','DD-MM-YYYY HH24:MI:SS')), completiondate=" +
+                "TRUNC(TO_DATE('" + order.CompletionDate + "','DD-MM-YYYY HH24:MI:SS')),completion=" +
+                "'" + order.Completion + "',totalprice=" + order.TotalPrice + ",CLIENTID=(Select CLIENTID from CLIENTS  where CLIENTNAME='" 
+                + order.CLientname + "') ,\"Productid\"=(Select p.productid from products p where productname='"+order.productname +
+                "'),amount="+order.amount+" where orderid="+order.OrderId+" ";
+            
+            Console.WriteLine($"INFO:{comText}");
         
             DbExecutor.Execute(ConnectionString, comText, new DbOrderHandler());
         }
@@ -251,8 +256,8 @@ namespace FInalProject.Services
         public void EditStock(Stock stock)
         {
             string comText =
-                "update Stocks(Stockadress) set values('" + stock.StockAddress + "') where stockid= "+stock.StockId;
-
+                "update Stocks set STOCKADRESS='" + stock.StockAddress + "' where stockid= "+stock.StockId;
+            Console.WriteLine($"INFO:{comText}");
             DbExecutor.Execute(ConnectionString, comText, new DbStockHandler());
         }
         public void DeleteStock(Stock stock)
