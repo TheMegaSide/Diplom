@@ -1,0 +1,67 @@
+﻿@model FInalProject.Models.Car
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Добавление категории</h1>
+
+<h4>Категория</h4>
+<hr/>
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="govnum" class="control-label">Госномер</label>
+                <input asp-for="govnum" class="form-control"/>
+                <span asp-validation-for="govnum" class="text-danger"></span>
+                <label asp-for="creater" class="control-label">Изготовитель</label>
+                <input asp-for="creater" class="form-control"/>
+                <span asp-validation-for="creater" class="text-danger"></span>
+                <label asp-for="type" class="control-label">Тип машины</label>
+                <input asp-for="type" class="form-control"/>
+                <span asp-validation-for="type" class="text-danger"></span>
+                <label asp-for="model" class="control-label">Модель</label>
+                <input asp-for="model" class="form-control"/>
+                <span asp-validation-for="model" class="text-danger"></span>
+                <label asp-for="valueOfCar" class="control-label">Объем кузова</label>
+                <input asp-for="valueOfCar" class="form-control"/>
+                <span asp-validation-for="valueOfCar" class="text-danger"></span>
+                <label asp-for="fuelType" class="control-label">Тип топлива</label>
+                <input asp-for="fuelType" class="form-control"/>
+                <span asp-validation-for="fuelType" class="text-danger"></span>
+                <label asp-for="valueOfTank" class="control-label">Объем бензобака</label>
+                <input asp-for="valueOfTank" class="form-control"/>
+                <span asp-validation-for="valueOfTank" class="text-danger"></span>
+                <label asp-for="glonasNum" class="control-label">Номер устройства ГЛОНАС</label>
+                <input asp-for="glonasNum" class="form-control"/>
+                <span asp-validation-for="glonasNum" class="text-danger"></span>
+                <label asp-for="platonNum" class="control-label">Номер устройства ПЛАТОН</label>
+                <input asp-for="platonNum" class="form-control"/>
+                <span asp-validation-for="platonNum" class="text-danger"></span>
+                <label asp-for="owner" class="control-label">Собственник</label>
+                <input asp-for="owner" class="form-control"/>
+                <span asp-validation-for="owner" class="text-danger"></span>
+                <label asp-for="location" class="control-label">Местонахождение</label>
+                <input asp-for="location" class="form-control"/>
+                <span asp-validation-for="location" class="text-danger"></span>
+                <label asp-for="runned" class="control-label">Пробег</label>
+                <input asp-for="runned" class="form-control"/>
+                <span asp-validation-for="runned" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group">
+                <input type="submit" value="Создать" class="btn btn-primary"/>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="CarTablePage">Вернуться назад</a>
+</div>
+
+@section Scripts {
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+}

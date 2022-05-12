@@ -1,0 +1,60 @@
+﻿@model FInalProject.Models.Car
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+
+<h3>Вы уверены, что хотите удалить товар из списка?</h3>
+<div>
+
+
+    <dl class="row">
+        <form asp-action="Delete">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            @{
+                          <label asp-for="govnum" class="control-label">Госномер</label>
+                          <label asp-for="govnum" class="form-control">@Model.govnum</label>
+                          <span asp-validation-for="govnum" class="text-danger"></span>
+                          <label asp-for="creater" class="control-label">Изготовитель</label>
+                          <label asp-for="creater" class="form-control">@Model.creater</label>
+                          <span asp-validation-for="creater" class="text-danger"></span>
+                          <label asp-for="type" class="control-label">Тип машины</label>
+                          <label asp-for="type" class="form-control">@Model.type</label>
+                          <span asp-validation-for="type" class="text-danger"></span>
+                          <label asp-for="model" class="control-label">Модель</label>
+                          <label asp-for="model" class="form-control">@Model.model</label>
+                          <span asp-validation-for="model" class="text-danger"></span>
+                          <label asp-for="valueOfCar" class="control-label">Объем кузова</label>
+                          <label asp-for="valueOfCar" class="form-control">@Model.valueOfCar</label>
+                          <span asp-validation-for="valueOfCar" class="text-danger"></span>
+                          <label asp-for="fuelType" class="control-label">Тип топлива</label>
+                          <label asp-for="fuelType" class="form-control">@Model.fuelType</label>
+                          <span asp-validation-for="fuelType" class="text-danger"></span>
+                          <label asp-for="valueOfTank" class="control-label">Объем бензобака</label>
+                          <label asp-for="valueOfTank" class="form-control">@Model.valueOfTank</label>
+                          <span asp-validation-for="valueOfTank" class="text-danger"></span>
+                          <label asp-for="glonasNum" class="control-label">Номер устройства ГЛОНАС</label>
+                          <label asp-for="glonasNum" class="form-control">@Model.glonasNum</label>
+                          <span asp-validation-for="glonasNum" class="text-danger"></span>
+                          <label asp-for="platonNum" class="control-label">Номер устройства ПЛАТОН</label>
+                          <label asp-for="platonNum" class="form-control">@Model.platonNum</label>
+                          <span asp-validation-for="platonNum" class="text-danger"></span>
+                          <label asp-for="owner" class="control-label">Собственник</label>
+                          <label asp-for="owner" class="form-control">@Model.owner</label>
+                          <span asp-validation-for="owner" class="text-danger"></span>
+                          <label asp-for="location" class="control-label">Местонахождение</label>
+                          <label asp-for="location" class="form-control">@Model.location</label>
+                          <span asp-validation-for="location" class="text-danger"></span>
+                          <label asp-for="runned" class="control-label">Пробег</label>
+                          <label asp-for="runned" class="form-control">@Model.runned</label>
+                          <span asp-validation-for="runned" class="text-danger"></span>
+
+
+
+            }
+            <input type="submit" value="Удалить" class="btn btn-danger"/>
+            <a asp-action="CarTablePage">Вернуться назад</a>
+        </form>
+    </dl>
+</div>

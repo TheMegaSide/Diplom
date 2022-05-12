@@ -4,15 +4,15 @@ using ClosedXML;
 using FInalProject.Models;
 using FInalProject.Services;
 using FInalProject.Util.DB;
+using Npgsql;
 using Oracle.ManagedDataAccess.Client;
 
 namespace FInalProject.Util.DbHandlers
 {
     public class DbOrderHandler: IDbExecuteHandler<Order>
     {
-        public Order GetDataAfterExecute(OracleDataReader rdr)
+        public Order GetDataAfterExecute(NpgsqlDataReader rdr)
         {
-            
             return new Order
             {
                 OrderId = (decimal)rdr["OrderId"],

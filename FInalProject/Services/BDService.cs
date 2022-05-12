@@ -14,22 +14,22 @@ namespace FInalProject.Services
 
         public BDService(IConfiguration configuration)
         {
-            ConnectionString = configuration.GetConnectionString("OracleDBConnection");
+            ConnectionString = configuration.GetConnectionString("NpgsqlConnection");
         }
 
-        public List<Product> GetProductList()
+        public List<Car> GetCarsList()
         {
             string comText =
-                "Select productid, PRODUCTNAME, PRODUCTINDEX, PRODUCTUNIT, CATEGORYNAME, SELLERNAME, STOCKADRESS, PRODUCTPRICE,PRODUCTDATE,AMOUNT from products, CATEGORIES, sellers,STOCKS where PRODUCTS.CATEGORYID=CATEGORies.CATEGORYID and SELLERS.SELLERID=PRODUCTS.SELLERID and STOCKS.STOCKID=PRODUCTS.STOCKID";
+                "Select * from cars;";
             Console.WriteLine($"INFO:{comText}");
-            return DbExecutor.Execute<Product>(ConnectionString, comText, new DbProductHandler());
+            return DbExecutor.Execute<Car>(ConnectionString, comText, new DbCarHandler());
         }
-        public Product GetProductById(int id)
+        public Car GetCarById(string id)
         {
             string comText =
-                "Select productid, PRODUCTNAME, PRODUCTINDEX, PRODUCTUNIT, CATEGORYNAME, SELLERNAME, STOCKADRESS, PRODUCTPRICE,PRODUCTDATE,AMOUNT from products, CATEGORIES, sellers,STOCKS where PRODUCTS.CATEGORYID=CATEGORies.CATEGORYID and SELLERS.SELLERID=PRODUCTS.SELLERID and STOCKS.STOCKID=PRODUCTS.STOCKID and Productid="+id;
+                "Select * from cars where  govnum='"+id+"'";
             Console.WriteLine($"INFO:{comText}");
-            return DbExecutor.Execute<Product>(ConnectionString, comText, new DbProductHandler())[0];
+            return DbExecutor.Execute<Car>(ConnectionString, comText, new DbCarHandler())[0];
         }
         public List<Product> GetProductByCategory(int category)
         {
@@ -38,34 +38,34 @@ namespace FInalProject.Services
             Console.WriteLine($"INFO:{comText}");
             return DbExecutor.Execute<Product>(ConnectionString, comText, new DbProductHandler());
         }
-        public void ProductEdit(Product product)
+        public void CarEdit(Car car)
         {
             string comText =
-                "Update Products set Productname='" + product.ProductName + "',PRODUCTINDEX='" + product.ProductIndex +
-                "',PRODUCTUNIT='" + product.ProductUnit + "',CATEGORYID=" + product.CategoryId + ",SELLERID=" +
-                product.SellerId +
-                ",STOCKID=" + product.StockId + ",PRODUCTPRICE=" + product.ProductPrice + ",PRODUCTDATE=" +
-                "TRUNC(TO_DATE('" + product.ProductDate + "','DD-MM-YYYY HH24:MI:SS')) "+
-                ",AMOUNT=" + product.Amount +
-                " where productid=" + product.ProductId;
+                "Update cars set govnum="+"'" + car.govnum + "',creator='" + car.creater +
+                "',type='" + car.type + "',model='" + car.model + "',carvalue=" +
+                car.valueOfCar +
+                ",fueltype='" + car.fuelType + "',tankvalue=" + car.valueOfTank + ",glonasnum=" +
+                 + car.glonasNum + 
+                ",platonnum=" + car.platonNum +",owner='"+car.owner+"',location='"+car.location+"',runned="+car.runned+
+                " where govnum="+"'" + car.govnum+"'";
             Console.WriteLine($"INFO:{comText}");
-            DbExecutor.Execute(ConnectionString, comText, new DbProductHandler());
+            DbExecutor.Execute(ConnectionString, comText, new DbCarHandler());
         }
 
-        public void AddProduct(Product product)
+        public void AddCar(Car car)
         {
             string comText =
-                "Insert into Products(PRODUCTNAME,PRODUCTINDEX,PRODUCTUNIT,CATEGORYID,SELLERID,STOCKID,PRODUCTPRICE,PRODUCTDATE,AMOUNT) values('" +
-                product.ProductName + "','" + product.ProductIndex + "','" + product.ProductUnit + "',"
-                + product.CategoryId + "," + product.SellerId + "," + product.StockId + "," + product.ProductPrice +
-                ",TRUNC(TO_DATE('" + product.ProductDate + "','DD-MM-YYYY HH24:MI:SS'))," + product.Amount + ") ";
+                "Insert into cars(govnum,creator,type,model,carvalue,fueltype,tankvalue,glonasnum,platonnum,owner,location,runned) values('" +
+                car.govnum + "','" + car.creater + "','" + car.type + "','"
+                + car.model + "'," + car.valueOfCar + ",'" + car.fuelType + "'," + car.valueOfTank +
+                "," + car.glonasNum + "," + car.platonNum + ",'"+car.owner+"','"+car.location+"',"+car.runned+") ";
 
-            DbExecutor.Execute(ConnectionString, comText, new DbProductHandler());
+            DbExecutor.Execute(ConnectionString, comText, new DbCarHandler());
         }
-        public void DeleteProduct(Product product)
+        public void DeleteCar(Car car)
         {
             string comText =
-                "delete from Products where Productid="+product.ProductId;
+                "delete from cars where govnum='"+car.govnum+"'";
             Console.WriteLine($"INFO:{comText}");
             DbExecutor.Execute(ConnectionString, comText, new DbProductHandler());
         }

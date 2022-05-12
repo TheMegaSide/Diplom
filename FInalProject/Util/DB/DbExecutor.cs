@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
-using FInalProject.Util.DbHandlers;
-using Oracle.ManagedDataAccess.Client;
+using Npgsql;
+
 
 namespace FInalProject.Util.DB
 {
@@ -9,12 +9,12 @@ namespace FInalProject.Util.DB
         public static List<T> Execute<T>(string connectionString, string query, IDbExecuteHandler<T> executeHandlerHandler)
         {
             var returnObject = new List<T>();
-            using (OracleConnection con = new OracleConnection(connectionString))
+            using (NpgsqlConnection con = new NpgsqlConnection(connectionString))
             {
                 con.Open();
-                using (OracleCommand cmd = new OracleCommand(query, con))
+                using (NpgsqlCommand cmd = new NpgsqlCommand(query, con))
                 {
-                    OracleDataReader rdr = cmd.ExecuteReader();
+                    NpgsqlDataReader rdr = cmd.ExecuteReader();
                     while (rdr.Read())
                     {
                         T item = executeHandlerHandler.GetDataAfterExecute(rdr);

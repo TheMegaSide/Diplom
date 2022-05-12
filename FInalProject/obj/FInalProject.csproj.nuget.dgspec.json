@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Александр\\RiderProjects\\FInalProject\\FInalProject\\FInalProject.csproj": {}
+    "C:\\Users\\Александр\\RiderProjects\\Diplom4ik\\FInalProject\\FInalProject.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Александр\\RiderProjects\\FInalProject\\FInalProject\\FInalProject.csproj": {
+    "C:\\Users\\Александр\\RiderProjects\\Diplom4ik\\FInalProject\\FInalProject.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Александр\\RiderProjects\\FInalProject\\FInalProject\\FInalProject.csproj",
+        "projectUniqueName": "C:\\Users\\Александр\\RiderProjects\\Diplom4ik\\FInalProject\\FInalProject.csproj",
         "projectName": "FInalProject",
-        "projectPath": "C:\\Users\\Александр\\RiderProjects\\FInalProject\\FInalProject\\FInalProject.csproj",
+        "projectPath": "C:\\Users\\Александр\\RiderProjects\\Diplom4ik\\FInalProject\\FInalProject.csproj",
         "packagesPath": "C:\\Users\\Александр\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Александр\\RiderProjects\\FInalProject\\FInalProject\\obj\\",
+        "outputPath": "C:\\Users\\Александр\\RiderProjects\\Diplom4ik\\FInalProject\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Александр\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -64,6 +64,10 @@
               "target": "Package",
               "version": "[5.0.6, )"
             },
+            "Npgsql": {
+              "target": "Package",
+              "version": "[6.0.4, )"
+            },
             "Oracle.ManagedDataAccess.Core": {
               "target": "Package",
               "version": "[3.21.3, )"
@@ -79,6 +83,20 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[5.0.0, 5.0.0]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Host.win-x64",
+              "version": "[5.0.14, 5.0.14]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[5.0.0, 5.0.0]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
@@ -87,7 +105,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.203\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.200\\RuntimeIdentifierGraph.json"
         }
       }
     }

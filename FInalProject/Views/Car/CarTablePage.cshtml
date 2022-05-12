@@ -1,0 +1,47 @@
+﻿@model List<FInalProject.Models.Car> 
+
+
+<p>База данных автомобилей</p>
+<table border="1" style="border-collapse: collapse; width: 100%;">
+    <tbody>
+    <tr>
+        <th style="width: 11.1111%;">Госномер</th>
+        <th style="width: 11.1111%;">Изготовитель</th>
+        <th style="width: 11.1111%;">Тип машины</th>
+        <th style="width: 11.1111%;">Модель</th>
+        <th style="width: 11.1111%;">Объем кузова</th>
+        <th style="width: 11.1111%;">Тип топлива</th>
+        <th style="width: 11.1111%;">Объем бензобака</th>
+        <th style="width: 11.1111%;">Номер устройства ГЛОНАС</th>
+        <th style="width: 11.1111%;">Номер устройства ПЛАТОН</th>
+        <th style="width: 11.1111%;">Владелец</th>
+        <th style="width: 11.1111%;">Местонахождение</th>
+        <th style="width: 11.1111%;">Пробег</th>
+
+
+    </tr>
+
+    @foreach (var car in Model)
+    {
+        <tr>
+            <td style="width: 11.1111%;">@car.govnum</td>
+            <td style="width: 11.1111%;">@car.creater</td>
+            <td style="width: 11.1111%;">@car.type</td>
+            <td style="width: 11.1111%;">@car.model</td>
+            <td style="width: 11.1111%;">@car.valueOfCar</td>
+            <td style="width: 11.1111%;">@car.fuelType</td>
+            <td style="width: 11.1111%;">@car.valueOfTank</td>
+            <td style="width: 11.1111%;">@car.glonasNum</td>
+            <td style="width: 11.1111%;">@car.platonNum</td>
+            <td style="width: 11.1111%;">@car.owner</td>
+            <td style="width: 11.1111%;">@car.location</td>
+            <td style="width: 11.1111%;">@car.runned</td>
+            <td><a asp-action="CarDelete" asp-route-id="@car.govnum">Удалить</a></td>
+            <td><a asp-action="CarEdit" asp-route-id="@car.govnum">Изменить</a></td>
+
+
+        </tr>
+    }
+
+    </tbody >
+</table >
