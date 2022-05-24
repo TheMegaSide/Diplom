@@ -11,6 +11,7 @@ namespace FInalProject.Util.DbHandlers
         {
             return new Car
             {
+                id =(int)rdr["id"],
                 govnum = rdr["govnum"].ToString(),
                 creater = rdr["creator"].ToString(),
                 type = rdr["type"].ToString(),

@@ -1,26 +1,32 @@
 ﻿@model FInalProject.Models.Car
 
 @{
-    ViewData["Title"] = "Edit";
+     ViewData["Title"] = "Edit";
 }
 
 <h1>Изменение данных</h1>
 
-<h4>Категория</h4>
+<h4>Автомобиль</h4>
 
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="govnum" class="control-label">Госномер</label>
+                                <label asp-for="id" class="control-label">Госномер</label>
+                                <label asp-for="id" class="form-control"></label>
+                                <span asp-validation-for="id" class="text-danger"></span>
+                                <label asp-for="govnum" class="control-label">Госномер</label>
                                 <input asp-for="govnum" class="form-control"/>
                                 <span asp-validation-for="govnum" class="text-danger"></span>
                                 <label asp-for="creater" class="control-label">Изготовитель</label>
                                 <input asp-for="creater" class="form-control"/>
                                 <span asp-validation-for="creater" class="text-danger"></span>
                                 <label asp-for="type" class="control-label">Тип машины</label>
-                                <input asp-for="type" class="form-control"/>
+                                <select asp-for="type" id="typeDropDown">
+                                    <option value="Мусоровоз">Мусоровоз</option>
+                                    <option value="Пассажирский">Пассажирский</option>
+                                </select>
                                 <span asp-validation-for="type" class="text-danger"></span>
                                 <label asp-for="model" class="control-label">Модель</label>
                                 <input asp-for="model" class="form-control"/>
@@ -29,7 +35,11 @@
                                 <input asp-for="valueOfCar" class="form-control"/>
                                 <span asp-validation-for="valueOfCar" class="text-danger"></span>
                                 <label asp-for="fuelType" class="control-label">Тип топлива</label>
-                                <input asp-for="fuelType" class="form-control"/>
+                                <select asp-for="fuelType" id="fuelDropDown">
+                                    <option value="Дизель">Дизель</option>
+                                    <option value="Бензин">Бензин</option>
+                                    <option value="Газ">Газ</option>
+                                </select>
                                 <span asp-validation-for="fuelType" class="text-danger"></span>
                                 <label asp-for="valueOfTank" class="control-label">Объем бензобака</label>
                                 <input asp-for="valueOfTank" class="form-control"/>
@@ -49,8 +59,6 @@
                                 <label asp-for="runned" class="control-label">Пробег</label>
                                 <input asp-for="runned" class="form-control"/>
                                 <span asp-validation-for="runned" class="text-danger"></span>
-
-
             </div>
             <div class="form-group">
                 <input type="submit" value="Сохранить" class="btn btn-primary"/>

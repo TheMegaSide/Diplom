@@ -36,12 +36,16 @@
             <td style="width: 11.1111%;">@car.owner</td>
             <td style="width: 11.1111%;">@car.location</td>
             <td style="width: 11.1111%;">@car.runned</td>
-            <td><a asp-action="CarDelete" asp-route-id="@car.govnum">Удалить</a></td>
-            <td><a asp-action="CarEdit" asp-route-id="@car.govnum">Изменить</a></td>
+            <td><a asp-action="CarDelete" asp-route-id="@car.id">Удалить</a></td>
+            <td><a asp-action="CarEdit" asp-route-id="@car.id">Изменить</a></td>
 
 
         </tr>
     }
-
+        
+    
     </tbody >
 </table >
+<div class="form-group">
+    <a asp-area="" asp-controller="Car" asp-action="GetCarListExcel" >Excel таблица по автомобилям</a>
+</div>

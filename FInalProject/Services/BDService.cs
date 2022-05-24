@@ -24,19 +24,12 @@ namespace FInalProject.Services
             Console.WriteLine($"INFO:{comText}");
             return DbExecutor.Execute<Car>(ConnectionString, comText, new DbCarHandler());
         }
-        public Car GetCarById(string id)
+        public Car GetCarById(int id)
         {
             string comText =
-                "Select * from cars where  govnum='"+id+"'";
+                "Select * from cars where  id="+id;
             Console.WriteLine($"INFO:{comText}");
             return DbExecutor.Execute<Car>(ConnectionString, comText, new DbCarHandler())[0];
-        }
-        public List<Product> GetProductByCategory(int category)
-        {
-            string comText =
-                "select *  from Products where Categoryid="+category;
-            Console.WriteLine($"INFO:{comText}");
-            return DbExecutor.Execute<Product>(ConnectionString, comText, new DbProductHandler());
         }
         public void CarEdit(Car car)
         {
@@ -47,7 +40,7 @@ namespace FInalProject.Services
                 ",fueltype='" + car.fuelType + "',tankvalue=" + car.valueOfTank + ",glonasnum=" +
                  + car.glonasNum + 
                 ",platonnum=" + car.platonNum +",owner='"+car.owner+"',location='"+car.location+"',runned="+car.runned+
-                " where govnum="+"'" + car.govnum+"'";
+                " where id=" + car.id;
             Console.WriteLine($"INFO:{comText}");
             DbExecutor.Execute(ConnectionString, comText, new DbCarHandler());
         }
@@ -62,51 +55,51 @@ namespace FInalProject.Services
 
             DbExecutor.Execute(ConnectionString, comText, new DbCarHandler());
         }
-        public void DeleteCar(Car car)
+        public void DeleteCar(int id)
         {
             string comText =
-                "delete from cars where govnum='"+car.govnum+"'";
+                "delete from cars where id=" + id;
             Console.WriteLine($"INFO:{comText}");
-            DbExecutor.Execute(ConnectionString, comText, new DbProductHandler());
+            DbExecutor.Execute(ConnectionString, comText, new DbCarHandler());
         }
 
 
-        public List<Client> GetClientList()
+        public List<Driver> GetDriverList()
         {
             string comText =
-                "select *  from Clients";
-            return DbExecutor.Execute<Client>(ConnectionString, comText, new DbClientHandler());
+                "select *  from drivers";
+            return DbExecutor.Execute<Driver>(ConnectionString, comText, new DbDriverhandler());
         }
-        public Client GetClientById(int id)
+        public Driver GetDriverById(int id)
         {
             string comText =
-                "select *  from Clients where clientid="+id;
-            return DbExecutor.Execute<Client>(ConnectionString, comText, new DbClientHandler())[0];
+                "select *  from drivers where id="+id;
+            return DbExecutor.Execute<Driver>(ConnectionString, comText, new DbDriverhandler())[0];
         }
-        public void ClientEdit(Client client)
+        public void DriverEdit(Driver driver)
         {
             string comText =
-                "Update clients set clientname='" + client.ClientName + "',CLIENTPHONE='" + client.ClientPhone +
-                "',CLIENTADRESS='" + client.ClientAdress + "',CLIENTTYPE='" + client.ClientType + 
-                "' where clientid=" + client.ClientId;
+                "Update drivers set surname='" + driver.surname + "',name='" + driver.name +
+                "',patronymic='" + driver.patronymic + "',drcertnum=" + driver.drcertnum +",drcertdate='" + driver.drcertdate+"',class='"+driver.classs+"',timedriving="+driver.timedriving+
+                " where id=" + driver.id;
             Console.WriteLine($"INFO:{comText}");
-            DbExecutor.Execute(ConnectionString, comText, new DbClientHandler());
+            DbExecutor.Execute(ConnectionString, comText, new DbDriverhandler());
         }
 
-        public void AddClient(Client client)
+        public void AddDriver(Driver driver)
         {
             string comText =
-                "Insert into Clients(ClientName,ClientPhone,ClientAdress,ClientType) values('" + client.ClientName +
-                "','" + client.ClientPhone + "','" + client.ClientAdress + "','" + client.ClientType + "') ";
+                "Insert into drivers(surname,name,patronymic,drcertnum,drcertdate,class,timedriving) values('" + driver.surname +
+                "','" + driver.name + "','" + driver.patronymic + "'," + driver.drcertnum + ",'"+driver.drcertdate+"','"+driver.classs+"','"+driver.timedriving+"') ";
 
-            DbExecutor.Execute(ConnectionString, comText, new DbClientHandler());
+            DbExecutor.Execute(ConnectionString, comText, new DbDriverhandler());
         }
-        public void DeleteClient(Client client)
+        public void DeleteDriver(Driver driver)
         {
             string comText =
-                "delete from Clients where clientid="+client.ClientId;
+                "delete from drivers where id="+driver.id;
             Console.WriteLine($"INFO:{comText}");
-            DbExecutor.Execute(ConnectionString, comText, new DbClientHandler());
+            DbExecutor.Execute(ConnectionString, comText, new DbDriverhandler());
         }
 
         public List<Category> GetCategoryList()

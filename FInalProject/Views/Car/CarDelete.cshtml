@@ -10,9 +10,13 @@
 
 
     <dl class="row">
-        <form asp-action="Delete">
+
+        <form asp-action="Delete" asp-route-id="@Model.id">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            @{
+            
+                          <label asp-for="id" class="control-label">Номер</label>
+                          <label asp-for="id" class="form-control">@Model.id</label>
+                          <span asp-validation-for="id" class="text-danger"></span>
                           <label asp-for="govnum" class="control-label">Госномер</label>
                           <label asp-for="govnum" class="form-control">@Model.govnum</label>
                           <span asp-validation-for="govnum" class="text-danger"></span>
@@ -49,11 +53,10 @@
                           <label asp-for="runned" class="control-label">Пробег</label>
                           <label asp-for="runned" class="form-control">@Model.runned</label>
                           <span asp-validation-for="runned" class="text-danger"></span>
-
-
-
-            }
-            <input type="submit" value="Удалить" class="btn btn-danger"/>
+            
+            <div class="form-group">
+                <input type="submit" value="Удалить" class="btn btn-danger"/>
+            </div>
             <a asp-action="CarTablePage">Вернуться назад</a>
         </form>
     </dl>

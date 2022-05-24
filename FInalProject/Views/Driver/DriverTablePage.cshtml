@@ -1,0 +1,37 @@
+﻿@model List<FInalProject.Models.Driver> 
+
+
+<p>База данных автомобилей</p>
+<table border="1" style="border-collapse: collapse; width: 100%;">
+    <tbody>
+    <tr>
+        
+        <th style="width: 11.1111%;">Фамилия</th>
+        <th style="width: 11.1111%;">Имя</th>
+        <th style="width: 11.1111%;">Отчество</th>
+        <th style="width: 11.1111%;">Номер ВУ</th>
+        <th style="width: 11.1111%;">Дата выдачи ВУ</th>
+        <th style="width: 11.1111%;">Классы вождения</th>
+        <th style="width: 11.1111%;">Стаж</th>
+    </tr>
+
+    @foreach (var driver in Model)
+    {
+        <tr>
+            <td style="width: 11.1111%;">@driver.surname</td>
+            <td style="width: 11.1111%;">@driver.name</td>
+            <td style="width: 11.1111%;">@driver.patronymic</td>
+            <td style="width: 11.1111%;">@driver.drcertnum</td>
+            <td style="width: 11.1111%;">@driver.drcertdate.ToShortDateString()</td>
+            <td style="width: 11.1111%;">@driver.classs</td>
+            <td style="width: 11.1111%;">@driver.timedriving</td>
+            
+            <td><a asp-action="DriverDelete" asp-route-id="@driver.id">Удалить водителя с номером @driver.id</a></td> 
+            <td><a asp-action="DriverEdit" asp-route-id="@driver.id">Изменить</a></td> 
+
+
+        </tr>
+    }
+
+    </tbody >
+</table >

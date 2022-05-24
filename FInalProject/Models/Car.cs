@@ -2,6 +2,7 @@
 {
     public class Car
     {
+        public int id { get; set; }
         public string govnum { get; set; }
         public string creater{ get; set; }
         public string type { get; set; }

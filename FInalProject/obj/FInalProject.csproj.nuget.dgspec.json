@@ -44,6 +44,18 @@
               "target": "Package",
               "version": "[0.95.4, )"
             },
+            "ExcelDataReader": {
+              "target": "Package",
+              "version": "[3.6.0, )"
+            },
+            "ExcelDataReader.DataSet": {
+              "target": "Package",
+              "version": "[3.6.0, )"
+            },
+            "Microsoft.AspNet.Web.Helpers.Mvc": {
+              "target": "Package",
+              "version": "[2.0.20710, )"
+            },
             "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": {
               "target": "Package",
               "version": "[5.0.6, )"

@@ -30,6 +30,27 @@
           "lib/netstandard1.3/DocumentFormat.OpenXml.dll": {}
         }
       },
+      "ExcelDataReader/3.6.0": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/ExcelDataReader.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/ExcelDataReader.dll": {}
+        }
+      },
+      "ExcelDataReader.DataSet/3.6.0": {
+        "type": "package",
+        "dependencies": {
+          "ExcelDataReader": "3.6.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/ExcelDataReader.DataSet.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/ExcelDataReader.DataSet.dll": {}
+        }
+      },
       "ExcelNumberFormat/1.0.10": {
         "type": "package",
         "compile": {
@@ -46,6 +67,46 @@
         },
         "runtime": {
           "lib/netstandard2.0/Humanizer.dll": {}
+        }
+      },
+      "Microsoft.AspNet.Razor/2.0.20505": {
+        "type": "package",
+        "compile": {
+          "lib/net40/System.Web.Razor.dll": {}
+        },
+        "runtime": {
+          "lib/net40/System.Web.Razor.dll": {}
+        }
+      },
+      "Microsoft.AspNet.Web.Helpers.Mvc/2.0.20710": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNet.WebPages": "[2.0.0, 2.1.0)"
+        },
+        "compile": {
+          "lib/net40/Microsoft.Web.Helpers.dll": {}
+        },
+        "runtime": {
+          "lib/net40/Microsoft.Web.Helpers.dll": {}
+        }
+      },
+      "Microsoft.AspNet.WebPages/2.0.20505": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNet.Razor": "2.0.20505",
+          "Microsoft.Web.Infrastructure": "1.0.0"
+        },
+        "compile": {
+          "lib/net40/System.Web.Helpers.dll": {},
+          "lib/net40/System.Web.WebPages.Deployment.dll": {},
+          "lib/net40/System.Web.WebPages.Razor.dll": {},
+          "lib/net40/System.Web.WebPages.dll": {}
+        },
+        "runtime": {
+          "lib/net40/System.Web.Helpers.dll": {},
+          "lib/net40/System.Web.WebPages.Deployment.dll": {},
+          "lib/net40/System.Web.WebPages.Razor.dll": {},
+          "lib/net40/System.Web.WebPages.dll": {}
         }
       },
       "Microsoft.AspNetCore.Cryptography.Internal/5.0.6": {
@@ -450,6 +511,15 @@
         },
         "runtime": {
           "lib/netstandard1.0/_._": {}
+        }
+      },
+      "Microsoft.Web.Infrastructure/1.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/net40/Microsoft.Web.Infrastructure.dll": {}
+        },
+        "runtime": {
+          "lib/net40/Microsoft.Web.Infrastructure.dll": {}
         }
       },
       "Microsoft.Win32.Primitives/4.3.0": {
@@ -2094,6 +2164,49 @@
         "lib/netstandard1.3/DocumentFormat.OpenXml.xml"
       ]
     },
+    "ExcelDataReader/3.6.0": {
+      "sha512": "eXyxTwG7EEWpgQX3juZ2KcndqTqm/ydx9GXS2lUiMJU54U4h5eXdygRtVgINv0t60ezPWEb+lL7uM7Q+wm5BBA==",
+      "type": "package",
+      "path": "exceldatareader/3.6.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "exceldatareader.3.6.0.nupkg.sha512",
+        "exceldatareader.nuspec",
+        "lib/net20/ExcelDataReader.dll",
+        "lib/net20/ExcelDataReader.pdb",
+        "lib/net20/ExcelDataReader.xml",
+        "lib/net45/ExcelDataReader.dll",
+        "lib/net45/ExcelDataReader.pdb",
+        "lib/net45/ExcelDataReader.xml",
+        "lib/netstandard1.3/ExcelDataReader.dll",
+        "lib/netstandard1.3/ExcelDataReader.pdb",
+        "lib/netstandard1.3/ExcelDataReader.xml",
+        "lib/netstandard2.0/ExcelDataReader.dll",
+        "lib/netstandard2.0/ExcelDataReader.pdb",
+        "lib/netstandard2.0/ExcelDataReader.xml"
+      ]
+    },
+    "ExcelDataReader.DataSet/3.6.0": {
+      "sha512": "miW3sWmPXnLM38YadRIfnhL4W4QZajpS6Q/OqsOpFJU5ct8h+M/fMpbGMm5INtsMP0Y1k0WK0stIfSW3RP31Xg==",
+      "type": "package",
+      "path": "exceldatareader.dataset/3.6.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "exceldatareader.dataset.3.6.0.nupkg.sha512",
+        "exceldatareader.dataset.nuspec",
+        "lib/net20/ExcelDataReader.DataSet.dll",
+        "lib/net20/ExcelDataReader.DataSet.pdb",
+        "lib/net20/ExcelDataReader.DataSet.xml",
+        "lib/net35/ExcelDataReader.DataSet.dll",
+        "lib/net35/ExcelDataReader.DataSet.pdb",
+        "lib/net35/ExcelDataReader.DataSet.xml",
+        "lib/netstandard2.0/ExcelDataReader.DataSet.dll",
+        "lib/netstandard2.0/ExcelDataReader.DataSet.pdb",
+        "lib/netstandard2.0/ExcelDataReader.DataSet.xml"
+      ]
+    },
     "ExcelNumberFormat/1.0.10": {
       "sha512": "dRx817M5t0sv4GCJyAXU8qmhFXcqRpCHzLpxNmkMWTvzlfE0/KM7BNk6qEble0ffAr4xT7RyU7s/HpovVlA/9g==",
       "type": "package",
@@ -2125,6 +2238,50 @@
         "lib/netstandard2.0/Humanizer.dll",
         "lib/netstandard2.0/Humanizer.xml",
         "logo.png"
+      ]
+    },
+    "Microsoft.AspNet.Razor/2.0.20505": {
+      "sha512": "Gk3ZVP/bwGsKx3fQf4EHoIzCApHU9LTIWOjmABa5VMT7axwyPDtUq3wGfW3LiHmlHjkh/SwnZzwCw1LnCTgmBQ==",
+      "type": "package",
+      "path": "microsoft.aspnet.razor/2.0.20505",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net40/System.Web.Razor.dll",
+        "lib/net40/System.Web.Razor.xml",
+        "microsoft.aspnet.razor.2.0.20505.nupkg.sha512",
+        "microsoft.aspnet.razor.nuspec"
+      ]
+    },
+    "Microsoft.AspNet.Web.Helpers.Mvc/2.0.20710": {
+      "sha512": "7vvVapm/jo0yljuMnCUujQHoU8NS/u0mAoAbvhy26KUUZlLtDcO12FIUrxepqJvnefYdYmeuU2c7eyNYFEmJDg==",
+      "type": "package",
+      "path": "microsoft.aspnet.web.helpers.mvc/2.0.20710",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net40/Microsoft.Web.Helpers.dll",
+        "microsoft.aspnet.web.helpers.mvc.2.0.20710.nupkg.sha512",
+        "microsoft.aspnet.web.helpers.mvc.nuspec"
+      ]
+    },
+    "Microsoft.AspNet.WebPages/2.0.20505": {
+      "sha512": "/eILBjvoH9y3DqTZO3HX0HHyocyQPzdR125lVxSVHJUQq6NosyYS9BdcLlug9c7qYtVkDcUDxQRhHTBnDqC1VA==",
+      "type": "package",
+      "path": "microsoft.aspnet.webpages/2.0.20505",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net40/System.Web.Helpers.dll",
+        "lib/net40/System.Web.Helpers.xml",
+        "lib/net40/System.Web.WebPages.Deployment.dll",
+        "lib/net40/System.Web.WebPages.Deployment.xml",
+        "lib/net40/System.Web.WebPages.Razor.dll",
+        "lib/net40/System.Web.WebPages.Razor.xml",
+        "lib/net40/System.Web.WebPages.dll",
+        "lib/net40/System.Web.WebPages.xml",
+        "microsoft.aspnet.webpages.2.0.20505.nupkg.sha512",
+        "microsoft.aspnet.webpages.nuspec"
       ]
     },
     "Microsoft.AspNetCore.Cryptography.Internal/5.0.6": {
@@ -2808,6 +2965,18 @@
         "microsoft.netcore.targets.1.1.0.nupkg.sha512",
         "microsoft.netcore.targets.nuspec",
         "runtime.json"
+      ]
+    },
+    "Microsoft.Web.Infrastructure/1.0.0": {
+      "sha512": "FNmvLn5m2LTU/Rs2KWVo0SIIh9Ek+U0ojex7xeDaSHw/zgEP77A8vY5cVWgUtBGS8MJfDGNn8rpXJWEIQaPwTg==",
+      "type": "package",
+      "path": "microsoft.web.infrastructure/1.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net40/Microsoft.Web.Infrastructure.dll",
+        "microsoft.web.infrastructure.1.0.0.nupkg.sha512",
+        "microsoft.web.infrastructure.nuspec"
       ]
     },
     "Microsoft.Win32.Primitives/4.3.0": {
@@ -6828,6 +6997,9 @@
   "projectFileDependencyGroups": {
     "net5.0": [
       "ClosedXML >= 0.95.4",
+      "ExcelDataReader >= 3.6.0",
+      "ExcelDataReader.DataSet >= 3.6.0",
+      "Microsoft.AspNet.Web.Helpers.Mvc >= 2.0.20710",
       "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore >= 5.0.6",
       "Microsoft.AspNetCore.Identity.EntityFrameworkCore >= 5.0.6",
       "Microsoft.AspNetCore.Identity.UI >= 5.0.6",
@@ -6879,6 +7051,18 @@
           "ClosedXML": {
             "target": "Package",
             "version": "[0.95.4, )"
+          },
+          "ExcelDataReader": {
+            "target": "Package",
+            "version": "[3.6.0, )"
+          },
+          "ExcelDataReader.DataSet": {
+            "target": "Package",
+            "version": "[3.6.0, )"
+          },
+          "Microsoft.AspNet.Web.Helpers.Mvc": {
+            "target": "Package",
+            "version": "[2.0.20710, )"
           },
           "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": {
             "target": "Package",
@@ -6944,5 +7128,57 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.200\\RuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "NU1603",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Microsoft.AspNet.Web.Helpers.Mvc 2.0.20710 depends on Microsoft.AspNet.WebPages (>= 2.0.0 && < 2.1.0) but Microsoft.AspNet.WebPages 2.0.0 was not found. An approximate best match of Microsoft.AspNet.WebPages 2.0.20505 was resolved.",
+      "libraryId": "Microsoft.AspNet.WebPages",
+      "targetGraphs": [
+        "net5.0"
+      ]
+    },
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'Microsoft.AspNet.Razor 2.0.20505' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net5.0'. This package may not be fully compatible with your project.",
+      "libraryId": "Microsoft.AspNet.Razor",
+      "targetGraphs": [
+        "net5.0"
+      ]
+    },
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'Microsoft.AspNet.Web.Helpers.Mvc 2.0.20710' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net5.0'. This package may not be fully compatible with your project.",
+      "libraryId": "Microsoft.AspNet.Web.Helpers.Mvc",
+      "targetGraphs": [
+        "net5.0"
+      ]
+    },
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'Microsoft.AspNet.WebPages 2.0.20505' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net5.0'. This package may not be fully compatible with your project.",
+      "libraryId": "Microsoft.AspNet.WebPages",
+      "targetGraphs": [
+        "net5.0"
+      ]
+    },
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'Microsoft.Web.Infrastructure 1.0.0' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net5.0'. This package may not be fully compatible with your project.",
+      "libraryId": "Microsoft.Web.Infrastructure",
+      "targetGraphs": [
+        "net5.0"
+      ]
+    }
+  ]
 }
