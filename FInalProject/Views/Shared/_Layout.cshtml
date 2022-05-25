@@ -25,7 +25,7 @@
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item nav-link text-dark" asp-area="" asp-controller="Car" asp-action="CarAdd">Добавить автомобиль</a>
                             <a class="dropdown-item nav-link text-dark" asp-area="" asp-controller="Car" asp-action="GetCarsFromExcel">Импорт</a>
-                             <a class="dropdown-item nav-link text-dark" asp-area="" asp-controller="Car" asp-action="CarUploadExcel">Импорт</a>
+                             @* <a class="dropdown-item nav-link text-dark" asp-area="" asp-controller="Car" asp-action="CarUploadExcel">Импорт</a> *@
                         </div>
                     </li>
                  
@@ -38,38 +38,8 @@
                             
                         </div>
                     </li>
-                    <li class="nav-item dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Поставщики</a>
-                        <div class="dropdown-menu">
-                            <a сlass="dropdown-item nav-link text-dark" asp-area="" asp-controller="Seller" asp-action="SellerTablePage">Просмотр</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item nav-link text-dark" asp-area="" asp-controller="Seller" asp-action="SellerAdd">Добавить поставщика</a>
-                        </div>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Заказы</a>
-                        <div class="dropdown-menu">
-                            <a сlass="dropdown-item nav-link text-dark" asp-area="" asp-controller="Order" asp-action="OrderTablePage">Просмотр</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item nav-link text-dark" asp-area="" asp-controller="Order" asp-action="OrderAdd">Добавить заказ</a>
-                        </div>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Склады</a>
-                        <div class="dropdown-menu">
-                            <a сlass="dropdown-item nav-link text-dark" asp-area="" asp-controller="Stock" asp-action="StockTablePage">Просмотр</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item nav-link text-dark" asp-area="" asp-controller="Stock" asp-action="StockAdd">Добавить склад</a>
-                        </div>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Запросы</a>
-                        <div class="dropdown-menu">
-                            <a сlass="dropdown-item nav-link text-dark" asp-area="" asp-controller="Excel" asp-action="GetCarExcel">Excel таблица по автомобилям</a>
-                            <div class="dropdown-divider"></div>
-                            
-                        </div>
-                    </li>
+                   
+                    
                     
                 </ul>
                 <partial name="_LoginPartial"/>

@@ -14,9 +14,7 @@
         <form asp-action="Delete" asp-route-id="@Model.id">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             
-                          <label asp-for="id" class="control-label">Номер</label>
-                          <label asp-for="id" class="form-control">@Model.id</label>
-                          <span asp-validation-for="id" class="text-danger"></span>
+                         
                           <label asp-for="govnum" class="control-label">Госномер</label>
                           <label asp-for="govnum" class="form-control">@Model.govnum</label>
                           <span asp-validation-for="govnum" class="text-danger"></span>

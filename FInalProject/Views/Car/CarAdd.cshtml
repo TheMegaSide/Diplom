@@ -19,11 +19,8 @@
                 <label asp-for="creater" class="control-label">Изготовитель</label>
                 <input asp-for="creater" class="form-control"/>
                 <span asp-validation-for="creater" class="text-danger"></span>
-                <label asp-for="model" class="control-label">Тип</label>
-                <select asp-for="type" id="typeDropDown">
-                    <option value="Мусоровоз">Мусоровоз</option>
-                    <option value="Пассажирский">Пассажирский</option>
-                    </select>
+                <label asp-for="type" class="control-label">Тип</label>
+                <input asp-for="type" class="form-control"/>
                 <span asp-validation-for="type" class="text-danger"></span>
                 <label asp-for="model" class="control-label">Модель</label>
                 <input asp-for="model" class="form-control"/>
@@ -33,11 +30,7 @@
                 <input asp-for="valueOfCar" class="form-control"/>
                 <span asp-validation-for="valueOfCar" class="text-danger"></span>
                 <label asp-for="fuelType" class="control-label">Тип топлива</label>
-                <select asp-for="fuelType" id="fuelDropDown">
-                    <option value="Дизель">Дизель</option>
-                    <option value="Бензин">Бензин</option>
-                    <option value="Газ">Газ</option>
-                    </select>
+                <input asp-for="fuelType" class="form-control"/>
                 <span asp-validation-for="fuelType" class="text-danger"></span>
                 <label asp-for="valueOfTank" class="control-label">Объем бензобака</label>
                 <input asp-for="valueOfTank" class="form-control"/>

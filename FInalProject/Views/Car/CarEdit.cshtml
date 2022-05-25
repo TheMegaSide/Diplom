@@ -10,12 +10,10 @@
 
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Edit">
+        <form asp-action="Edit" asp-route-id="@Model.id">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                                <label asp-for="id" class="control-label">Госномер</label>
-                                <label asp-for="id" class="form-control"></label>
-                                <span asp-validation-for="id" class="text-danger"></span>
+                                
                                 <label asp-for="govnum" class="control-label">Госномер</label>
                                 <input asp-for="govnum" class="form-control"/>
                                 <span asp-validation-for="govnum" class="text-danger"></span>
@@ -35,11 +33,9 @@
                                 <input asp-for="valueOfCar" class="form-control"/>
                                 <span asp-validation-for="valueOfCar" class="text-danger"></span>
                                 <label asp-for="fuelType" class="control-label">Тип топлива</label>
-                                <select asp-for="fuelType" id="fuelDropDown">
-                                    <option value="Дизель">Дизель</option>
-                                    <option value="Бензин">Бензин</option>
-                                    <option value="Газ">Газ</option>
-                                </select>
+                
+                                                                <input asp-for="fuelType" class="form-control"/>
+                                                               
                                 <span asp-validation-for="fuelType" class="text-danger"></span>
                                 <label asp-for="valueOfTank" class="control-label">Объем бензобака</label>
                                 <input asp-for="valueOfTank" class="form-control"/>

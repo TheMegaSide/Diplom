@@ -126,7 +126,7 @@ namespace FInalProject.Controllers
 
         public IActionResult GetCarsFromExcel(string url)
         {
-            XLWorkbook workbook = XLWorkbook.OpenFromTemplate(url);
+            XLWorkbook workbook = XLWorkbook.OpenFromTemplate("D:/Downloads/cars.xlsx");
             var worksheet = workbook.Worksheets.Worksheet("Лист 1");
             for (int i = 2; i < worksheet.RowsUsed().Count()+1; i++)
             {
