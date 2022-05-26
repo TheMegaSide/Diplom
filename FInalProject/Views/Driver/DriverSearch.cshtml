@@ -2,23 +2,7 @@
 
 
 <p>База данных автомобилей</p>
-<form method="post" action="~/Driver/DriverSearch">
-    <p>
-        <select name ="field">
-          <option value="surname">Фамилия</option>
-            <option value="drcertnum">Номер ВУ</option>
-            <option value="classs">Класс вождения</option>
-        </select>
-    </p>
-    <p>
-        <label class="control-label">Значение</label>
-        <input type="text" name="key"/>
 
-    </p>
-    <p>
-        <input type="submit" value="Отправить"/>
-    </p>
-</form>
 <table border="1" style="border-collapse: collapse; width: 100%;">
     <tbody>
     <tr>
@@ -43,7 +27,7 @@
             <td style="width: 11.1111%;">@driver.classs</td>
             <td style="width: 11.1111%;">@driver.timedriving</td>
             
-            <td><a asp-action="DriverDelete" asp-route-id="@driver.id">Удалить</a></td> 
+            <td><a asp-action="DriverDelete" asp-route-id="@driver.id">Удалить водителя с номером @driver.id</a></td> 
             <td><a asp-action="DriverEdit" asp-route-id="@driver.id">Изменить</a></td> 
 
 

@@ -1,25 +1,11 @@
-﻿@model List<FInalProject.Models.Car> 
+﻿@using ClosedXML.Excel
+@model List<FInalProject.Models.Car> 
 
 
 <p>База данных автомобилей</p>
 
 
-<form method="post" action="~/Car/CarSearch">
-    <p>
-        <select name ="field">
-          <option value="govnum">Госномер</option>
-          <option value="tankvalue">Объем бензобака</option>
-        </select>
-    </p>
-    <p>
-        <label class="control-label">Значение</label>
-        <input type="text" name="key"/>
 
-    </p>
-    <p>
-        <input type="submit" value="Отправить"/>
-    </p>
-</form>
 <table border="1" style="border-collapse: collapse; width: 100%;">
     <tbody>
     <tr>
@@ -60,15 +46,13 @@
 
         </tr>
     }
+   
+    <form method="post">
+        <button type="button" asp-action="GetCarListExcel" >Excel таблица по автомобилям</button>
         
-    
+    </form>
+        
+
+    <a asp-action="CarTablePage">Вернуться назад</a>
     </tbody >
 </table >
-<div class="form-group">
-    <a asp-area="" asp-controller="Car" asp-action="GetCarListExcel" >Excel таблица по автомобилям</a>
-</div>
-<form method="post" action="~/Car/GetCarListExcel">
-    <p>
-        <input type="submit" value="Отправить" />
-    </p>
-</form>

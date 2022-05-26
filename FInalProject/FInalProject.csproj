@@ -23,4 +23,20 @@
         <PackageReference Include="Oracle.ManagedDataAccess.Core" Version="3.21.3" />
     </ItemGroup>
 
+    <ItemGroup>
+      <_ContentIncludedByDefault Remove="Views\Stock\DeleteStock.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\Stock\EditStock.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\Stock\StockAdd.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\Stock\StockTablePage.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\Seller\EditSeller.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\Seller\SellerAdd.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\Seller\SellerDelete.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\Seller\SellerTablePage.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\Category\CategoryAdd.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\Category\CategoryDelete.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\Category\CategoryEdit.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\Category\CategoryTablePage.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\Requests\ProdCatReq.cshtml" />
+    </ItemGroup>
+
 </Project>

@@ -57,5 +57,10 @@ namespace FInalProject.Controllers
             Dbservice.DriverEdit(driver);
             return RedirectToAction(nameof(DriverTablePage));
         }
+        public IActionResult DriverSearch(string key, string field)
+        {
+            List<Driver> drivers =Dbservice.GetDriversByField(key, field);
+            return View(drivers);
+        }
     }
 }

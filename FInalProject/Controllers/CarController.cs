@@ -19,12 +19,14 @@ namespace FInalProject.Controllers
             Dbservice = dbservice;
         }
 
+        
         [Authorize]
         public IActionResult CarTablePage()
         {
             List<Car> cars = Dbservice.GetCarsList();
             return View(cars);
         }
+        
 
         public ActionResult CarAdd()
         {
@@ -69,10 +71,18 @@ namespace FInalProject.Controllers
             
             return View();
         }
+        [HttpPost]
+        public IActionResult CarSearch(string key, string field)
+        {
+            List<Car> cars =Dbservice.GetCarsByField(key, field);
+            return View(cars);
+        }
+
+
 
         [Authorize]
         public IActionResult GetCarListExcel()
-        {
+        {   
             var data = Dbservice.GetCarsList();
             using (XLWorkbook workbook = new XLWorkbook(XLEventTracking.Disabled))
             {

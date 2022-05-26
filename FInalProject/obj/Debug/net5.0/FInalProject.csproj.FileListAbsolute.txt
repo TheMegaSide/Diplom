@@ -376,10 +376,6 @@ C:\Users\Александр\RiderProjects\rollback\FInalProject\obj\Debug\net5.0
 C:\Users\Александр\RiderProjects\rollback\FInalProject\obj\Debug\net5.0\Razor\Views\Shared\_Layout.cshtml.g.cs
 C:\Users\Александр\RiderProjects\rollback\FInalProject\obj\Debug\net5.0\Razor\Views\Shared\_LoginPartial.cshtml.g.cs
 C:\Users\Александр\RiderProjects\rollback\FInalProject\obj\Debug\net5.0\Razor\Views\Shared\_ValidationScriptsPartial.cshtml.g.cs
-C:\Users\Александр\RiderProjects\rollback\FInalProject\obj\Debug\net5.0\Razor\Views\Stock\DeleteStock.cshtml.g.cs
-C:\Users\Александр\RiderProjects\rollback\FInalProject\obj\Debug\net5.0\Razor\Views\Stock\EditStock.cshtml.g.cs
-C:\Users\Александр\RiderProjects\rollback\FInalProject\obj\Debug\net5.0\Razor\Views\Stock\StockAdd.cshtml.g.cs
-C:\Users\Александр\RiderProjects\rollback\FInalProject\obj\Debug\net5.0\Razor\Views\Stock\StockTablePage.cshtml.g.cs
 C:\Users\Александр\RiderProjects\rollback\FInalProject\obj\Debug\net5.0\Razor\Views\_ViewImports.cshtml.g.cs
 C:\Users\Александр\RiderProjects\rollback\FInalProject\obj\Debug\net5.0\Razor\Views\_ViewStart.cshtml.g.cs
 C:\Users\Александр\RiderProjects\rollback\FInalProject\obj\Debug\net5.0\FInalProject.RazorTargetAssemblyInfo.cache
@@ -391,3 +387,5 @@ C:\Users\Александр\RiderProjects\rollback\FInalProject\obj\Debug\net5.0
 C:\Users\Александр\RiderProjects\rollback\FInalProject\obj\Debug\net5.0\FInalProject.pdb
 C:\Users\Александр\RiderProjects\rollback\FInalProject\obj\Debug\net5.0\FInalProject.genruntimeconfig.cache
 C:\Users\Александр\RiderProjects\rollback\FInalProject\obj\Debug\net5.0\ref\FInalProject.dll
+C:\Users\Александр\RiderProjects\rollback\FInalProject\obj\Debug\net5.0\Razor\Views\Car\CarSearch.cshtml.g.cs
+C:\Users\Александр\RiderProjects\rollback\FInalProject\obj\Debug\net5.0\Razor\Views\Driver\DriverSearch.cshtml.g.cs
