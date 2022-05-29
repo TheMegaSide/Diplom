@@ -381,3 +381,4 @@ C:\Users\Александр\RiderProjects\rollback\FInalProject\obj\Debug\net5.0
 C:\Users\Александр\RiderProjects\rollback\FInalProject\obj\Debug\net5.0\Razor\Views\Race\RaceTablePage.cshtml.g.cs
 C:\Users\Александр\RiderProjects\rollback\FInalProject\obj\Debug\net5.0\Razor\Views\TO\TOTablePage.cshtml.g.cs
 C:\Users\Александр\RiderProjects\rollback\FInalProject\obj\Debug\net5.0\Razor\Views\TO\TOAdd.cshtml.g.cs
+C:\Users\Александр\RiderProjects\rollback\FInalProject\obj\Debug\net5.0\Razor\Views\TO\TOEditPage.cshtml.g.cs

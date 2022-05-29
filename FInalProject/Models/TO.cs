@@ -12,5 +12,6 @@ namespace FInalProject.Models
         public string model { get; set; }
         public string autoType { get; set; }
         public int yearProd { get; set; }
+        public string state { get; set; }
     }
 }

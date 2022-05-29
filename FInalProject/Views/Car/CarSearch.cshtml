@@ -69,10 +69,16 @@
            </tr>
     }
    
-    <form method="post">
-        <button type="button" asp-action="GetCarListExcel" >Excel таблица по автомобилям</button>
-        
+<div>
+    <form method="post" action="~/Car/GetCarListExcel">
+        <input type = "hidden" name="data" value="@ViewBag.Cars"/>
+
+    <p>
+        <input type="submit" value="Загрузить таблицу"/>
+    </p>
     </form>
+    </div>
+ 
         
 
     <a asp-action="CarTablePage">Вернуться назад</a>

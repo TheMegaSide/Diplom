@@ -1,6 +1,7 @@
 ﻿@model List<FInalProject.Models.Race> 
 
 
+
 <p>Совершенные рейсы</p>
 
 
@@ -28,7 +29,7 @@
         <th style="width: 11.1111%;">Водитель</th>
         <th style="width: 11.1111%;">Автомобиль</th>
         <th style="width: 11.1111%;">Дата</th>
- </tr>
+    </tr>
 
     @foreach (var race in Model)
     {
@@ -48,6 +49,8 @@
     
     </tbody >
 </table >
+
+
 <div class="form-group">
     <a asp-area="" asp-controller="Car" asp-action="GetCarListExcel" >Excel таблица по автомобилям</a>
 </div>

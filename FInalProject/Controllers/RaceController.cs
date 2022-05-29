@@ -58,5 +58,18 @@ namespace FInalProject.Controllers
             Dbservice.DeleteRace(id);
             return RedirectToAction(nameof(RaceTablePage));
         }
+
+        public ActionResult GetRaceChart()
+        {
+            List<Race> race = Dbservice.GetRaceList();
+            // var myChart = new System.Web.Helpers.Chart(width: 600, height: 400)
+            //                               .AddTitle("Перевезенные грузы")
+            //                               .AddSeries(
+            //                                   name: "Грузы",
+            //                                   xValue: race,xField:"date",
+            //                                   yValues: race,yFields:"value")
+            //                               .Write();
+            return null;
+        }
     }
 }

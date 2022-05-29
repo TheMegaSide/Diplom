@@ -29,6 +29,7 @@ namespace FInalProject.Controllers
         public IActionResult CarTablePage()
         {
             List<CarNew> cars = Dbservice.GetCarsNewList();
+            ViewBag.Cars = cars;
             return View(cars);
         }
       
@@ -78,15 +79,17 @@ namespace FInalProject.Controllers
         public IActionResult CarSearch(string key, string field)
         {
             List<CarNew> cars =Dbservice.GetCarsByField(key, field);
+            ViewBag.Cars = cars;
             return View(cars);
         }
 
 
 
         [Authorize]
-        public IActionResult GetCarListExcel()
-        {   
-            var data = Dbservice.GetCarsList();
+        [HttpPost]
+        public IActionResult GetCarListExcel(List<CarNew> data)
+        {   Console.WriteLine(data[1].govnum);
+            //var data = Dbservice.GetCarsNewList();
             using (XLWorkbook workbook = new XLWorkbook(XLEventTracking.Disabled))
             {
                 var worksheet = workbook.Worksheets.Add("Лист 1");
@@ -107,18 +110,29 @@ namespace FInalProject.Controllers
 
                 for (int i = 2; i < data.Count + 2; i++)
                 {
-                    worksheet.Cell(i, 1).Value = data[i - 2].govnum;
-                    worksheet.Cell(i, 2).Value = data[i - 2].creater;
-                    worksheet.Cell(i, 3).Value = data[i - 2].type;
-                    worksheet.Cell(i, 4).Value = data[i - 2].model;
-                    worksheet.Cell(i, 5).Value = data[i - 2].valueOfCar;
-                    worksheet.Cell(i, 6).Value = data[i - 2].fuelType;
-                    worksheet.Cell(i, 7).Value = data[i - 2].valueOfTank;
-                    worksheet.Cell(i, 8).Value = data[i - 2].glonasNum;
-                    worksheet.Cell(i, 9).Value = data[i - 2].platonNum;
-                    worksheet.Cell(i, 10).Value = data[i - 2].owner;
-                    worksheet.Cell(i, 11).Value = data[i - 2].location;
-                    worksheet.Cell(i, 12).Value = data[i - 2].runned;
+                    worksheet.Cell(i, 1).Value = data[i - 2].type;
+                    worksheet.Cell(i, 2).Value = data[i - 2].model;
+                    worksheet.Cell(i, 3).Value = data[i - 2].vin;
+                    worksheet.Cell(i, 4).Value = data[i - 2].yearprod;
+                    worksheet.Cell(i, 5).Value = data[i - 2].govnum;
+                    worksheet.Cell(i, 6).Value = data[i - 2].value;
+                    worksheet.Cell(i, 7).Value = data[i - 2].weight;
+                    worksheet.Cell(i, 8).Value = data[i - 2].maxweight;
+                    worksheet.Cell(i, 9).Value = data[i - 2].fueltype;
+                    worksheet.Cell(i, 10).Value = data[i - 2].techstate;
+                    worksheet.Cell(i, 11).Value = data[i - 2].srokpodk;
+                    worksheet.Cell(i, 12).Value = data[i - 2].inscomp;
+                    worksheet.Cell(i, 13).Value = data[i - 2].osagocost;
+                    worksheet.Cell(i, 14).Value = data[i - 2].platonnum;
+                    worksheet.Cell(i, 15).Value = data[i - 2].platondate;
+                    worksheet.Cell(i, 16).Value = data[i - 2].platonreplace;
+                    worksheet.Cell(i, 17).Value = data[i - 2].glonastype;
+                    worksheet.Cell(i, 18).Value = data[i - 2].simnum;
+                    worksheet.Cell(i, 19).Value = data[i - 2].glonasdate;
+                    worksheet.Cell(i, 20).Value = data[i - 2].worktype;
+                    worksheet.Cell(i, 21).Value = data[i - 2].ptsowner;
+                    worksheet.Cell(i, 22).Value = data[i - 2].stsowner;
+                    worksheet.Cell(i, 23).Value = data[i - 2].regionloc;
                 }
 
                 worksheet.Columns("A", "L").AdjustToContents();

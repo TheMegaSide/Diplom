@@ -20,7 +20,8 @@ namespace FInalProject.Util.DbHandlers
                 autoType = rdr["type"].ToString(),
                 yearProd = (int)rdr["yearprod"],
                 model = rdr["model"].ToString(),
-                govnum = rdr["govnum"].ToString()
+                govnum = rdr["govnum"].ToString(),
+                state = rdr["state"].ToString()
             };
         }
     }

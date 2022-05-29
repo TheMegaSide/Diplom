@@ -119,7 +119,7 @@ namespace FInalProject.Services
         public List<Race> GetRaceList()
         {
             string comText =
-                "select *  from races,drivers,cars where drivers.id=races.driver and cars.id=races.auto";
+                "select *  from races,drivers,\"CarList\" where drivers.id=races.driver and \"CarList\".id=races.auto";
             return DbExecutor.Execute<Race>(ConnectionString, comText, new DbRaceHandler());
         }
 
@@ -135,7 +135,7 @@ namespace FInalProject.Services
         public Race GetRaceById(int id)
         {
             string comText =
-                "select *  from races,drivers,cars where drivers.id=races.driver and cars.id=races.auto and races.id=" + id;
+                "select *  from races,drivers,\"CarList\" where drivers.id=races.driver and \"CarList\".id=races.auto and races.id=" + id;
             return DbExecutor.Execute<Race>(ConnectionString, comText, new DbRaceHandler())[0];
         }
         public void DeleteRace(int id)
@@ -187,5 +187,40 @@ namespace FInalProject.Services
             string comText = "INSERT INTO public.\"to\"(auto, totype, date) VALUES ("+to.auto+",'"+to.toType+"','"+to.date+"')";
             DbExecutor.Execute(ConnectionString, comText, new DBCarNewHandler());
         }
+        public void EditTO(TO to)
+        {
+            string comText = "UPDATE public.\"to\" SET auto="+to.auto+", totype="+to.toType+", date="+to.date+", state="+to.state+
+            "WHERE id="+to.id;
+            DbExecutor.Execute(ConnectionString, comText, new DBTOHandler());
+        }
+
+        public TO GetToById(int id)
+        {
+            string comText =
+                "select * from \"to\",\"CarList\" where \"CarList\".id=\"to\".auto and \"to\".id="+id;
+            return DbExecutor.Execute<TO>(ConnectionString, comText, new DBTOHandler())[0];
+        }
+
+        public void TOCompleted(int id, DateTime date, int auto, string toType)
+        {
+            string comText = "UPDATE public.\"to\" SET  state='Выполнено'"+
+                             "WHERE id="+id;
+            Console.WriteLine($"INFO:{comText}");
+            DbExecutor.Execute(ConnectionString, comText, new DBTOHandler());
+            DateTime newToDate = new DateTime();
+            if (toType == "ТО-1")
+            {
+                newToDate = date.AddDays(20);
+            }
+
+            if (toType == "ТО-2")
+            {
+                newToDate = date.AddDays(100);
+            }
+
+            comText = "INSERT INTO public.\"to\"(auto, totype, date, state)VALUES ("+auto+",'"+toType+"','"+newToDate+"','Запланировано' )";
+            DbExecutor.Execute(ConnectionString, comText, new DBTOHandler());
+        }
+        
     }
 }

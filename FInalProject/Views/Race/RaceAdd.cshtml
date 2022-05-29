@@ -50,15 +50,15 @@
                 <label asp-for="auto" class="control-label">Госномер автомобиля</label>
                 <select asp-for="auto">
                                     @{
-                                         List<Car> GetCar()
+                                         List<CarNew> GetCar()
                                                 {
                                                     string comText =
                                                         "select * from public.\"CarList\";";
                                                     Console.WriteLine($"INFO:{comText}");
-                                                    return DbExecutor.Execute<Car>("Server=127.0.0.1;User Id=postgres;Password=6851;Database=Dilpom;", comText, new DbCarHandler());
+                                                    return DbExecutor.Execute<CarNew>("Server=127.0.0.1;User Id=postgres;Password=6851;Database=Dilpom;", comText, new DBCarNewHandler());
                                                 }
                 
-                                        List<Car> cars = GetCar();
+                                        List<CarNew> cars = GetCar();
                                         foreach (var car in cars)
                                         {
                                             

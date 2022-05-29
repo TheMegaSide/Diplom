@@ -1,18 +1,107 @@
-﻿@model TModel
+﻿
+@using FInalProject.Util.DB
+@using FInalProject.Util.DbHandlers
+@using FInalProject.Util.DB
+@using FInalProject.Util.DbHandlers
+@model FInalProject.Models.TO
 
 @{
-    Layout = null;
+     ViewData["Title"] = "Edit";
 }
 
-<!DOCTYPE html>
+<h1>Изменение данных</h1>
 
-<html>
-<head>
-    <title>title</title>
-</head>
-<body>
-<div>
-      
+<h4>Автомобиль</h4>
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit" asp-route-id="@Model.id">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="auto" class="control-label">Госномер автомобиля</label>
+                <select asp-for="auto">
+                    @{
+                        List<CarNew> GetCarList()
+                        {
+                            string comText =
+                                "Select * from public.\"CarList\";";
+                            Console.WriteLine($"INFO:{comText}");
+                            return DbExecutor.Execute<CarNew>("Server=127.0.0.1;User Id=postgres;Password=6851;Database=Dilpom;", comText, new DBCarNewHandler());
+                        }
+
+                        List<CarNew> cars = GetCarList();
+                        foreach (var car in cars)
+                        {
+                            <option value="@car.id">@car.govnum</option>
+                        }
+
+
+                    }
+                </select>
+                <span asp-validation-for="auto" class="text-danger"></span>
+                <label asp-for="toType" class="control-label">Вид ТО</label>
+                <select asp-for="toType">
+                    <option>ТО-1</option>
+                    <option>ТО-2</option>
+                </select>
+                <span asp-validation-for="toType" class="text-danger"></span>
+                <label asp-for="date" class="control-label">Дата</label>
+                <input asp-for="date" class="form-control"/>
+                <span asp-validation-for="date" class="text-danger"></span>
+                <label asp-for="state" class="control-label">Статус</label>
+                <input asp-for="state" class="form-control"/>
+                <span asp-validation-for="state" class="text-danger"></span>
+                
+                
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Сохранить" class="btn btn-primary"/>
+            </div>
+        </form>
+        @{
+                            if (Model.state == "Запланировано")
+                            {
+                                <form method="post" action="~/TO/CompleteTO">
+                                    <input type = "hidden" name="month1" value="@ViewBag.Month"/>
+                                    <input type = "hidden" name="year1" value="@ViewBag.Year"/>
+                                    <input type = "hidden" name="id" value="@Model.id"/>
+                                    <input type = "hidden" name="date" value="@Model.date"/>
+                                    <input type = "hidden" name="auto" value="@Model.auto"/>
+                                    <input type = "hidden" name="toType" value="@Model.toType"/>
+                                                
+                                    <p>
+                                        <input type="submit" value="Отметить как выполненное"/>
+                                    </p>
+                                </form> 
+                            }
+                        }
+    </div>
 </div>
-</body>
-</html>
+
+@* @{ *@
+@*     List<CarNew> GetCar() *@
+@*     { *@
+@*         string comText = *@
+@*             "select * from public.\"CarList\" where id="+Model.auto; *@
+@*         Console.WriteLine($"INFO:{comText}"); *@
+@*         return DbExecutor.Execute<CarNew>("Server=127.0.0.1;User Id=postgres;Password=6851;Database=Dilpom;", comText, new DBCarNewHandler()); *@
+@*     } *@
+@* *@
+@*     List<CarNew> cars = GetCar(); *@
+@*      *@
+@* } *@
+
+<div>
+    <form method="post" action="~/TO/TOTablePage">
+        <input type="hidden" name="month" value="@ViewBag.Month"/>
+        <input type="hidden" name="year" value="@ViewBag.Year"/>
+
+        <p>
+            <input type="submit" value="Вернуться к @ViewBag.Month.@ViewBag.Year"/>
+        </p>
+    </form>
+</div>
+
+@section Scripts {
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+}

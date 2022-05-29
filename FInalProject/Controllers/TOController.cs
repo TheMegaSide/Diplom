@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Transactions;
 using FInalProject.Models;
 using FInalProject.Services;
@@ -41,6 +42,27 @@ namespace FInalProject.Controllers
         {
             Dbservice.AddTO(to);
             return RedirectToAction(nameof(TOAdd));
+        }
+
+        public ActionResult TOEditPage(int id, string month, string year)
+        {
+            ViewBag.Month = month;
+            ViewBag.Year = year;
+            TO to = Dbservice.GetToById(id);
+            return View(to);
+        }
+        public void  Edit(TO to)
+        {
+            Dbservice.EditTO(to);
+            
+        }
+        public ActionResult  CompleteTO(int id, string month1, string year1, DateTime date, int auto, string toType)
+        {
+            ViewBag.Month = month1;
+            ViewBag.Year = year1;
+            Dbservice.TOCompleted(id, date, auto, toType);
+            return RedirectToAction(nameof(TOTablePage),new {month=month1, year=year1});
+            
         }
     }
 }
