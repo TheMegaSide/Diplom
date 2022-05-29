@@ -1,0 +1,76 @@
+﻿@using FInalProject.Util.DB
+@using FInalProject.Util.DbHandlers
+@using DocumentFormat.OpenXml.Spreadsheet
+@model FInalProject.Models.Race
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+
+<h3>Вы уверены, что хотите удалить водителя из списка?</h3>
+<div>
+
+
+    <dl class="row">
+        <form asp-action="Delete" asp-route-id="@Model.id">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+           
+                          
+                          <label asp-for="value" class="control-label">Объем груза, тонны</label>
+                          <label asp-for="value" class="form-control">@Model.value</label>
+                          <span asp-validation-for="value" class="text-danger"></span>
+                          <label asp-for="raceTime" class="control-label">Время, часы</label>
+                          <label asp-for="raceTime" class="form-control">@Model.raceTime</label>
+                          <span asp-validation-for="raceTime" class="text-danger"></span>
+                          <label asp-for="driver" class="control-label">Водитель</label>
+                                               
+                                               
+                @{
+                    List<Driver> GetDriverList()
+                    {
+                        string comText =
+                            "Select * from drivers where id="+Model.driver;
+                        Console.WriteLine($"INFO:{comText}");
+                        return DbExecutor.Execute<Driver>("Server=127.0.0.1;User Id=postgres;Password=6851;Database=Dilpom;", comText, new DbDriverhandler());
+                    }
+                                
+                    List<Driver> drivers = GetDriverList();
+                                                        
+                    <label asp-for="raceTime" class="form-control">@drivers[0].surname @drivers[0].name @drivers[0].patronymic</label>
+                                                        
+                                                        
+                                                   
+                }
+                                                
+                <span asp-validation-for="driver" class="text-danger"></span>
+                <label asp-for="auto" class="control-label">Госномер автомобиля</label>
+                
+                    @{
+                        List<Car> GetCar()
+                        {
+                            string comText =
+                                "Select * from cars where id="+Model.auto;
+                            Console.WriteLine($"INFO:{comText}");
+                            return DbExecutor.Execute<Car>("Server=127.0.0.1;User Id=postgres;Password=6851;Database=Dilpom;", comText, new DbCarHandler());
+                        }
+                                                
+                        List<Car> cars = GetCar();
+                        
+                                                                            
+                          <label asp-for="raceTime" class="form-control">@cars[0].govnum</label>
+                        
+                                                                        
+                                                                   
+                    }
+                   <span asp-validation-for="auto" class="text-danger"></span>
+                <label asp-for="date" class="control-label">Дата</label>
+                <label asp-for="date" class="form-control">@Model.date.Date</label>
+                <span asp-validation-for="date" class="text-danger"></span>
+                <div class="form-group">
+                            <input type="submit" value="Удалить" class="btn btn-danger"/>
+                        </div>
+            <a asp-action="RaceTablePage">Вернуться назад</a>
+        </form>
+    </dl>
+</div>

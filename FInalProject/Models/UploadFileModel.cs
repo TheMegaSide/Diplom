@@ -12,10 +12,10 @@ namespace FInalProject.Models
 {
     public class UploadFileModel : PageModel
     {
-        private IHostingEnvironment Environment;
+        private IWebHostEnvironment Environment;
         public string Message { get; set; }
 
-        public UploadFileModel(IHostingEnvironment _environment)
+        public UploadFileModel(IWebHostEnvironment _environment)
         {
             Environment = _environment;
         }

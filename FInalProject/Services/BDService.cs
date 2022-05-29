@@ -25,55 +25,43 @@ namespace FInalProject.Services
             return DbExecutor.Execute<Car>(ConnectionString, comText, new DbCarHandler());
         }
 
-        public Car GetCarById(int id)
+        public CarNew GetCarById(int id)
         {
             string comText =
-                "Select * from cars where  id=" + id;
+                "Select * from public.\"CarList\" where  id=" + id;
             Console.WriteLine($"INFO:{comText}");
-            return DbExecutor.Execute<Car>(ConnectionString, comText, new DbCarHandler())[0];
+            return DbExecutor.Execute<CarNew>(ConnectionString, comText, new DBCarNewHandler())[0];
         }
 
-        public void CarEdit(Car car)
+        public void CarEdit(CarNew car)
         {
             string comText =
-                "Update cars set govnum=" + "'" + car.govnum + "',creator='" + car.creater +
-                "',type='" + car.type + "',model='" + car.model + "',carvalue=" +
-                car.valueOfCar +
-                ",fueltype='" + car.fuelType + "',tankvalue=" + car.valueOfTank + ",glonasnum=" +
-                +car.glonasNum +
-                ",platonnum=" + car.platonNum + ",owner='" + car.owner + "',location='" + car.location + "',runned=" +
-                car.runned +
-                " where id=" + car.id;
+                "UPDATE public.\"CarList\" SET type="+"'"+car.type+"', model='"+car.model+"', vin='"+car.vin+"', yearprod="+car.yearprod+
+                ", govnum='"+car.govnum+"', value="+car.value+", weight="+car.weight+", maxweight="+car.maxweight+", fueltype='"+car.fueltype+
+                "', techstate='"+car.techstate+"', srokpodk='"+car.srokpodk.Date+"', inscomp='"+car.inscomp+"', osagocost="+car.osagocost+
+                ", platondate='"+car.platondate.Date+"', platonreplace='"+car.platonreplace+"', glonastype='"+car.glonastype+"', simnum='"+car.simnum+
+                "', glonasdate='"+car.glonasdate+"', worktype='"+car.worktype+"', ptsowner='"+car.ptsowner+"', stsowner='"+car.stsowner+"', regionloc='"+car.regionloc+"', platonnum='"+car.platonnum+"'"+
+            "where id=" + car.id;
             Console.WriteLine($"INFO:{comText}");
             DbExecutor.Execute(ConnectionString, comText, new DbCarHandler());
         }
 
-        public void AddCar(Car car)
-        {
-            string comText =
-                "Insert into cars(govnum,creator,type,model,carvalue,fueltype,tankvalue,glonasnum,platonnum,owner,location,runned) values('" +
-                car.govnum + "','" + car.creater + "','" + car.type + "','"
-                + car.model + "'," + car.valueOfCar + ",'" + car.fuelType + "'," + car.valueOfTank +
-                "," + car.glonasNum + "," + car.platonNum + ",'" + car.owner + "','" + car.location + "'," +
-                car.runned + ") ";
-
-            DbExecutor.Execute(ConnectionString, comText, new DbCarHandler());
-        }
+        
 
         public void DeleteCar(int id)
         {
             string comText =
-                "delete from cars where id=" + id;
+                "delete from public.\"CarList\" where id=" + id;
             Console.WriteLine($"INFO:{comText}");
             DbExecutor.Execute(ConnectionString, comText, new DbCarHandler());
         }
 
-        public List<Car> GetCarsByField(string key, string field)
+        public List<CarNew> GetCarsByField(string key, string field)
         {
             string comText =
-                "Select * from cars where  " + field + "='" + key + "'";
+                "Select * from public.\"CarList\" where  " + field + "='" + key + "'";
             Console.WriteLine($"INFO:{comText}");
-            return DbExecutor.Execute<Car>(ConnectionString, comText, new DbCarHandler());
+            return DbExecutor.Execute<CarNew>(ConnectionString, comText, new DBCarNewHandler());
         }
 
         public List<Driver> GetDriversByField(string key, string field)
@@ -128,6 +116,76 @@ namespace FInalProject.Services
             Console.WriteLine($"INFO:{comText}");
             DbExecutor.Execute(ConnectionString, comText, new DbDriverhandler());
         }
+        public List<Race> GetRaceList()
+        {
+            string comText =
+                "select *  from races,drivers,cars where drivers.id=races.driver and cars.id=races.auto";
+            return DbExecutor.Execute<Race>(ConnectionString, comText, new DbRaceHandler());
+        }
 
+        public void AddRace(Race race)
+        {
+            string comText =
+                "Insert into races(\"cargoValue\",\"time\",driver,auto,date) values(" +
+                race.value + "," + race.raceTime + "," + race.driver 
+                + "," + race.auto + ",'" + race.date +"') ";
+            Console.WriteLine($"INFO:{comText}");
+            DbExecutor.Execute(ConnectionString, comText, new DbRaceHandler());
+        }
+        public Race GetRaceById(int id)
+        {
+            string comText =
+                "select *  from races,drivers,cars where drivers.id=races.driver and cars.id=races.auto and races.id=" + id;
+            return DbExecutor.Execute<Race>(ConnectionString, comText, new DbRaceHandler())[0];
+        }
+        public void DeleteRace(int id)
+        {
+            string comText =
+                "delete from races where id=" + id;
+            Console.WriteLine($"INFO:{comText}");
+            DbExecutor.Execute(ConnectionString, comText, new DbRaceHandler());
+        }
+        public void RaceEdit(Race race)
+        {
+            string comText =
+                "Update races set \"cargoValue\"="+
+                race.value + ",\"time\"=" + race.raceTime + ",driver=" + race.driver 
+                + ",auto=" + race.auto + ",date='" + race.date +"'";
+            Console.WriteLine($"INFO:{comText}");
+            DbExecutor.Execute(ConnectionString, comText, new DbDriverhandler());
+        }
+        public List<CarNew> GetCarsNewList()
+        {
+            string comText =
+                "Select * from public.\"CarList\";";
+            Console.WriteLine($"INFO:{comText}");
+            return DbExecutor.Execute<CarNew>(ConnectionString, comText, new DBCarNewHandler());
+        }
+        public void AddNewCar(CarNew car)
+        {
+            string comText =
+                "Insert into public.\"CarList\"(type,model,vin,yearprod,govnum,value,weight,maxweight,fueltype,techstate,srokpodk,inscomp, osagocost,platonnum,platondate,platonreplace,glonastype,simnum,glonasdate, worktype, ptsowner,stsowner,regionloc)"+ 
+                "values('"+ car.type + "','" + car.model + "','" + car.vin + "'," + car.yearprod + ",'" 
+                + car.govnum + "',cast(" + car.value.ToString().Replace(',','.') + " as double precision)," + car.weight + "," + car.maxweight + ",'" 
+                + car.fueltype + "','" + car.techstate +"','"+car.srokpodk.Date+"','"+car.inscomp+"',cast("
+                +car.osagocost.ToString().Replace(',','.')+" as double precision),"+car.platonnum+",'"+car.platondate.Date+"','"+car.platonreplace+ "','"
+                +car.glonastype+"','"+car.simnum+"','"+car.glonasdate.Date+"','"+car.worktype+"','"
+                +car.ptsowner+"','"+car.stsowner+"','"+car.regionloc+"') ";
+            Console.WriteLine($"INFO:{comText}");
+            DbExecutor.Execute(ConnectionString, comText, new DBCarNewHandler());
+        }
+        public List<TO> GetTOList(string month, string year)
+        {
+            string comText =
+                "select * from \"to\",\"CarList\" where \"CarList\".id=\"to\".auto and extract(month from date)="+month+" and extract(year from date)="+year;
+            Console.WriteLine($"INFO:{comText}");
+            return DbExecutor.Execute<TO>(ConnectionString, comText, new DBTOHandler());
+        }
+
+        public void AddTO(TO to)
+        {
+            string comText = "INSERT INTO public.\"to\"(auto, totype, date) VALUES ("+to.auto+",'"+to.toType+"','"+to.date+"')";
+            DbExecutor.Execute(ConnectionString, comText, new DBCarNewHandler());
+        }
     }
 }

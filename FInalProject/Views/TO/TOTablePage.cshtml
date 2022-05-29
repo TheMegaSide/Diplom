@@ -1,0 +1,92 @@
+﻿@using FInalProject.Util.DB
+@using FInalProject.Util.DbHandlers
+@model List<FInalProject.Models.TO> 
+
+@{
+    string month="";
+    if (ViewBag.Month == "01")
+        month = "Январь";
+    else if (ViewBag.Month == "02")
+        month = "Февраль";
+    else if (ViewBag.Month == "03")
+        month = "Март";
+    else if (ViewBag.Month == "04")
+        month = "Апрель";
+    else if (ViewBag.Month == "05")
+        month = "Май";
+    else if (ViewBag.Month == "06")
+        month = "Июнь";
+    else if (ViewBag.Month == "07")
+        month = "Июль";
+    else if (ViewBag.Month == "08")
+        month = "Август";
+    else if (ViewBag.Month == "09")
+        month = "Сентябрь";
+    else if (ViewBag.Month == "10")
+        month = "Октябрь";
+    else if (ViewBag.Month == "11")
+        month = "Ноябрь";
+    else if (ViewBag.Month == "12")
+        month = "Декабрь";
+        
+    }
+<p>График ТО на @month @ViewBag.Year г.</p>
+
+<table border="1" style="border-collapse: collapse; width: 100%;">
+    <tbody>
+    <tr>
+        <th style="width: 11.1111%;">Автомашина</th>
+        <th style="width: 11.1111%;">Шасси</th>
+        <th style="width: 11.1111%;">Тип загрузки</th>
+        <th style="width: 11.1111%;">Год выпуска</th>
+        @{
+            for (int i = 1; i < 31; i++)
+            {
+                <th>@i</th>
+            }
+        }
+    </tr>
+    
+    @foreach (var to in Model)
+    {
+        <tr>
+            <td style="width: 11.1111%;">@to.govnum</td>
+            <td style="width: 11.1111%;">@to.model</td>
+            <td style="width: 11.1111%;">@to.autoType</td>
+            <td style="width: 11.1111%;">@to.yearProd</td>
+            @{
+                for (int i = 1; i < 31; i++)
+                {
+                   <td style="width: 11.1111%;">
+                        @{
+                            if (to.date.Day==i)
+                            {
+                                @to.toType
+                            }
+                        
+                          }
+                </td>
+                }
+            }
+            
+            
+           
+            @* <td><a asp-action="RaceDelete" asp-route-id="@race.id">Удалить</a></td> *@
+            @* <td><a asp-action="RaceEdit" asp-route-id="@race.id">Изменить</a></td> *@
+
+
+        </tr>
+    }
+        
+    
+    </tbody >
+</table >
+<div>
+    <form method="post" action="~/TO/TOAdd">
+        <input type = "hidden" name="month" value="@ViewBag.Month"/>
+        <input type = "hidden" name="year" value="@ViewBag.Year"/>
+    <p>
+        <input type="submit" value="Добавить ТО"/>
+    </p>
+    </form>
+</div>

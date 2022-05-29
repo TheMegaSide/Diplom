@@ -1,0 +1,58 @@
+﻿@model List<FInalProject.Models.Race> 
+
+
+<p>Совершенные рейсы</p>
+
+
+<form method="post" action="~/Car/CarSearch">
+    <p>
+        <select name ="field">
+          <option value="govnum">Госномер</option>
+          <option value="tankvalue">Объем бензобака</option>
+        </select>
+    </p>
+    <p>
+        <label class="control-label">Значение</label>
+        <input type="text" name="key"/>
+
+    </p>
+    <p>
+        <input type="submit" value="Отправить"/>
+    </p>
+</form>
+<table border="1" style="border-collapse: collapse; width: 100%;">
+    <tbody>
+    <tr>
+        <th style="width: 11.1111%;">Объем груза</th>
+        <th style="width: 11.1111%;">Время рейса</th>
+        <th style="width: 11.1111%;">Водитель</th>
+        <th style="width: 11.1111%;">Автомобиль</th>
+        <th style="width: 11.1111%;">Дата</th>
+ </tr>
+
+    @foreach (var race in Model)
+    {
+        <tr>
+            <td style="width: 11.1111%;">@race.value</td>
+            <td style="width: 11.1111%;">@race.raceTime</td>
+            <td style="width: 11.1111%;">@race.driverName</td>
+            <td style="width: 11.1111%;">@race.autoGovnum</td>
+            <td style="width: 11.1111%;">@race.date.Date</td>
+            <td><a asp-action="RaceDelete" asp-route-id="@race.id">Удалить</a></td>
+            <td><a asp-action="RaceEdit" asp-route-id="@race.id">Изменить</a></td>
+
+
+        </tr>
+    }
+        
+    
+    </tbody >
+</table >
+<div class="form-group">
+    <a asp-area="" asp-controller="Car" asp-action="GetCarListExcel" >Excel таблица по автомобилям</a>
+</div>
+<form method="post" action="~/Car/GetCarListExcel">
+    <p>
+        <input type="submit" value="Отправить" />
+    </p>
+</form>

@@ -1,0 +1,86 @@
+﻿@using FInalProject.Util.DB
+@using FInalProject.Util.DbHandlers
+@model FInalProject.Models.Race
+
+@{
+     ViewData["Title"] = "Edit";
+}
+
+<h1>Изменение данных</h1>
+
+<h4>Автомобиль</h4>
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit" asp-route-id="@Model.id">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                                <label asp-for="value" class="control-label">Объем груза, тонны</label>
+                                                <input asp-for="value" class="form-control"/>
+                                                <span asp-validation-for="value" class="text-danger"></span>
+                                                <label asp-for="raceTime" class="control-label">Время, часы</label>
+                                                <input asp-for="raceTime" class="form-control"/>
+                                                <span asp-validation-for="raceTime" class="text-danger"></span>
+                                                <label asp-for="driver" class="control-label">Водитель</label>
+                                                @* <input asp-for="patronymic" class="form-control"/> *@
+                                                <select asp-for="driver">
+                                                    @{
+                                                         List<Driver> GetDriverList()
+                                                                {
+                                                                    string comText =
+                                                                        "Select * from drivers;";
+                                                                    Console.WriteLine($"INFO:{comText}");
+                                                                    return DbExecutor.Execute<Driver>("Server=127.0.0.1;User Id=postgres;Password=6851;Database=Dilpom;", comText, new DbDriverhandler());
+                                                                }
+                                
+                                                        List<Driver> drivers = GetDriverList();
+                                                        foreach (var driver in drivers)
+                                                        {
+                                                            
+                                                            <option value="@driver.id">@driver.surname @driver.name @driver.patronymic</option>
+                                                        }
+                                                        
+                                                   
+                                                    }
+                                                </select>
+                                                <span asp-validation-for="driver" class="text-danger"></span>
+                                                <label asp-for="auto" class="control-label">Госномер автомобиля</label>
+                                                <select asp-for="auto">
+                                                                    @{
+                                                                         List<Car> GetCarList()
+                                                                                {
+                                                                                    string comText =
+                                                                                        "Select * from cars;";
+                                                                                    Console.WriteLine($"INFO:{comText}");
+                                                                                    return DbExecutor.Execute<Car>("Server=127.0.0.1;User Id=postgres;Password=6851;Database=Dilpom;", comText, new DbCarHandler());
+                                                                                }
+                                                
+                                                                        List<Car> cars = GetCarList();
+                                                                        foreach (var car in cars)
+                                                                        {
+                                                                            
+                                                                            <option value="@car.id">@car.govnum</option>
+                                                                        }
+                                                                        
+                                                                   
+                                                                    }
+                                                                </select>
+                                                <span asp-validation-for="auto" class="text-danger"></span>
+                                                <label asp-for="date" class="control-label">Дата</label>
+                                                <input asp-for="date" class="form-control"/>
+                                                <span asp-validation-for="date" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Сохранить" class="btn btn-primary"/>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="RaceTablePage">Вернуться назад</a>
+</div>
+
+@section Scripts {
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+}

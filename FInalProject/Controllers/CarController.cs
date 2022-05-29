@@ -19,13 +19,20 @@ namespace FInalProject.Controllers
             Dbservice = dbservice;
         }
 
-        
+        [Authorize]
+        public ActionResult GetAllCars()
+        {
+            
+            return RedirectToAction(nameof(CarTablePage));
+        }
         [Authorize]
         public IActionResult CarTablePage()
         {
-            List<Car> cars = Dbservice.GetCarsList();
+            List<CarNew> cars = Dbservice.GetCarsNewList();
             return View(cars);
         }
+      
+        
         
 
         public ActionResult CarAdd()
@@ -35,19 +42,19 @@ namespace FInalProject.Controllers
 
         [HttpPost]
         [Authorize]
-        public ActionResult Create(Car car)
+        public ActionResult Create(CarNew car)
         {
-            Dbservice.AddCar(car);
+            Dbservice.AddNewCar(car);
             return RedirectToAction(nameof(CarAdd));
         }
 
         public IActionResult CarEdit(int id)
         {
-            Car car = Dbservice.GetCarById(id);
+            CarNew car = Dbservice.GetCarById(id);
             return View(car);
         }
 
-        public IActionResult Edit(Car car)
+        public IActionResult Edit(CarNew car)
         {
             Dbservice.CarEdit(car);
             return RedirectToAction(nameof(CarTablePage));
@@ -55,7 +62,7 @@ namespace FInalProject.Controllers
 
         public IActionResult CarDelete(int id)
         {
-            Car car = Dbservice.GetCarById(id);
+            CarNew car = Dbservice.GetCarById(id);
             return View(car);
         }
 
@@ -66,15 +73,11 @@ namespace FInalProject.Controllers
             Dbservice.DeleteCar(id);
             return RedirectToAction(nameof(CarTablePage));
         }
-        public IActionResult CarUploadExcel( )
-        {
-            
-            return View();
-        }
+     
         [HttpPost]
         public IActionResult CarSearch(string key, string field)
         {
-            List<Car> cars =Dbservice.GetCarsByField(key, field);
+            List<CarNew> cars =Dbservice.GetCarsByField(key, field);
             return View(cars);
         }
 
@@ -134,37 +137,47 @@ namespace FInalProject.Controllers
             }
         }
 
-        public IActionResult GetCarsFromExcel(string url)
+        
+        
+        public IActionResult GetCarsNewFromExcel(string url)
         {
-            XLWorkbook workbook = XLWorkbook.OpenFromTemplate("D:/Downloads/cars.xlsx");
-            var worksheet = workbook.Worksheets.Worksheet("Лист 1");
-            for (int i = 2; i < worksheet.RowsUsed().Count()+1; i++)
-            {
-                Car car = new Car()
+            XLWorkbook workbook = XLWorkbook.OpenFromTemplate("D:/Downloads/cars1.xlsx");
+            var worksheet = workbook.Worksheets.Worksheet("ОБЩИЙ СПИСОК");
+            for (int i = 5; i < worksheet.RowsUsed().Count()+1; i++)
+            { 
+                CarNew car = new CarNew()
                 {
-                    govnum = worksheet.Cell(i, 1).GetString(),
-                    creater = worksheet.Cell(i, 2).GetString(),
-                    type = worksheet.Cell(i, 3).GetString(),
-                    model = worksheet.Cell(i, 4).GetString(),
-                    valueOfCar = worksheet.Cell(i, 5).GetDouble(),
-                    fuelType = worksheet.Cell(i, 6).GetString(),
-                    valueOfTank = worksheet.Cell(i, 7).GetDouble(),
-                    glonasNum = (int)worksheet.Cell(i, 8).GetDouble(),
-                    platonNum = (int)worksheet.Cell(i, 9).GetDouble(),
-                    owner = worksheet.Cell(i, 10).GetString(),
-                    location = worksheet.Cell(i, 11).GetString(),
-                    runned = worksheet.Cell(i, 12).GetDouble()
+                   
+                    type = worksheet.Cell(i, 1).GetString(),
+                    model = worksheet.Cell(i, 2).GetString(),
+                    vin = worksheet.Cell(i, 3).GetString(),
+                    yearprod = (int)worksheet.Cell(i, 4).GetDouble(),
+                    govnum = worksheet.Cell(i, 5).GetString(),
+                    value = worksheet.Cell(i, 6).GetDouble(),
+                    weight = (int)worksheet.Cell(i, 7).GetDouble(),
+                    maxweight =  (int)worksheet.Cell(i, 8).GetDouble(),
+                    fueltype = worksheet.Cell(i, 9).GetString(),
+                    techstate = worksheet.Cell(i, 10).GetString(),
+                    srokpodk = worksheet.Cell(i, 11).GetDateTime(),
+                    inscomp = worksheet.Cell(i, 12).GetString(),
+                    osagocost = worksheet.Cell(i, 13).GetDouble(),
+                    platonnum =  worksheet.Cell(i, 14).GetString(),
+                    platondate = worksheet.Cell(i, 15).GetDateTime(),
+                    platonreplace = worksheet.Cell(i, 16).GetString(),
+                    glonastype = worksheet.Cell(i, 17).GetString(),
+                    simnum = worksheet.Cell(i, 18).GetString(),
+                    glonasdate = worksheet.Cell(i, 19).GetDateTime(),
+                    worktype = worksheet.Cell(i, 20).GetString(),
+                    ptsowner = worksheet.Cell(i, 21).GetString(),
+                    stsowner = worksheet.Cell(i, 22).GetString(),
+                    regionloc = worksheet.Cell(i, 23).GetString()
                 };
-                Create(car);
+                
+                
+                    Create(car);
+               
             }
             return RedirectToAction(nameof(CarTablePage));
-        }
-        [HttpPost] 
-        public void GetExcelUrl(string url)
-        {
-          
-            Console.WriteLine(url);
-            GetCarsFromExcel(url);
         }
     }
 }

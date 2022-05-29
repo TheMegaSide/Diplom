@@ -21,10 +21,10 @@
                     <li class="nav-item dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Автомобили</a>
                         <div class="dropdown-menu">
-                            <a сlass="dropdown-item nav-link text-dark" asp-area="" asp-controller="Car" asp-action="CarTablePage">Просмотр</a>
+                            <a сlass="dropdown-item nav-link text-dark" asp-area="" asp-controller="Car" asp-action="GetAllCars">Просмотр</a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item nav-link text-dark" asp-area="" asp-controller="Car" asp-action="CarAdd">Добавить автомобиль</a>
-                            <a class="dropdown-item nav-link text-dark" asp-area="" asp-controller="Car" asp-action="GetCarsFromExcel">Импорт</a>
+                            <a class="dropdown-item nav-link text-dark" asp-area="" asp-controller="Car" asp-action="GetCarsNewFromExcel">Импорт</a>
                              @* <a class="dropdown-item nav-link text-dark" asp-area="" asp-controller="Car" asp-action="CarUploadExcel">Импорт</a> *@
                         </div>
                     </li>
@@ -38,6 +38,15 @@
                             
                         </div>
                     </li>
+                    <li class="nav-item dropdown">
+                                            <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Рейсы</a>
+                                            <div class="dropdown-menu">
+                                                <a сlass="dropdown-item nav-link text-dark" asp-area="" asp-controller="Race" asp-action="RaceTablePage">Просмотр</a>
+                                                <div class="dropdown-divider"></div>
+                                                <a class="dropdown-item nav-link text-dark" asp-area="" asp-controller="Race" asp-action="RaceAdd">Добавить рейс</a>
+                                                
+                                            </div>
+                                        </li>
                    
                     
                     

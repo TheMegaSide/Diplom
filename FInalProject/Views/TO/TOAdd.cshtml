@@ -1,0 +1,72 @@
+﻿
+@using FInalProject.Util.DB
+@using FInalProject.Util.DbHandlers
+
+@model FInalProject.Models.TO
+
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Добавление ТО</h1>
+
+<h4>ТО</h4>
+<hr/>
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="auto" class="control-label">Госномер автомобиля</label>
+                <select asp-for="auto">
+                                    @{
+                                         List<CarNew> GetCar()
+                                                {
+                                                    string comText =
+                                                        "select * from public.\"CarList\";";
+                                                    Console.WriteLine($"INFO:{comText}");
+                                                    return DbExecutor.Execute<CarNew>("Server=127.0.0.1;User Id=postgres;Password=6851;Database=Dilpom;", comText, new DBCarNewHandler());
+                                                }
+                
+                                        List<CarNew> cars = GetCar();
+                                        foreach (var car in cars)
+                                        {
+                                            
+                                            <option value="@car.id">@car.govnum</option>
+                                        }
+                                        
+                                   
+                                    }
+                                </select>
+                <span asp-validation-for="auto" class="text-danger"></span>
+                <label asp-for="toType" class="control-label">Вид ТО</label>
+                <select asp-for="toType">
+                    <option value="ТО-1">ТО-1</option>
+                    <option value="ТО-2">ТО-2</option>
+                </select>
+                <span asp-validation-for="toType" class="text-danger"></span>
+                <label asp-for="date" class="control-label">Дата</label>
+                <input asp-for="date" class="form-control"/>
+                <span asp-validation-for="date" class="text-danger"></span>
+          </div>
+            
+            <div class="form-group">
+                <input type="submit" value="Создать" class="btn btn-primary"/>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <form method="post" action="~/TO/TOTablePage">
+        <input type = "hidden" name="month" value="@ViewBag.Month"/>
+        <input type = "hidden" name="year" value="@ViewBag.Year"/>
+        <p>
+            <input type="submit" value="Вернуться к @ViewBag.Month.@ViewBag.Year"/>
+        </p>
+    </form>
+</div>
+@section Scripts {
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+}
