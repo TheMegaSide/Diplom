@@ -65,7 +65,7 @@
                 <input asp-for="techstate" class="form-control"/>
                 <span asp-validation-for="techstate" class="text-danger"></span>
                 <label asp-for="srokpodk" class="control-label">Срок по ДК</label>
-                <input asp-for="srokpodk" class="form-control"/>
+                <input asp-for="srokpodk" type="date" class="form-control"/>
                 <span asp-validation-for="srokpodk" class="text-danger"></span>
                 <label asp-for="inscomp" class="control-label">Стаховая компания по ОСАГО</label>
                 <input asp-for="inscomp" class="form-control"/>
@@ -77,7 +77,7 @@
                 <input asp-for="platonnum" class="form-control"/>
                 <span asp-validation-for="platonnum" class="text-danger"></span>
                 <label asp-for="platondate" class="control-label">Дата оканчания срока службы БУ</label>
-                <input asp-for="platondate" class="form-control"/>
+                <input asp-for="platondate" type="date" class="form-control"/>
                 <span asp-validation-for="platondate" class="text-danger"></span>
                 <label asp-for="platonreplace" class="control-label">Замена БУ ПЛАТОН на безвозмездной основе</label>
                 <select asp-for="platonreplace" class="form-control">
@@ -92,7 +92,7 @@
                 <input asp-for="simnum" class="form-control"/>
                 <span asp-validation-for="simnum" class="text-danger"></span>
                 <label asp-for="glonasdate" class="control-label">Дата установки</label>
-                <input asp-for="glonasdate" class="form-control"/>
+                <input asp-for="glonasdate" type="date" class="form-control"/>
                 <span asp-validation-for="glonasdate" class="text-danger"></span>
                 <label asp-for="worktype" class="control-label">Вид работы</label>
                 <select asp-for="worktype" class="form-control">

@@ -56,6 +56,12 @@ namespace FInalProject.Controllers
             Dbservice.EditTO(to);
             
         }
+        public ActionResult  Delete(int id, int month1, int year1)
+        {
+            Dbservice.DeleteTO(id);
+            return RedirectToAction(nameof(TOTablePage), new {month = month1, year = year1});
+
+        }
         public ActionResult  CompleteTO(int id, string month1, string year1, DateTime date, int auto, string toType)
         {
             ViewBag.Month = month1;

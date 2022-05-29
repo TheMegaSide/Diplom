@@ -46,7 +46,7 @@
                 </select>
                 <span asp-validation-for="toType" class="text-danger"></span>
                 <label asp-for="date" class="control-label">Дата</label>
-                <input asp-for="date" class="form-control"/>
+                <input asp-for="date" type="date" class="form-control"/>
                 <span asp-validation-for="date" class="text-danger"></span>
                 <label asp-for="state" class="control-label">Статус</label>
                 <input asp-for="state" class="form-control"/>
@@ -74,22 +74,19 @@
                                     </p>
                                 </form> 
                             }
-                        }
+        }
+        <form method="post" action="~/TO/Delete">
+                                            <input type = "hidden" name="month1" value="@ViewBag.Month"/>
+                                            <input type = "hidden" name="year1" value="@ViewBag.Year"/>
+                                            <input type = "hidden" name="id" value="@Model.id"/>
+                                            <p>
+                                                <input type="submit" value="Удалить"/>
+                                            </p>
+                                        </form> 
     </div>
 </div>
 
-@* @{ *@
-@*     List<CarNew> GetCar() *@
-@*     { *@
-@*         string comText = *@
-@*             "select * from public.\"CarList\" where id="+Model.auto; *@
-@*         Console.WriteLine($"INFO:{comText}"); *@
-@*         return DbExecutor.Execute<CarNew>("Server=127.0.0.1;User Id=postgres;Password=6851;Database=Dilpom;", comText, new DBCarNewHandler()); *@
-@*     } *@
-@* *@
-@*     List<CarNew> cars = GetCar(); *@
-@*      *@
-@* } *@
+
 
 <div>
     <form method="post" action="~/TO/TOTablePage">

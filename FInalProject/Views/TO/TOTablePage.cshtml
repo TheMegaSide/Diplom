@@ -81,9 +81,8 @@
             
             
            
-            @* <td><a asp-action="RaceDelete" asp-route-id="@race.id">Удалить</a></td> *@
-            @* <td><a asp-action="RaceEdit" asp-route-id="@race.id">Изменить</a></td> *@
-
+           
+            
 
         </tr>
     }
@@ -95,8 +94,11 @@
     <form method="post" action="~/TO/TOAdd">
         <input type = "hidden" name="month" value="@ViewBag.Month"/>
         <input type = "hidden" name="year" value="@ViewBag.Year"/>
-    <p>
-        <input type="submit" value="Добавить ТО"/>
-    </p>
+        <p>
+            <input type="submit" value="Добавить ТО"/>
+        </p>
     </form>
+</div>
+<div>
+<a asp-controller="Home" asp-action="Index" >На главную страницу</a>
 </div>

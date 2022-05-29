@@ -145,6 +145,13 @@ namespace FInalProject.Services
             Console.WriteLine($"INFO:{comText}");
             DbExecutor.Execute(ConnectionString, comText, new DbRaceHandler());
         }
+        public void DeleteTO(int id)
+        {
+            string comText =
+                "delete from \"to\" where id=" + id;
+            Console.WriteLine($"INFO:{comText}");
+            DbExecutor.Execute(ConnectionString, comText, new DBTOHandler());
+        }
         public void RaceEdit(Race race)
         {
             string comText =
