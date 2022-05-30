@@ -60,6 +60,44 @@
           "lib/netstandard2.0/ExcelNumberFormat.dll": {}
         }
       },
+      "FreeSpire.Doc/10.2.0": {
+        "type": "package",
+        "dependencies": {
+          "System.Drawing.Common": "4.5.0",
+          "System.Security.Cryptography.Xml": "4.5.0",
+          "System.Text.Encoding.CodePages": "4.5.0"
+        },
+        "compile": {
+          "lib/netcoreapp2.0/Spire.Doc.dll": {},
+          "lib/netcoreapp2.0/Spire.License.dll": {},
+          "lib/netcoreapp2.0/Spire.Pdf.dll": {}
+        },
+        "runtime": {
+          "lib/netcoreapp2.0/Spire.Doc.dll": {},
+          "lib/netcoreapp2.0/Spire.License.dll": {},
+          "lib/netcoreapp2.0/Spire.Pdf.dll": {}
+        }
+      },
+      "GemBox.Document/35.0.1000": {
+        "type": "package",
+        "dependencies": {
+          "Portable.BouncyCastle": "1.8.9",
+          "System.Drawing.Common": "5.0.0",
+          "System.Text.Encoding.CodePages": "5.0.0"
+        },
+        "compile": {
+          "lib/netcoreapp3.1/GemBox.Document.dll": {}
+        },
+        "runtime": {
+          "lib/netcoreapp3.1/GemBox.Document.dll": {}
+        },
+        "runtimeTargets": {
+          "runtimes/unix/lib/netcoreapp3.1/GemBox.Document.dll": {
+            "assetType": "runtime",
+            "rid": "unix"
+          }
+        }
+      },
       "Humanizer.Core/2.8.26": {
         "type": "package",
         "compile": {
@@ -513,6 +551,15 @@
           "lib/netstandard1.0/_._": {}
         }
       },
+      "Microsoft.Office.Interop.Word/12.0.4518.1014": {
+        "type": "package",
+        "compile": {
+          "lib/net20/Microsoft.Office.Interop.Word.dll": {}
+        },
+        "runtime": {
+          "lib/net20/Microsoft.Office.Interop.Word.dll": {}
+        }
+      },
       "Microsoft.Web.Infrastructure/1.0.0": {
         "type": "package",
         "compile": {
@@ -643,6 +690,15 @@
         },
         "runtime": {
           "lib/netstandard2.1/Oracle.ManagedDataAccess.dll": {}
+        }
+      },
+      "Portable.BouncyCastle/1.8.9": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/BouncyCastle.Crypto.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/BouncyCastle.Crypto.dll": {}
         }
       },
       "runtime.debian.8-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.0": {
@@ -1742,30 +1798,16 @@
           }
         }
       },
-      "System.Security.Cryptography.Cng/4.3.0": {
+      "System.Security.Cryptography.Cng/4.5.0": {
         "type": "package",
-        "dependencies": {
-          "Microsoft.NETCore.Platforms": "1.1.0",
-          "System.IO": "4.3.0",
-          "System.Resources.ResourceManager": "4.3.0",
-          "System.Runtime": "4.3.0",
-          "System.Runtime.Extensions": "4.3.0",
-          "System.Runtime.Handles": "4.3.0",
-          "System.Runtime.InteropServices": "4.3.0",
-          "System.Security.Cryptography.Algorithms": "4.3.0",
-          "System.Security.Cryptography.Encoding": "4.3.0",
-          "System.Security.Cryptography.Primitives": "4.3.0",
-          "System.Text.Encoding": "4.3.0"
-        },
         "compile": {
-          "ref/netstandard1.6/_._": {}
+          "ref/netcoreapp2.1/_._": {}
+        },
+        "runtime": {
+          "lib/netcoreapp2.1/System.Security.Cryptography.Cng.dll": {}
         },
         "runtimeTargets": {
-          "runtimes/unix/lib/netstandard1.6/System.Security.Cryptography.Cng.dll": {
-            "assetType": "runtime",
-            "rid": "unix"
-          },
-          "runtimes/win/lib/netstandard1.6/System.Security.Cryptography.Cng.dll": {
+          "runtimes/win/lib/netcoreapp2.1/System.Security.Cryptography.Cng.dll": {
             "assetType": "runtime",
             "rid": "win"
           }
@@ -1862,6 +1904,24 @@
           }
         }
       },
+      "System.Security.Cryptography.Pkcs/4.5.0": {
+        "type": "package",
+        "dependencies": {
+          "System.Security.Cryptography.Cng": "4.5.0"
+        },
+        "compile": {
+          "ref/netcoreapp2.1/_._": {}
+        },
+        "runtime": {
+          "lib/netcoreapp2.1/System.Security.Cryptography.Pkcs.dll": {}
+        },
+        "runtimeTargets": {
+          "runtimes/win/lib/netcoreapp2.1/System.Security.Cryptography.Pkcs.dll": {
+            "assetType": "runtime",
+            "rid": "win"
+          }
+        }
+      },
       "System.Security.Cryptography.Primitives/4.3.0": {
         "type": "package",
         "dependencies": {
@@ -1938,6 +1998,19 @@
           }
         }
       },
+      "System.Security.Cryptography.Xml/4.5.0": {
+        "type": "package",
+        "dependencies": {
+          "System.Security.Cryptography.Pkcs": "4.5.0",
+          "System.Security.Permissions": "4.5.0"
+        },
+        "compile": {
+          "ref/netstandard2.0/System.Security.Cryptography.Xml.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/System.Security.Cryptography.Xml.dll": {}
+        }
+      },
       "System.Security.Permissions/5.0.0": {
         "type": "package",
         "dependencies": {
@@ -1979,6 +2052,24 @@
         },
         "compile": {
           "ref/netstandard1.3/System.Text.Encoding.dll": {}
+        }
+      },
+      "System.Text.Encoding.CodePages/5.0.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.NETCore.Platforms": "5.0.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/System.Text.Encoding.CodePages.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/System.Text.Encoding.CodePages.dll": {}
+        },
+        "runtimeTargets": {
+          "runtimes/win/lib/netcoreapp2.0/System.Text.Encoding.CodePages.dll": {
+            "assetType": "runtime",
+            "rid": "win"
+          }
         }
       },
       "System.Text.Encoding.Extensions/4.3.0": {
@@ -2222,6 +2313,77 @@
         "lib/netstandard1.0/ExcelNumberFormat.xml",
         "lib/netstandard2.0/ExcelNumberFormat.dll",
         "lib/netstandard2.0/ExcelNumberFormat.xml"
+      ]
+    },
+    "FreeSpire.Doc/10.2.0": {
+      "sha512": "rnxGSJvk40S1TQ7fNUMt3//nrFOVWLXF3eLpqRhVPiE1QJzf7ogOec23g1aBsx0aF8P7o1YetITSOUD04MN1FA==",
+      "type": "package",
+      "path": "freespire.doc/10.2.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "freespire.doc.10.2.0.nupkg.sha512",
+        "freespire.doc.nuspec",
+        "lib/MonoAndroid/Spire.Doc.dll",
+        "lib/MonoAndroid/Spire.Doc.xml",
+        "lib/MonoAndroid/Spire.License.dll",
+        "lib/MonoAndroid/Spire.License.xml",
+        "lib/MonoAndroid/Spire.Pdf.dll",
+        "lib/MonoAndroid/Spire.Pdf.xml",
+        "lib/net40/Spire.Doc.XML",
+        "lib/net40/Spire.Doc.dll",
+        "lib/net40/Spire.License.dll",
+        "lib/net40/Spire.License.xml",
+        "lib/net40/Spire.Pdf.dll",
+        "lib/net40/Spire.Pdf.xml",
+        "lib/net6.0/Spire.Doc.dll",
+        "lib/net6.0/Spire.Doc.xml",
+        "lib/net6.0/Spire.License.dll",
+        "lib/net6.0/Spire.License.xml",
+        "lib/net6.0/Spire.Pdf.dll",
+        "lib/net6.0/Spire.Pdf.xml",
+        "lib/netcoreapp2.0/Spire.Doc.dll",
+        "lib/netcoreapp2.0/Spire.Doc.xml",
+        "lib/netcoreapp2.0/Spire.License.dll",
+        "lib/netcoreapp2.0/Spire.License.xml",
+        "lib/netcoreapp2.0/Spire.Pdf.dll",
+        "lib/netcoreapp2.0/Spire.Pdf.xml",
+        "lib/xamarinios/Spire.Doc.dll",
+        "lib/xamarinios/Spire.Doc.xml",
+        "lib/xamarinios/Spire.License.dll",
+        "lib/xamarinios/Spire.License.xml",
+        "lib/xamarinios/Spire.Pdf.dll",
+        "lib/xamarinios/Spire.Pdf.xml",
+        "license.txt"
+      ]
+    },
+    "GemBox.Document/35.0.1000": {
+      "sha512": "+Kt4meWfYtbFKuM8ivNn+09ZVbVGnB/qL62/mH1rtb58J1MqxBgfiHiK6OidtlxNcQVbCn3lHwc5NfUe5FisPA==",
+      "type": "package",
+      "path": "gembox.document/35.0.1000",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "PackageIcon.png",
+        "README.md",
+        "Readme.txt",
+        "gembox.document.35.0.1000.nupkg.sha512",
+        "gembox.document.nuspec",
+        "lib/net35/GemBox.Document.dll",
+        "lib/net35/GemBox.Document.xml",
+        "lib/netcoreapp3.1/GemBox.Document.dll",
+        "lib/netcoreapp3.1/GemBox.Document.xml",
+        "lib/netstandard2.0/GemBox.Document.dll",
+        "lib/netstandard2.0/GemBox.Document.xml",
+        "licenses/EULA.txt",
+        "licenses/ThirdPartyCodeLicenses/DotNetZip License.txt",
+        "licenses/ThirdPartyCodeLicenses/ExCSS License.txt",
+        "licenses/ThirdPartyCodeLicenses/PDFsharp and MigraDoc License.txt",
+        "licenses/ThirdPartyCodeLicenses/QRCoder License.txt",
+        "licenses/ThirdPartyCodeLicenses/SVG.NET License.txt",
+        "licenses/ThirdPartyCodeLicenses/b2xtranslator License.txt",
+        "licenses/ThirdPartyCodeLicenses/barcodelib License.txt",
+        "runtimes/unix/lib/netcoreapp3.1/GemBox.Document.dll"
       ]
     },
     "Humanizer.Core/2.8.26": {
@@ -2967,6 +3129,18 @@
         "runtime.json"
       ]
     },
+    "Microsoft.Office.Interop.Word/12.0.4518.1014": {
+      "sha512": "PCLNaZ1vkolnEhnwpY1nmTDRsHfDJOJnp/ECkuPcipD1LSFThBtkYCbysJ3x5mW7JbxQnrnYgOIxKl37fkEEaA==",
+      "type": "package",
+      "path": "microsoft.office.interop.word/12.0.4518.1014",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net20/Microsoft.Office.Interop.Word.dll",
+        "microsoft.office.interop.word.12.0.4518.1014.nupkg.sha512",
+        "microsoft.office.interop.word.nuspec"
+      ]
+    },
     "Microsoft.Web.Infrastructure/1.0.0": {
       "sha512": "FNmvLn5m2LTU/Rs2KWVo0SIIh9Ek+U0ojex7xeDaSHw/zgEP77A8vY5cVWgUtBGS8MJfDGNn8rpXJWEIQaPwTg==",
       "type": "package",
@@ -3140,6 +3314,21 @@
         "oracle.manageddataaccess.core.3.21.3.nupkg.sha512",
         "oracle.manageddataaccess.core.nuspec",
         "readme.txt"
+      ]
+    },
+    "Portable.BouncyCastle/1.8.9": {
+      "sha512": "wlJo8aFoeyl+W93iFXTK5ShzDYk5WBqoUPjTNEM0Xv9kn1H+4hmuCjF0/n8HLm9Nnp1aY6KNndWqQTNk+NGgRQ==",
+      "type": "package",
+      "path": "portable.bouncycastle/1.8.9",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net40/BouncyCastle.Crypto.dll",
+        "lib/net40/BouncyCastle.Crypto.xml",
+        "lib/netstandard2.0/BouncyCastle.Crypto.dll",
+        "lib/netstandard2.0/BouncyCastle.Crypto.xml",
+        "portable.bouncycastle.1.8.9.nupkg.sha512",
+        "portable.bouncycastle.nuspec"
       ]
     },
     "runtime.debian.8-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.0": {
@@ -6063,32 +6252,67 @@
         "system.security.cryptography.algorithms.nuspec"
       ]
     },
-    "System.Security.Cryptography.Cng/4.3.0": {
-      "sha512": "03idZOqFlsKRL4W+LuCpJ6dBYDUWReug6lZjBa3uJWnk5sPCUXckocevTaUA8iT/MFSrY/2HXkOt753xQ/cf8g==",
+    "System.Security.Cryptography.Cng/4.5.0": {
+      "sha512": "WG3r7EyjUe9CMPFSs6bty5doUqT+q9pbI80hlNzo2SkPkZ4VTuZkGWjpp77JB8+uaL4DFPRdBsAY+DX3dBK92A==",
       "type": "package",
-      "path": "system.security.cryptography.cng/4.3.0",
+      "path": "system.security.cryptography.cng/4.5.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "ThirdPartyNotices.txt",
-        "dotnet_library_license.txt",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/MonoAndroid10/_._",
+        "lib/MonoTouch10/_._",
         "lib/net46/System.Security.Cryptography.Cng.dll",
         "lib/net461/System.Security.Cryptography.Cng.dll",
-        "lib/net463/System.Security.Cryptography.Cng.dll",
+        "lib/net462/System.Security.Cryptography.Cng.dll",
+        "lib/net47/System.Security.Cryptography.Cng.dll",
+        "lib/netcoreapp2.1/System.Security.Cryptography.Cng.dll",
+        "lib/netstandard1.3/System.Security.Cryptography.Cng.dll",
+        "lib/netstandard1.4/System.Security.Cryptography.Cng.dll",
+        "lib/netstandard1.6/System.Security.Cryptography.Cng.dll",
+        "lib/netstandard2.0/System.Security.Cryptography.Cng.dll",
+        "lib/uap10.0.16299/_._",
+        "lib/xamarinios10/_._",
+        "lib/xamarinmac20/_._",
+        "lib/xamarintvos10/_._",
+        "lib/xamarinwatchos10/_._",
+        "ref/MonoAndroid10/_._",
+        "ref/MonoTouch10/_._",
         "ref/net46/System.Security.Cryptography.Cng.dll",
         "ref/net461/System.Security.Cryptography.Cng.dll",
-        "ref/net463/System.Security.Cryptography.Cng.dll",
+        "ref/net461/System.Security.Cryptography.Cng.xml",
+        "ref/net462/System.Security.Cryptography.Cng.dll",
+        "ref/net462/System.Security.Cryptography.Cng.xml",
+        "ref/net47/System.Security.Cryptography.Cng.dll",
+        "ref/net47/System.Security.Cryptography.Cng.xml",
+        "ref/netcoreapp2.0/System.Security.Cryptography.Cng.dll",
+        "ref/netcoreapp2.0/System.Security.Cryptography.Cng.xml",
+        "ref/netcoreapp2.1/System.Security.Cryptography.Cng.dll",
+        "ref/netcoreapp2.1/System.Security.Cryptography.Cng.xml",
         "ref/netstandard1.3/System.Security.Cryptography.Cng.dll",
         "ref/netstandard1.4/System.Security.Cryptography.Cng.dll",
         "ref/netstandard1.6/System.Security.Cryptography.Cng.dll",
-        "runtimes/unix/lib/netstandard1.6/System.Security.Cryptography.Cng.dll",
+        "ref/netstandard2.0/System.Security.Cryptography.Cng.dll",
+        "ref/netstandard2.0/System.Security.Cryptography.Cng.xml",
+        "ref/uap10.0.16299/_._",
+        "ref/xamarinios10/_._",
+        "ref/xamarinmac20/_._",
+        "ref/xamarintvos10/_._",
+        "ref/xamarinwatchos10/_._",
         "runtimes/win/lib/net46/System.Security.Cryptography.Cng.dll",
         "runtimes/win/lib/net461/System.Security.Cryptography.Cng.dll",
-        "runtimes/win/lib/net463/System.Security.Cryptography.Cng.dll",
+        "runtimes/win/lib/net462/System.Security.Cryptography.Cng.dll",
+        "runtimes/win/lib/net47/System.Security.Cryptography.Cng.dll",
+        "runtimes/win/lib/netcoreapp2.0/System.Security.Cryptography.Cng.dll",
+        "runtimes/win/lib/netcoreapp2.1/System.Security.Cryptography.Cng.dll",
         "runtimes/win/lib/netstandard1.4/System.Security.Cryptography.Cng.dll",
         "runtimes/win/lib/netstandard1.6/System.Security.Cryptography.Cng.dll",
-        "system.security.cryptography.cng.4.3.0.nupkg.sha512",
-        "system.security.cryptography.cng.nuspec"
+        "runtimes/win/lib/uap10.0.16299/_._",
+        "system.security.cryptography.cng.4.5.0.nupkg.sha512",
+        "system.security.cryptography.cng.nuspec",
+        "useSharedDesignerContext.txt",
+        "version.txt"
       ]
     },
     "System.Security.Cryptography.Csp/4.3.0": {
@@ -6178,6 +6402,39 @@
         "runtimes/unix/lib/netstandard1.6/System.Security.Cryptography.OpenSsl.dll",
         "system.security.cryptography.openssl.4.3.0.nupkg.sha512",
         "system.security.cryptography.openssl.nuspec"
+      ]
+    },
+    "System.Security.Cryptography.Pkcs/4.5.0": {
+      "sha512": "TGQX51gxpY3K3I6LJlE2LAftVlIMqJf0cBGhz68Y89jjk3LJCB6SrwiD+YN1fkqemBvWGs+GjyMJukl6d6goyQ==",
+      "type": "package",
+      "path": "system.security.cryptography.pkcs/4.5.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/net46/System.Security.Cryptography.Pkcs.dll",
+        "lib/net461/System.Security.Cryptography.Pkcs.dll",
+        "lib/netcoreapp2.1/System.Security.Cryptography.Pkcs.dll",
+        "lib/netstandard1.3/System.Security.Cryptography.Pkcs.dll",
+        "lib/netstandard2.0/System.Security.Cryptography.Pkcs.dll",
+        "ref/net46/System.Security.Cryptography.Pkcs.dll",
+        "ref/net461/System.Security.Cryptography.Pkcs.dll",
+        "ref/net461/System.Security.Cryptography.Pkcs.xml",
+        "ref/netcoreapp2.1/System.Security.Cryptography.Pkcs.dll",
+        "ref/netcoreapp2.1/System.Security.Cryptography.Pkcs.xml",
+        "ref/netstandard1.3/System.Security.Cryptography.Pkcs.dll",
+        "ref/netstandard2.0/System.Security.Cryptography.Pkcs.dll",
+        "ref/netstandard2.0/System.Security.Cryptography.Pkcs.xml",
+        "runtimes/win/lib/net46/System.Security.Cryptography.Pkcs.dll",
+        "runtimes/win/lib/net461/System.Security.Cryptography.Pkcs.dll",
+        "runtimes/win/lib/netcoreapp2.1/System.Security.Cryptography.Pkcs.dll",
+        "runtimes/win/lib/netstandard1.3/System.Security.Cryptography.Pkcs.dll",
+        "runtimes/win/lib/netstandard2.0/System.Security.Cryptography.Pkcs.dll",
+        "system.security.cryptography.pkcs.4.5.0.nupkg.sha512",
+        "system.security.cryptography.pkcs.nuspec",
+        "useSharedDesignerContext.txt",
+        "version.txt"
       ]
     },
     "System.Security.Cryptography.Primitives/4.3.0": {
@@ -6309,6 +6566,27 @@
         "runtimes/win/lib/netstandard1.6/System.Security.Cryptography.X509Certificates.dll",
         "system.security.cryptography.x509certificates.4.3.0.nupkg.sha512",
         "system.security.cryptography.x509certificates.nuspec"
+      ]
+    },
+    "System.Security.Cryptography.Xml/4.5.0": {
+      "sha512": "i2Jn6rGXR63J0zIklImGRkDIJL4b1NfPSEbIVHBlqoIb12lfXIigCbDRpDmIEzwSo/v1U5y/rYJdzZYSyCWxvg==",
+      "type": "package",
+      "path": "system.security.cryptography.xml/4.5.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/net461/System.Security.Cryptography.Xml.dll",
+        "lib/netstandard2.0/System.Security.Cryptography.Xml.dll",
+        "ref/net461/System.Security.Cryptography.Xml.dll",
+        "ref/net461/System.Security.Cryptography.Xml.xml",
+        "ref/netstandard2.0/System.Security.Cryptography.Xml.dll",
+        "ref/netstandard2.0/System.Security.Cryptography.Xml.xml",
+        "system.security.cryptography.xml.4.5.0.nupkg.sha512",
+        "system.security.cryptography.xml.nuspec",
+        "useSharedDesignerContext.txt",
+        "version.txt"
       ]
     },
     "System.Security.Permissions/5.0.0": {
@@ -6464,6 +6742,47 @@
         "ref/xamarinwatchos10/_._",
         "system.text.encoding.4.3.0.nupkg.sha512",
         "system.text.encoding.nuspec"
+      ]
+    },
+    "System.Text.Encoding.CodePages/5.0.0": {
+      "sha512": "NyscU59xX6Uo91qvhOs2Ccho3AR2TnZPomo1Z0K6YpyztBPM/A5VbkzOO19sy3A3i1TtEnTxA7bCe3Us+r5MWg==",
+      "type": "package",
+      "path": "system.text.encoding.codepages/5.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/MonoAndroid10/_._",
+        "lib/MonoTouch10/_._",
+        "lib/net46/System.Text.Encoding.CodePages.dll",
+        "lib/net461/System.Text.Encoding.CodePages.dll",
+        "lib/net461/System.Text.Encoding.CodePages.xml",
+        "lib/netstandard1.3/System.Text.Encoding.CodePages.dll",
+        "lib/netstandard2.0/System.Text.Encoding.CodePages.dll",
+        "lib/netstandard2.0/System.Text.Encoding.CodePages.xml",
+        "lib/xamarinios10/_._",
+        "lib/xamarinmac20/_._",
+        "lib/xamarintvos10/_._",
+        "lib/xamarinwatchos10/_._",
+        "ref/MonoAndroid10/_._",
+        "ref/MonoTouch10/_._",
+        "ref/xamarinios10/_._",
+        "ref/xamarinmac20/_._",
+        "ref/xamarintvos10/_._",
+        "ref/xamarinwatchos10/_._",
+        "runtimes/win/lib/net461/System.Text.Encoding.CodePages.dll",
+        "runtimes/win/lib/net461/System.Text.Encoding.CodePages.xml",
+        "runtimes/win/lib/netcoreapp2.0/System.Text.Encoding.CodePages.dll",
+        "runtimes/win/lib/netcoreapp2.0/System.Text.Encoding.CodePages.xml",
+        "runtimes/win/lib/netstandard1.3/System.Text.Encoding.CodePages.dll",
+        "runtimes/win/lib/netstandard2.0/System.Text.Encoding.CodePages.dll",
+        "runtimes/win/lib/netstandard2.0/System.Text.Encoding.CodePages.xml",
+        "system.text.encoding.codepages.5.0.0.nupkg.sha512",
+        "system.text.encoding.codepages.nuspec",
+        "useSharedDesignerContext.txt",
+        "version.txt"
       ]
     },
     "System.Text.Encoding.Extensions/4.3.0": {
@@ -6999,12 +7318,15 @@
       "ClosedXML >= 0.95.4",
       "ExcelDataReader >= 3.6.0",
       "ExcelDataReader.DataSet >= 3.6.0",
+      "FreeSpire.Doc >= 10.2.0",
+      "GemBox.Document >= 35.0.1000",
       "Microsoft.AspNet.Web.Helpers.Mvc >= 2.0.20710",
       "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore >= 5.0.6",
       "Microsoft.AspNetCore.Identity.EntityFrameworkCore >= 5.0.6",
       "Microsoft.AspNetCore.Identity.UI >= 5.0.6",
       "Microsoft.EntityFrameworkCore.Sqlite >= 5.0.6",
       "Microsoft.EntityFrameworkCore.Tools >= 5.0.6",
+      "Microsoft.Office.Interop.Word >= 12.0.4518.1014",
       "Npgsql >= 6.0.4",
       "Oracle.ManagedDataAccess.Core >= 3.21.3"
     ]
@@ -7060,6 +7382,14 @@
             "target": "Package",
             "version": "[3.6.0, )"
           },
+          "FreeSpire.Doc": {
+            "target": "Package",
+            "version": "[10.2.0, )"
+          },
+          "GemBox.Document": {
+            "target": "Package",
+            "version": "[35.0.1000, )"
+          },
           "Microsoft.AspNet.Web.Helpers.Mvc": {
             "target": "Package",
             "version": "[2.0.20710, )"
@@ -7083,6 +7413,10 @@
           "Microsoft.EntityFrameworkCore.Tools": {
             "target": "Package",
             "version": "[5.0.6, )"
+          },
+          "Microsoft.Office.Interop.Word": {
+            "target": "Package",
+            "version": "[12.0.4518.1014, )"
           },
           "Npgsql": {
             "target": "Package",
@@ -7134,7 +7468,7 @@
       "code": "NU1603",
       "level": "Warning",
       "warningLevel": 1,
-      "message": "Microsoft.AspNet.Web.Helpers.Mvc 2.0.20710 зависит от Microsoft.AspNet.WebPages (>= 2.0.0 && < 2.1.0), но Microsoft.AspNet.WebPages 2.0.0 не найден. Использовано наилучшее приближенное соответствие Microsoft.AspNet.WebPages 2.0.20505.",
+      "message": "Microsoft.AspNet.Web.Helpers.Mvc 2.0.20710 depends on Microsoft.AspNet.WebPages (>= 2.0.0 && < 2.1.0) but Microsoft.AspNet.WebPages 2.0.0 was not found. An approximate best match of Microsoft.AspNet.WebPages 2.0.20505 was resolved.",
       "libraryId": "Microsoft.AspNet.WebPages",
       "targetGraphs": [
         "net5.0"
@@ -7144,7 +7478,7 @@
       "code": "NU1701",
       "level": "Warning",
       "warningLevel": 1,
-      "message": "Пакет \"Microsoft.AspNet.Razor 2.0.20505\" был восстановлен с помощью \".NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8\", а не целевой платформы проекта \"net5.0\". Этот пакет может быть не полностью совместим с вашим проектом.",
+      "message": "Package 'Microsoft.AspNet.Razor 2.0.20505' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net5.0'. This package may not be fully compatible with your project.",
       "libraryId": "Microsoft.AspNet.Razor",
       "targetGraphs": [
         "net5.0"
@@ -7154,7 +7488,7 @@
       "code": "NU1701",
       "level": "Warning",
       "warningLevel": 1,
-      "message": "Пакет \"Microsoft.AspNet.Web.Helpers.Mvc 2.0.20710\" был восстановлен с помощью \".NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8\", а не целевой платформы проекта \"net5.0\". Этот пакет может быть не полностью совместим с вашим проектом.",
+      "message": "Package 'Microsoft.AspNet.Web.Helpers.Mvc 2.0.20710' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net5.0'. This package may not be fully compatible with your project.",
       "libraryId": "Microsoft.AspNet.Web.Helpers.Mvc",
       "targetGraphs": [
         "net5.0"
@@ -7164,7 +7498,7 @@
       "code": "NU1701",
       "level": "Warning",
       "warningLevel": 1,
-      "message": "Пакет \"Microsoft.AspNet.WebPages 2.0.20505\" был восстановлен с помощью \".NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8\", а не целевой платформы проекта \"net5.0\". Этот пакет может быть не полностью совместим с вашим проектом.",
+      "message": "Package 'Microsoft.AspNet.WebPages 2.0.20505' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net5.0'. This package may not be fully compatible with your project.",
       "libraryId": "Microsoft.AspNet.WebPages",
       "targetGraphs": [
         "net5.0"
@@ -7174,7 +7508,17 @@
       "code": "NU1701",
       "level": "Warning",
       "warningLevel": 1,
-      "message": "Пакет \"Microsoft.Web.Infrastructure 1.0.0\" был восстановлен с помощью \".NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8\", а не целевой платформы проекта \"net5.0\". Этот пакет может быть не полностью совместим с вашим проектом.",
+      "message": "Package 'Microsoft.Office.Interop.Word 12.0.4518.1014' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net5.0'. This package may not be fully compatible with your project.",
+      "libraryId": "Microsoft.Office.Interop.Word",
+      "targetGraphs": [
+        "net5.0"
+      ]
+    },
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'Microsoft.Web.Infrastructure 1.0.0' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net5.0'. This package may not be fully compatible with your project.",
       "libraryId": "Microsoft.Web.Infrastructure",
       "targetGraphs": [
         "net5.0"

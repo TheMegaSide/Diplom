@@ -5,18 +5,28 @@ using System.Linq;
 using ClosedXML.Excel;
 using FInalProject.Models;
 using FInalProject.Services;
+using FInalProject.Util.DB;
+using FInalProject.Util.DbHandlers;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Word = Microsoft.Office.Interop.Word;
+using GemBox.Document;
+using GemBox.Document.Tables;
+using Spire.Doc;
+using Spire.Doc.Documents;
+using Spire.Doc.Fields;
+using Bookmark = FInalProject.Services.Bookmark;
 
 namespace FInalProject.Controllers
 {
     public class CarController : Controller
     {
         private BDService Dbservice;
-
+        private Document doc = null;
         public CarController(BDService dbservice)
         {
             Dbservice = dbservice;
+            
         }
 
         [Authorize]
@@ -193,5 +203,61 @@ namespace FInalProject.Controllers
             }
             return RedirectToAction(nameof(CarTablePage));
         }
+        List<TO> GetTOByAuto(int autoid)
+        {
+            string comText =
+                "select max(date),totype from (select date, totype from \"to\" where auto="+autoid+" and state='Выполнено') smsel group by totype";
+            Console.WriteLine($"INFO:{comText}");
+            return DbExecutor.Execute<TO>("Server=127.0.0.1;User Id=postgres;Password=6851;Database=Dilpom;", comText, new TOReqHandler());
+        }
+        // public TextRange ReplaceContent(string bookmarkName, string text, bool saveFormatting)
+        // {
+        //     BookmarksNavigator navigator = new BookmarksNavigator(doc);
+        //     navigator.MoveToBookmark(bookmarkName);//Point to a specific bookmark
+        //     navigator.DeleteBookmarkContent(saveFormatting);//Delete the original bookmark content     
+        //     Spire.Doc.Interface.ITextRange textRange = navigator.InsertText(text);//Write text
+        //     return textRange as TextRange;
+        // }
+        public IActionResult GetAutoDoc(int id)
+        {
+            Document doc = new Document();
+            doc.LoadFromFile("D:/Downloads/ПАСПОРТ.docx");
+            
+            Bookmark bookmark = new Bookmark(doc);
+            
+            CarNew car = Dbservice.GetCarById(id);
+            List<TO> tos = GetTOByAuto(id);
+            
+            
+            bookmark.ReplaceContent("MODEL", car.model, true);
+            bookmark.ReplaceContent("TYPE", car.type, true);
+            bookmark.ReplaceContent("YEARPROD", car.yearprod.ToString(), true);
+            bookmark.ReplaceContent("VIN", car.vin, true);
+            bookmark.ReplaceContent("GOVNUM", car.govnum, true);
+            bookmark.ReplaceContent("OWNER", car.ptsowner, true);
+            bookmark.ReplaceContent("DATE", "\""+DateTime.Now.Day+"\" "+DateTime.Now.Month+" "+DateTime.Now.Year, true);
+
+
+            try
+            {
+                bookmark.ReplaceContent("TOTYPE1", tos[0].toType, true);
+                
+                bookmark.ReplaceContent("TODATE1", tos[0].date.ToShortDateString(), true);
+            
+                
+                bookmark.ReplaceContent("TOTYPE2", tos[1].toType, true);
+                bookmark.ReplaceContent("TODATE2", tos[1].date.ToShortDateString(), true);
+            }
+            catch(Exception)
+            {}
+                
+                
+                
+            doc.SaveToFile("D:/Downloads/AutoPass_"+car.govnum+".docx", FileFormat.Docx);
+            
+            return RedirectToAction(nameof(CarTablePage));
+        }
+        
+        
     }
 }

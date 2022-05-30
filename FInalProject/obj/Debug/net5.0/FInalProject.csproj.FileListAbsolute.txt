@@ -382,3 +382,10 @@ C:\Users\Александр\RiderProjects\rollback\FInalProject\obj\Debug\net5.0
 C:\Users\Александр\RiderProjects\rollback\FInalProject\obj\Debug\net5.0\Razor\Views\TO\TOTablePage.cshtml.g.cs
 C:\Users\Александр\RiderProjects\rollback\FInalProject\obj\Debug\net5.0\Razor\Views\TO\TOAdd.cshtml.g.cs
 C:\Users\Александр\RiderProjects\rollback\FInalProject\obj\Debug\net5.0\Razor\Views\TO\TOEditPage.cshtml.g.cs
+C:\Users\Александр\RiderProjects\rollback\FInalProject\bin\Debug\net5.0\Microsoft.Office.Interop.Word.dll
+C:\Users\Александр\RiderProjects\rollback\FInalProject\bin\Debug\net5.0\GemBox.Document.dll
+C:\Users\Александр\RiderProjects\rollback\FInalProject\bin\Debug\net5.0\BouncyCastle.Crypto.dll
+C:\Users\Александр\RiderProjects\rollback\FInalProject\bin\Debug\net5.0\runtimes\unix\lib\netcoreapp3.1\GemBox.Document.dll
+C:\Users\Александр\RiderProjects\rollback\FInalProject\bin\Debug\net5.0\Spire.Doc.dll
+C:\Users\Александр\RiderProjects\rollback\FInalProject\bin\Debug\net5.0\Spire.Pdf.dll
+C:\Users\Александр\RiderProjects\rollback\FInalProject\bin\Debug\net5.0\Spire.License.dll

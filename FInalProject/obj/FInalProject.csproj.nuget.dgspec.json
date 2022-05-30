@@ -52,6 +52,14 @@
               "target": "Package",
               "version": "[3.6.0, )"
             },
+            "FreeSpire.Doc": {
+              "target": "Package",
+              "version": "[10.2.0, )"
+            },
+            "GemBox.Document": {
+              "target": "Package",
+              "version": "[35.0.1000, )"
+            },
             "Microsoft.AspNet.Web.Helpers.Mvc": {
               "target": "Package",
               "version": "[2.0.20710, )"
@@ -75,6 +83,10 @@
             "Microsoft.EntityFrameworkCore.Tools": {
               "target": "Package",
               "version": "[5.0.6, )"
+            },
+            "Microsoft.Office.Interop.Word": {
+              "target": "Package",
+              "version": "[12.0.4518.1014, )"
             },
             "Npgsql": {
               "target": "Package",
