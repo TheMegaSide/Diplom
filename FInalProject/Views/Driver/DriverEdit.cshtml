@@ -1,4 +1,6 @@
-﻿@model FInalProject.Models.Driver
+﻿@using FInalProject.Util.DbHandlers
+@using FInalProject.Util.DB
+@model FInalProject.Models.Driver
 
 @{
      ViewData["Title"] = "Edit";
@@ -13,30 +15,26 @@
         <form asp-action="Edit" asp-route-id="@Model.id">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                                <label asp-for="id" class="control-label">Номер</label>
-                                <label asp-for="id" class="form-control">@Model.id</label>
-                                <span asp-validation-for="id" class="text-danger"></span>
-                                <label asp-for="surname" class="control-label">Фамилия</label>
-                                <input asp-for="surname" class="form-control"/>
-                                <span asp-validation-for="surname" class="text-danger"></span>
-                                <label asp-for="name" class="control-label">Имя</label>
-                                <input asp-for="name" class="form-control"/>
-                                <span asp-validation-for="name" class="text-danger"></span>
-                                <label asp-for="patronymic" class="control-label">Отчество</label>
-                                <input asp-for="patronymic" class="form-control"/>
-                                <span asp-validation-for="patronymic" class="text-danger"></span>
-                                <label asp-for="drcertnum" class="control-label">Номер ВУ</label>
-                                <input asp-for="drcertnum" class="form-control"/>
-                                <span asp-validation-for="drcertnum" class="text-danger"></span>
-                               <label asp-for="drcertdate" class="control-label">Дата выдачи ВУ</label>
-                                <input asp-for="drcertdate" class="form-control"/>
-                                <span asp-validation-for="drcertdate" class="text-danger"></span>
-                                <label asp-for="classs" class="control-label">Класс</label>
-                                <input asp-for="classs" class="form-control"/>
-                                <span asp-validation-for="classs" class="text-danger"></span>
-                                <label asp-for="timedriving" class="control-label">Стаж</label>
-                                <input asp-for="timedriving" class="form-control"/>
-                                <span asp-validation-for="timedriving" class="text-danger"></span>
+                <label asp-for="id" class="control-label">Номер</label>
+                <label asp-for="id" class="form-control">@Model.id</label>
+                <span asp-validation-for="id" class="text-danger"></span>
+                                
+                <label asp-for="name" class="control-label">Имя</label>
+                <input asp-for="name" class="form-control"/>
+                <span asp-validation-for="name" class="text-danger"></span>
+                                
+                <label asp-for="drcertnum" class="control-label">Номер ВУ</label>
+                <input asp-for="drcertnum" class="form-control"/>
+                <span asp-validation-for="drcertnum" class="text-danger"></span>
+                <label asp-for="drcertdate" class="control-label">Дата выдачи ВУ</label>
+                <input asp-for="drcertdate" class="form-control"/>
+                <span asp-validation-for="drcertdate" class="text-danger"></span>
+                <label asp-for="classs" class="control-label">Класс</label>
+                <input asp-for="classs" class="form-control"/>
+                <span asp-validation-for="classs" class="text-danger"></span>
+                <label asp-for="timedriving" class="control-label">Стаж</label>
+                <input asp-for="timedriving" class="form-control"/>
+                <span asp-validation-for="timedriving" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Сохранить" class="btn btn-primary"/>
@@ -44,7 +42,52 @@
         </form>
     </div>
 </div>
+<h2>Показатели водителя</h2>
+<h3>Эффективность по грузам</h3>
+@{
+    List<Race> GetRacesByDriver()
+    {
+        string comText =
+            "select * from races,drivers,\"CarList\" where races.driver="+Model.id+" and races.driver=drivers.id and \"CarList\".id=drivers.auto";
+        Console.WriteLine($"INFO:{comText}");
+        return DbExecutor.Execute<Race>("Server=127.0.0.1;User Id=postgres;Password=6851;Database=Dilpom;", comText, new DbRaceHandler());
+    }
+    CarNew GetAutoByDriver()
+    {
+        string comText =
+            "select * from \"CarList\" where id="+Model.auto;
+        Console.WriteLine($"INFO:{comText}");
+        return DbExecutor.Execute<CarNew>("Server=127.0.0.1;User Id=postgres;Password=6851;Database=Dilpom;", comText, new DBCarNewHandler())[0];
+    }
 
+    CarNew currCar = GetAutoByDriver();
+    List<Race> races = GetRacesByDriver();
+    int count = races.Count;
+    double eff =0;
+    foreach (var race in races)
+    {
+        Console.WriteLine(race.value+" "+currCar.value);
+        var coef = (race.value / currCar.value * 100);
+        eff = (eff+ coef);
+        
+    }
+    eff = eff / count;
+    var result = eff.ToString().Substring(0, 5);
+    <label class="form-control">@result %</label>
+    
+}
+<form method="post" action="~/Driver/Delete">
+    <input type="hidden" name="id" value="@Model.id"/>
+    <p>
+        <input type="submit" value="Удалить" class="btn btn-primary"/>
+    </p>
+</form>
+<form method="post" action="~/Race/RaceAdd">
+    <input type="hidden" name="id" value="@Model.id"/>
+    <p>
+        <input type="submit" value="Записать водителю рейс" class="btn btn-primary"/>
+    </p>
+</form>
 <div>
     <a asp-action="DriverTablePage">Вернуться назад</a>
 </div>

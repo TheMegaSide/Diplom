@@ -8,7 +8,29 @@
 @{
     ViewData["Title"] = "Create";
 }
+@{
+    List<Driver> GetDriver()
+    {
+        string comText =
+            "select * from drivers where id="+ViewBag.driver;
+        Console.WriteLine($"INFO:{comText}");
+        return DbExecutor.Execute<Driver>("Server=127.0.0.1;User Id=postgres;Password=6851;Database=Dilpom;", comText, new DbDriverhandler());
+    }
 
+    Driver driver = GetDriver()[0];
+    List<CarNew> GetCar()
+    {
+        string comText =
+            "select * from public.\"CarList\" where id="+driver.auto;
+        Console.WriteLine($"INFO:{comText}");
+        return DbExecutor.Execute<CarNew>("Server=127.0.0.1;User Id=postgres;Password=6851;Database=Dilpom;", comText, new DBCarNewHandler());
+    }
+
+    CarNew car = GetCar()[0];
+    double maxvalue = car.value;
+                
+   ;
+}
 <h1>Добавление рейса</h1>
 
 <h4>Рейс</h4>
@@ -19,56 +41,19 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="value" class="control-label">Объем груза, тонны</label>
-                <input asp-for="value" class="form-control"/>
+                <input type="number" max="@maxvalue" asp-for="value" class="form-control"/>
                 <span asp-validation-for="value" class="text-danger"></span>
                 <label asp-for="raceTime" class="control-label">Время, часы</label>
                 <input asp-for="raceTime" class="form-control"/>
                 <span asp-validation-for="raceTime" class="text-danger"></span>
                 <label asp-for="driver" class="control-label">Водитель</label>
-                @* <input asp-for="patronymic" class="form-control"/> *@
-                <select asp-for="driver">
-                    @{
-                         List<Driver> GetDriver()
-                                {
-                                    string comText =
-                                        "Select * from drivers;";
-                                    Console.WriteLine($"INFO:{comText}");
-                                    return DbExecutor.Execute<Driver>("Server=127.0.0.1;User Id=postgres;Password=6851;Database=Dilpom;", comText, new DbDriverhandler());
-                                }
-
-                        List<Driver> drivers = GetDriver();
-                        foreach (var driver in drivers)
-                        {
-                            
-                            <option value="@driver.id">@driver.surname @driver.name @driver.patronymic</option>
-                        }
-                        
-                   
-                    }
-                </select>
-                <span asp-validation-for="driver" class="text-danger"></span>
+                <input asp-for="driver" value="@driver.id" class="hidden"/>
+                <label class="form-control">@driver.name</label>
+                <span asp-validation-for="driver" class="control-label"></span>
                 <label asp-for="auto" class="control-label">Госномер автомобиля</label>
-                <select asp-for="auto">
-                                    @{
-                                         List<CarNew> GetCar()
-                                                {
-                                                    string comText =
-                                                        "select * from public.\"CarList\";";
-                                                    Console.WriteLine($"INFO:{comText}");
-                                                    return DbExecutor.Execute<CarNew>("Server=127.0.0.1;User Id=postgres;Password=6851;Database=Dilpom;", comText, new DBCarNewHandler());
-                                                }
-                
-                                        List<CarNew> cars = GetCar();
-                                        foreach (var car in cars)
-                                        {
-                                            
-                                            <option value="@car.id">@car.govnum</option>
-                                        }
-                                        
-                                   
-                                    }
-                                </select>
-                <span asp-validation-for="auto" class="text-danger"></span>
+                <input asp-for="auto" value="@car.id" class="hidden"/>
+                <label class="form-control">@car.govnum</label>
+                <span asp-validation-for="auto" class="control-label"></span>
                 <label asp-for="date" class="control-label">Дата</label>
                 <input asp-for="date" class="form-control"/>
                 <span asp-validation-for="date" class="text-danger"></span>
@@ -82,7 +67,7 @@
 </div>
 
 <div>
-    <a asp-action="RaceTablePage">Вернуться назад</a>
+    <a class="btn btn-primary" asp-controller="Driver" asp-action="DriverEdit" asp-route-id="@driver.id">Вернуться назад</a>
 </div>
 
 @section Scripts {

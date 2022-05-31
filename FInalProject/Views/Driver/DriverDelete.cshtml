@@ -16,25 +16,20 @@
                           
                             <input type="hidden" id="sort" value="@Model.id" />
                           
-                          <label asp-for="surname" class="control-label">Госномер</label>
-                          <label asp-for="surname" class="form-control">@Model.surname</label>
-                          <span asp-validation-for="surname" class="text-danger"></span>
-                          <label asp-for="name" class="control-label">Изготовитель</label>
+                          
+                          <label asp-for="name" class="control-label">ФИО</label>
                           <label asp-for="name" class="form-control">@Model.name</label>
                           <span asp-validation-for="name" class="text-danger"></span>
-                          <label asp-for="patronymic" class="control-label">Тип машины</label>
-                          <label asp-for="patronymic" class="form-control">@Model.patronymic</label>
-                          <span asp-validation-for="patronymic" class="text-danger"></span>
-                          <label asp-for="drcertnum" class="control-label">Модель</label>
+                          <label asp-for="drcertnum" class="control-label">Номер ВУ</label>
                           <label asp-for="drcertnum" class="form-control">@Model.drcertnum</label>
                           <span asp-validation-for="drcertnum" class="text-danger"></span>
-                          <label asp-for="drcertdate" class="control-label">Объем кузова</label>
+                          <label asp-for="drcertdate" class="control-label">Дата выдачи ВУ</label>
                           <label asp-for="drcertdate" class="form-control">@Model.drcertdate</label>
                           <span asp-validation-for="drcertdate" class="text-danger"></span>
-                          <label asp-for="classs" class="control-label">Тип топлива</label>
+                          <label asp-for="classs" class="control-label">Классы вождения</label>
                           <label asp-for="classs" class="form-control">@Model.classs</label>
                           <span asp-validation-for="classs" class="text-danger"></span>
-                          <label asp-for="timedriving" class="control-label">Объем бензобака</label>
+                          <label asp-for="timedriving" class="control-label">Стаж</label>
                           <label asp-for="timedriving" class="form-control">@Model.timedriving</label>
                           <span asp-validation-for="timedriving" class="text-danger"></span>
                 

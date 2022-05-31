@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using ClosedXML.Excel;
+using FInalProject.Atribute;
+using FInalProject.Data;
 using FInalProject.Models;
 using FInalProject.Services;
 using FInalProject.Util.DB;
@@ -29,13 +31,14 @@ namespace FInalProject.Controllers
             
         }
 
-        [Authorize]
+        
+        [AuthorizeRoles(Roles.Client, Roles.SuperAdmin)]
         public ActionResult GetAllCars()
         {
             
             return RedirectToAction(nameof(CarTablePage));
         }
-        [Authorize]
+        [AuthorizeRoles(Roles.Client, Roles.SuperAdmin)]
         public IActionResult CarTablePage()
         {
             List<CarNew> cars = Dbservice.GetCarsNewList();
@@ -45,32 +48,32 @@ namespace FInalProject.Controllers
       
         
         
-
+        [AuthorizeRoles(Roles.Client, Roles.SuperAdmin)]
         public ActionResult CarAdd()
         {
             return View();
         }
 
         [HttpPost]
-        [Authorize]
+        [AuthorizeRoles(Roles.Client, Roles.SuperAdmin)]
         public ActionResult Create(CarNew car)
         {
             Dbservice.AddNewCar(car);
             return RedirectToAction(nameof(CarAdd));
         }
-
+        [AuthorizeRoles(Roles.Client, Roles.SuperAdmin)]
         public IActionResult CarEdit(int id)
         {
             CarNew car = Dbservice.GetCarById(id);
             return View(car);
         }
-
+        [AuthorizeRoles(Roles.Client, Roles.SuperAdmin)]
         public IActionResult Edit(CarNew car)
         {
             Dbservice.CarEdit(car);
             return RedirectToAction(nameof(CarTablePage));
         }
-
+        [AuthorizeRoles(Roles.Client, Roles.SuperAdmin)]
         public IActionResult CarDelete(int id)
         {
             CarNew car = Dbservice.GetCarById(id);
@@ -78,7 +81,7 @@ namespace FInalProject.Controllers
         }
 
         [HttpPost]
-        [Authorize]
+        [AuthorizeRoles(Roles.Client, Roles.SuperAdmin)]
         public IActionResult Delete(int id)
         {
             Dbservice.DeleteCar(id);
@@ -86,6 +89,7 @@ namespace FInalProject.Controllers
         }
      
         [HttpPost]
+        [AuthorizeRoles(Roles.Client, Roles.SuperAdmin)]
         public IActionResult CarSearch(string key, string field)
         {
             List<CarNew> cars =Dbservice.GetCarsByField(key, field);
@@ -95,7 +99,7 @@ namespace FInalProject.Controllers
 
 
 
-        [Authorize]
+        [AuthorizeRoles(Roles.Client, Roles.SuperAdmin)]
         [HttpPost]
         public IActionResult GetCarListExcel(List<CarNew> data)
         {   Console.WriteLine(data[1].govnum);
@@ -162,7 +166,7 @@ namespace FInalProject.Controllers
         }
 
         
-        
+        [AuthorizeRoles(Roles.Client, Roles.SuperAdmin)]
         public IActionResult GetCarsNewFromExcel(string url)
         {
             XLWorkbook workbook = XLWorkbook.OpenFromTemplate("D:/Downloads/cars1.xlsx");
@@ -203,6 +207,7 @@ namespace FInalProject.Controllers
             }
             return RedirectToAction(nameof(CarTablePage));
         }
+        [AuthorizeRoles(Roles.Client, Roles.SuperAdmin)]
         List<TO> GetTOByAuto(int autoid)
         {
             string comText =
@@ -218,6 +223,7 @@ namespace FInalProject.Controllers
         //     Spire.Doc.Interface.ITextRange textRange = navigator.InsertText(text);//Write text
         //     return textRange as TextRange;
         // }
+        [AuthorizeRoles(Roles.Client, Roles.SuperAdmin)]
         public IActionResult GetAutoDoc(int id)
         {
             Document doc = new Document();

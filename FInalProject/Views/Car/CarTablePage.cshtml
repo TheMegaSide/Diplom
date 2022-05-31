@@ -3,19 +3,22 @@
 @using FInalProject.Util.DbHandlers
 @model List<FInalProject.Models.CarNew> 
 
+<a class="btn btn-primary" asp-controller="Home" asp-action="Index">На главную</a>
+<h1>База данных автомобилей</h1>
 
-<p>База данных автомобилей</p>
-
-
+<h3>Поиск</h3>
 <form method="post" action="~/Car/CarSearch">
     <p>
-        <select name ="field">
-          <option value="type">Тип</option>
-          </select>
+        <label class="control-label">Параметр</label>
+        <br/>
+        <select name="field" class="custom-select" >
+            <option value="type">Тип</option>
+        </select>
     </p>
     <p>
         <label class="control-label">Значение</label>
-        <select name="key">
+        <br/>
+        <select name="key" class="custom-select" >
             @{
                 List<Type> GetTypes()
                 {
@@ -38,12 +41,13 @@
 
     </p>
     <p>
-        <input type="submit" value="Отправить"/>
+        <input class="btn btn-primary" type="submit" value="Отправить"/>
     </p>
 </form>
-<table border="1" style="border-collapse: collapse; width: 100%;">
-    <tbody>
+<table border="1" class="table" style="border-collapse: collapse; width: 100%;alignment: left">
+    <thead class="thead-dark" >
     <tr>
+        <th></th>
         <th >Тип, модификация</th>
         <th >Модель</th>
         <th >Марка, модель</th>
@@ -70,10 +74,12 @@
 
 
     </tr>
-
+    </thead>
+ <tbody>
     @foreach (var car in Model)
     {
         <tr>
+            <td><a class="btn btn-primary" asp-action="CarEdit" asp-route-id="@car.id">Профиль</a></td>
             <td >@car.type</td>
             <td >@car.model</td>
             <td >@car.vin</td>
@@ -84,22 +90,22 @@
             <td width="3%">@car.maxweight</td>
             <td >@car.fueltype</td>
             <td >@car.techstate</td>
-            <td >@car.srokpodk</td>
+            <td >@car.srokpodk.Date</td>
             <td >@car.inscomp</td>
             <td >@car.osagocost</td>
             <td >@car.platonnum</td>
-            <td >@car.platondate</td>
+            <td >@car.platondate.Date</td>
             <td >@car.platonreplace</td>
             <td >@car.glonastype</td>
             <td >@car.simnum</td>
-            <td >@car.glonasdate</td>
+            <td >@car.glonasdate.Date</td>
             <td >@car.worktype</td>
             <td >@car.ptsowner</td>
             <td >@car.stsowner</td>
             <td >@car.regionloc</td>
-            <td><a asp-action="CarDelete" asp-route-id="@car.id">Удалить</a></td>
-            <td><a asp-action="CarEdit" asp-route-id="@car.id">Изменить</a></td>
-            <td><a asp-action="GetAutoDoc" asp-route-id="@car.id">Получить паспорт</a></td>
+
+            @* <td><a asp-action="CarDelete" asp-route-id="@car.id">Удалить</a></td> *@
+            @* <td><a asp-action="GetAutoDoc" asp-route-id="@car.id">Получить паспорт</a></td> *@
 
 
         </tr>
@@ -108,11 +114,11 @@
     
     </tbody >
 </table >
-<div class="form-group">
-    <a asp-area="" asp-controller="Car" asp-action="GetCarListExcel" >Excel таблица по автомобилям</a>
-</div>
-<form method="post" action="~/Car/GetCarListExcel">
-    <p>
-        <input type="submit" value="Отправить" />
-    </p>
-</form>
+@* <div class="form-group"> *@
+@*     <a asp-area="" asp-controller="Car" asp-action="GetCarListExcel" >Excel таблица по автомобилям</a> *@
+@* </div> *@
+@* <form method="post" action="~/Car/GetCarListExcel"> *@
+@*     <p> *@
+@*         <input type="submit" value="Отправить" /> *@
+@*     </p> *@
+@* </form> *@

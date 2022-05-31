@@ -33,7 +33,7 @@
 <p>График ТО на @month @ViewBag.Year г.</p>
 
 <table border="1" style="border-collapse: collapse; width: 100%;">
-    <tbody>
+    <thead>
     <tr>
         <th style="width: 11.1111%;">Автомашина</th>
         <th style="width: 11.1111%;">Шасси</th>
@@ -46,7 +46,8 @@
             }
         }
     </tr>
-    
+    </thead>
+     <tbody>
     @foreach (var to in Model)
     {
         <tr>

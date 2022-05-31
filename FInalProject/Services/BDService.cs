@@ -17,13 +17,7 @@ namespace FInalProject.Services
             ConnectionString = configuration.GetConnectionString("NpgsqlConnection");
         }
 
-        public List<Car> GetCarsList()
-        {
-            string comText =
-                "Select * from cars;";
-            Console.WriteLine($"INFO:{comText}");
-            return DbExecutor.Execute<Car>(ConnectionString, comText, new DbCarHandler());
-        }
+        
 
         public CarNew GetCarById(int id)
         {
@@ -43,7 +37,7 @@ namespace FInalProject.Services
                 "', glonasdate='"+car.glonasdate+"', worktype='"+car.worktype+"', ptsowner='"+car.ptsowner+"', stsowner='"+car.stsowner+"', regionloc='"+car.regionloc+"', platonnum='"+car.platonnum+"'"+
             "where id=" + car.id;
             Console.WriteLine($"INFO:{comText}");
-            DbExecutor.Execute(ConnectionString, comText, new DbCarHandler());
+            DbExecutor.Execute(ConnectionString, comText, new DBCarNewHandler());
         }
 
         
@@ -53,7 +47,7 @@ namespace FInalProject.Services
             string comText =
                 "delete from public.\"CarList\" where id=" + id;
             Console.WriteLine($"INFO:{comText}");
-            DbExecutor.Execute(ConnectionString, comText, new DbCarHandler());
+            DbExecutor.Execute(ConnectionString, comText, new DBCarNewHandler());
         }
 
         public List<CarNew> GetCarsByField(string key, string field)
@@ -66,9 +60,20 @@ namespace FInalProject.Services
 
         public List<Driver> GetDriversByField(string key, string field)
         {
-            string comText =
-                "Select * from drivers where  " + field + "='" + key + "'";
-            Console.WriteLine($"INFO:{comText}");
+            string comText="";
+            if (field == "name")
+            {
+                comText =
+                    "Select * from drivers where  name~'"+key+"'";
+                Console.WriteLine($"INFO:{comText}");
+            }
+            else
+            {
+                comText =
+                    "Select * from drivers where  " + field + "='" + key + "'";
+                Console.WriteLine($"INFO:{comText}");
+            }
+
             return DbExecutor.Execute<Driver>(ConnectionString, comText, new DbDriverhandler());
         }
 
@@ -90,10 +95,10 @@ namespace FInalProject.Services
         public void DriverEdit(Driver driver)
         {
             string comText =
-                "Update drivers set surname='" + driver.surname + "',name='" + driver.name +
-                "',patronymic='" + driver.patronymic + "',drcertnum=" + driver.drcertnum + ",drcertdate='" +
+                "Update drivers set name='" + driver.name +
+                 "',drcertnum=" + driver.drcertnum + ",drcertdate='" +
                 driver.drcertdate + "',class='" + driver.classs + "',timedriving=" + driver.timedriving +
-                " where id=" + driver.id;
+                " where id=" + driver.id+",auto="+driver.auto;
             Console.WriteLine($"INFO:{comText}");
             DbExecutor.Execute(ConnectionString, comText, new DbDriverhandler());
         }
@@ -101,10 +106,9 @@ namespace FInalProject.Services
         public void AddDriver(Driver driver)
         {
             string comText =
-                "Insert into drivers(surname,name,patronymic,drcertnum,drcertdate,class,timedriving) values('" +
-                driver.surname +
-                "','" + driver.name + "','" + driver.patronymic + "'," + driver.drcertnum + ",'" + driver.drcertdate +
-                "','" + driver.classs + "','" + driver.timedriving + "') ";
+                "Insert into drivers(name,drcertnum,drcertdate,class,timedriving, auto) values('" +
+                 driver.name + "',"  + driver.drcertnum + ",'" + driver.drcertdate.Date +
+                "','" + driver.classs + "','" + driver.timedriving + "',"+driver.auto+") ";
 
             DbExecutor.Execute(ConnectionString, comText, new DbDriverhandler());
         }
@@ -120,6 +124,24 @@ namespace FInalProject.Services
         {
             string comText =
                 "select *  from races,drivers,\"CarList\" where drivers.id=races.driver and \"CarList\".id=races.auto";
+            Console.WriteLine($"INFO:{comText}");
+            return DbExecutor.Execute<Race>(ConnectionString, comText, new DbRaceHandler());
+        }
+        public List<Race> GetRaceByDate(DateTime startdate, DateTime enddate)
+        {
+            Console.WriteLine(startdate);
+            string comText = "";
+            if (enddate.ToString() == "01.01.0001 0:00:00")
+            {
+                comText =
+                    "select *  from races,drivers,\"CarList\" where date>'"+startdate.ToShortDateString()+"'";
+            }
+            else
+            {
+                comText =
+                    "select *  from races,drivers,\"CarList\" where date>'"+startdate.Date +"' and date<'"+enddate.Date+"'";
+            }
+            Console.WriteLine($"INFO:{comText}");
             return DbExecutor.Execute<Race>(ConnectionString, comText, new DbRaceHandler());
         }
 

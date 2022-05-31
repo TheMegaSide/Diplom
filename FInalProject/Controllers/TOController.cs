@@ -22,12 +22,24 @@ namespace FInalProject.Controllers
             return RedirectToAction(nameof(TOTablePage));
         }
         [Authorize]
-        public IActionResult TOTablePage(string month, string year)
+        public IActionResult TOTablePage(string date)
         {
-            ViewBag.Month = month;
-            ViewBag.Year = year;
-            List<TO> tos = Dbservice.GetTOList(month, year);
-            return View(tos);
+            try
+            {
+                var year = date.Substring(0, 4);
+
+                var month = date.Substring(5, 2);
+
+                ViewBag.Month = month;
+                ViewBag.Year = year;
+                List<TO> tos = Dbservice.GetTOList(month, year);
+                return View(tos);
+            }
+            catch (NullReferenceException)
+            {
+                return RedirectToAction("Index","Home");
+            }
+            
         }
         public ActionResult TOAdd(string month, string year)
         {
@@ -70,5 +82,7 @@ namespace FInalProject.Controllers
             return RedirectToAction(nameof(TOTablePage),new {month=month1, year=year1});
             
         }
+
+       
     }
 }

@@ -7,7 +7,7 @@
      ViewData["Title"] = "Edit";
 }
 
-<h1>Изменение данных</h1>
+<h1>Профиль автомобиля</h1>
 
 <h4>Автомобиль</h4>
 
@@ -16,104 +16,119 @@
         <form asp-action="Edit" asp-route-id="@Model.id">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                                
-                               <select asp-for="type">
-                                                   @{
-                                                       List<Type> GetTypes()
-                                                       {
-                                                           string comText =
-                                                               "select * from types;";
-                                                           Console.WriteLine($"INFO:{comText}");
-                                                           return DbExecutor.Execute<Type>("Server=127.0.0.1;User Id=postgres;Password=6851;Database=Dilpom;", comText, new DBTypeHandler());
-                                                       }
+                <label asp-for="type" class="control-label">Тип</label>  
+                <br/>
+                <select asp-for="type" class="custom-select">
+                    @{
+                        List<Type> GetTypes()
+                        {
+                            string comText =
+                                "select * from types;";
+                            Console.WriteLine($"INFO:{comText}");
+                            return DbExecutor.Execute<Type>("Server=127.0.0.1;User Id=postgres;Password=6851;Database=Dilpom;", comText, new DBTypeHandler());
+                        }
                                
-                                                       List<Type> types = GetTypes();
-                                                       foreach (var type in types)
-                                                       {
-                                                           <option value="@type.type">@type.type</option>
-                                                       }
+                        List<Type> types = GetTypes();
+                        foreach (var type in types)
+                        {
+                            <option value="@type.type">@type.type</option>
+                        }
                                
                                
-                                                   }
-                                               </select>
-                                               <span asp-validation-for="govnum" class="text-danger"></span>
-                                               <label asp-for="model" class="control-label">Марка, модель</label>
-                                               <input asp-for="model" class="form-control"/>
-                                               <span asp-validation-for="model" class="text-danger"></span>
-                                               <label asp-for="vin" class="control-label">VIN</label>
-                                               <input asp-for="vin" class="form-control"/>
-                                               <span asp-validation-for="vin" class="text-danger"></span>
-                                               <label asp-for="yearprod" class="control-label">Год выпуска</label>
-                                               <input asp-for="yearprod" class="form-control"/>
-                                               <span asp-validation-for="yearprod" class="text-danger"></span>
-                                               <label asp-for="govnum" class="control-label">Гос. номер</label>
-                                               <input asp-for="govnum" class="form-control"/>
-                                               <span asp-validation-for="govnum" class="text-danger"></span>
-                                               <label asp-for="value" class="control-label">Объём, м3</label>
-                                               <input asp-for="value" class="form-control"/>
-                                               <span asp-validation-for="value" class="text-danger"></span>
-                                               <label asp-for="weight" class="control-label">Масса без нагрузки кг</label>
-                                               <input asp-for="weight" class="form-control"/>
-                                               <span asp-validation-for="weight" class="text-danger"></span>
-                                               <label asp-for="maxweight" class="control-label">Разрешенная максимальная масса кг</label>
-                                               <input asp-for="maxweight" class="form-control"/>
-                                               <span asp-validation-for="maxweight" class="text-danger"></span>
-                                               <label asp-for="fueltype" class="control-label">Марка топлива, объём топливного бака</label>
-                                               <input asp-for="fueltype" class="form-control"/>
-                                               <span asp-validation-for="fueltype" class="text-danger"></span>
-                                               <label asp-for="techstate" class="control-label">Техническое состояние (№ страхового полиса исправной техники)</label>
-                                               <input asp-for="techstate" class="form-control"/>
-                                               <span asp-validation-for="techstate" class="text-danger"></span>
-                                               <label asp-for="srokpodk" class="control-label">Срок по ДК</label>
-                                               <input asp-for="srokpodk" class="form-control"/>
-                                               <span asp-validation-for="srokpodk" class="text-danger"></span>
-                                               <label asp-for="inscomp" class="control-label">Стаховая компания по ОСАГО</label>
-                                               <input asp-for="inscomp" class="form-control"/>
-                                               <span asp-validation-for="inscomp" class="text-danger"></span>
-                                               <label asp-for="osagocost" class="control-label">Стоимость ОСАГО</label>
-                                               <input asp-for="osagocost" class="form-control"/>
-                                               <span asp-validation-for="osagocost" class="text-danger"></span>
-                                               <label asp-for="platonnum" class="control-label">ПЛАТОН, №</label>
-                                               <input asp-for="platonnum" class="form-control"/>
-                                               <span asp-validation-for="platonnum" class="text-danger"></span>
-                                               <label asp-for="platondate" class="control-label">Дата оканчания срока службы БУ</label>
-                                               <input asp-for="platondate" class="form-control"/>
-                                               <span asp-validation-for="platondate" class="text-danger"></span>
-                                               <label asp-for="platonreplace" class="control-label">Замена БУ ПЛАТОН на безвозмездной основе</label>
-                                               <select asp-for="platonreplace" class="form-control">
-                                                   <option value="Да">Да</option>
-                                                   <option value="Нет">Нет</option>
-                                               </select>
-                                               <span asp-validation-for="platonreplace" class="text-danger"></span>
-                                               <label asp-for="glonastype" class="control-label">Тип устройства глонасс</label>
-                                               <input asp-for="glonastype" class="form-control"/>
-                                               <span asp-validation-for="glonastype" class="text-danger"></span>
-                                               <label asp-for="simnum" class="control-label">Номер СИМ</label>
-                                               <input asp-for="simnum" class="form-control"/>
-                                               <span asp-validation-for="simnum" class="text-danger"></span>
-                                               <label asp-for="glonasdate" class="control-label">Дата установки</label>
-                                               <input asp-for="glonasdate" class="form-control"/>
-                                               <span asp-validation-for="glonasdate" class="text-danger"></span>
-                                               <label asp-for="worktype" class="control-label">Вид работы</label>
-                                               <select asp-for="worktype" class="form-control">
-                                                   <option value="Перевод">Перевод</option>
-                                                   <option value="Новая установка">Новая установка</option>
-                                               </select>
-                                               <span asp-validation-for="worktype" class="text-danger"></span>
-                                               <label asp-for="ptsowner" class="control-label">Собственник по ПТС</label>
-                                               <input asp-for="ptsowner" class="form-control"/>
-                                               <span asp-validation-for="ptsowner" class="text-danger"></span>
-                                               <label asp-for="stsowner" class="control-label">Собственник по СТС</label>
-                                               <input asp-for="stsowner" class="form-control"/>
-                                               <span asp-validation-for="stsowner" class="text-danger"></span>
-                                               <label asp-for="regionloc" class="control-label">Местонахождение транспорта (регион)</label>
-                                               <input asp-for="regionloc" class="form-control"/>
-                                               <span asp-validation-for="regionloc" class="text-danger"></span>
+                    }
+                </select>
+                <span asp-validation-for="type" class="text-danger"></span>
+                <label asp-for="model" class="control-label">Марка, модель</label>
+                <input asp-for="model" class="form-control"/>
+                <span asp-validation-for="model" class="text-danger"></span>
+                <label asp-for="vin" class="control-label">VIN</label>
+                <input asp-for="vin" class="form-control"/>
+                <span asp-validation-for="vin" class="text-danger"></span>
+                <label asp-for="yearprod" class="control-label">Год выпуска</label>
+                <input asp-for="yearprod" class="form-control"/>
+                <span asp-validation-for="yearprod" class="text-danger"></span>
+                <label asp-for="govnum" class="control-label">Гос. номер</label>
+                <input asp-for="govnum" class="form-control"/>
+                <span asp-validation-for="govnum" class="text-danger"></span>
+                <label asp-for="value" class="control-label">Объём, м3</label>
+                <input asp-for="value" class="form-control"/>
+                <span asp-validation-for="value" class="text-danger"></span>
+                <label asp-for="weight" class="control-label">Масса без нагрузки кг</label>
+                <input asp-for="weight" class="form-control"/>
+                <span asp-validation-for="weight" class="text-danger"></span>
+                <label asp-for="maxweight" class="control-label">Разрешенная максимальная масса кг</label>
+                <input asp-for="maxweight" class="form-control"/>
+                <span asp-validation-for="maxweight" class="text-danger"></span>
+                <label asp-for="fueltype" class="control-label">Марка топлива, объём топливного бака</label>
+                <input asp-for="fueltype" class="form-control"/>
+                <span asp-validation-for="fueltype" class="text-danger"></span>
+                <label asp-for="techstate" class="control-label">Техническое состояние (№ страхового полиса исправной техники)</label>
+                <input asp-for="techstate" class="form-control"/>
+                <span asp-validation-for="techstate" class="text-danger"></span>
+                <label asp-for="srokpodk" class="control-label">Срок по ДК</label>
+                <input asp-for="srokpodk" class="form-control"/>
+                <span asp-validation-for="srokpodk" class="text-danger"></span>
+                <label asp-for="inscomp" class="control-label">Стаховая компания по ОСАГО</label>
+                <input asp-for="inscomp" class="form-control"/>
+                <span asp-validation-for="inscomp" class="text-danger"></span>
+                <label asp-for="osagocost" class="control-label">Стоимость ОСАГО</label>
+                <input asp-for="osagocost" class="form-control"/>
+                <span asp-validation-for="osagocost" class="text-danger"></span>
+                <label asp-for="platonnum" class="control-label">ПЛАТОН, №</label>
+                <input asp-for="platonnum" class="form-control"/>
+                <span asp-validation-for="platonnum" class="text-danger"></span>
+                <label asp-for="platondate" class="control-label">Дата оканчания срока службы БУ</label>
+                <input asp-for="platondate" class="form-control"/>
+                <span asp-validation-for="platondate" class="text-danger"></span>
+                <label asp-for="platonreplace" class="control-label">Замена БУ ПЛАТОН на безвозмездной основе</label>
+                <select asp-for="platonreplace" class="form-control">
+                    <option value="Да">Да</option>
+                    <option value="Нет">Нет</option>
+                </select>
+                <span asp-validation-for="platonreplace" class="text-danger"></span>
+                <label asp-for="glonastype" class="control-label">Тип устройства глонасс</label>
+                <input asp-for="glonastype" class="form-control"/>
+                <span asp-validation-for="glonastype" class="text-danger"></span>
+                <label asp-for="simnum" class="control-label">Номер СИМ</label>
+                <input asp-for="simnum" class="form-control"/>
+                <span asp-validation-for="simnum" class="text-danger"></span>
+                <label asp-for="glonasdate" class="control-label">Дата установки</label>
+                <input asp-for="glonasdate" class="form-control"/>
+                <span asp-validation-for="glonasdate" class="text-danger"></span>
+                <label asp-for="worktype" class="control-label">Вид работы</label>
+                <select asp-for="worktype" class="form-control">
+                    <option value="Перевод">Перевод</option>
+                    <option value="Новая установка">Новая установка</option>
+                </select>
+                <span asp-validation-for="worktype" class="text-danger"></span>
+                <label asp-for="ptsowner" class="control-label">Собственник по ПТС</label>
+                <input asp-for="ptsowner" class="form-control"/>
+                <span asp-validation-for="ptsowner" class="text-danger"></span>
+                <label asp-for="stsowner" class="control-label">Собственник по СТС</label>
+                <input asp-for="stsowner" class="form-control"/>
+                <span asp-validation-for="stsowner" class="text-danger"></span>
+                <label asp-for="regionloc" class="control-label">Местонахождение транспорта (регион)</label>
+                <input asp-for="regionloc" class="form-control"/>
+                <span asp-validation-for="regionloc" class="text-danger"></span>
             </div>
+            
             <div class="form-group">
-                <input type="submit" value="Сохранить" class="btn btn-primary"/>
+                <input type="submit" value="Сохранить изменения" class="btn btn-primary"/>
             </div>
+            
         </form>
+        <form method="post" action="~/Car/Delete">
+            <input type="hidden" name="id" value="@Model.id"/>
+            <p>
+                <input type="submit" value="Удалить" class="btn btn-primary"/>
+            </p>
+        </form>
+        <form method="post" action="~/Car/GetAutoDoc">
+            <input type="hidden" name="id" value="@Model.id"/>
+            <p>
+                <input type="submit" value="Создать паспорт(формуляр)" class="btn btn-primary"/>
+            </p>
+        </form> 
     </div>
 </div>
 

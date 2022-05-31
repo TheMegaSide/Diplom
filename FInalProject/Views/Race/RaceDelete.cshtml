@@ -37,7 +37,7 @@
                                 
                     List<Driver> drivers = GetDriverList();
                                                         
-                    <label asp-for="raceTime" class="form-control">@drivers[0].surname @drivers[0].name @drivers[0].patronymic</label>
+                    <label asp-for="raceTime" class="form-control"> @drivers[0].name </label>
                                                         
                                                         
                                                    
@@ -47,15 +47,15 @@
                 <label asp-for="auto" class="control-label">Госномер автомобиля</label>
                 
                     @{
-                        List<Car> GetCar()
+                        List<CarNew> GetCar()
                         {
                             string comText =
-                                "Select * from cars where id="+Model.auto;
+                                "Select * from \"CarList\" where id="+Model.auto;
                             Console.WriteLine($"INFO:{comText}");
-                            return DbExecutor.Execute<Car>("Server=127.0.0.1;User Id=postgres;Password=6851;Database=Dilpom;", comText, new DbCarHandler());
+                            return DbExecutor.Execute<CarNew>("Server=127.0.0.1;User Id=postgres;Password=6851;Database=Dilpom;", comText, new DBCarNewHandler());
                         }
                                                 
-                        List<Car> cars = GetCar();
+                        List<CarNew> cars = GetCar();
                         
                                                                             
                           <label asp-for="raceTime" class="form-control">@cars[0].govnum</label>

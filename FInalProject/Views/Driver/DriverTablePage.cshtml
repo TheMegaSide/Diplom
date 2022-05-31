@@ -1,17 +1,23 @@
-﻿@model List<FInalProject.Models.Driver> 
+﻿@using FInalProject.Util.DB
+@using FInalProject.Util.DbHandlers
+@model List<FInalProject.Models.Driver> 
 
-
-<p>База данных автомобилей</p>
+<a class="btn btn-primary" asp-controller="Home" asp-action="Index">На главную</a>
+<h1>База данных автомобилей</h1>
+<h3>Поиск</h3>
 <form method="post" action="~/Driver/DriverSearch">
     <p>
-        <select name ="field">
-          <option value="surname">Фамилия</option>
+        <label class="control-label">Параметр</label>
+                <br/>
+        <select class="custom-select" name="field">
+            <option value="name">ФИО</option>
             <option value="drcertnum">Номер ВУ</option>
-            <option value="classs">Класс вождения</option>
+            <option value="class">Класс вождения</option>
         </select>
     </p>
     <p>
         <label class="control-label">Значение</label>
+        <br/>
         <input type="text" name="key"/>
 
     </p>
@@ -19,32 +25,50 @@
         <input type="submit" value="Отправить"/>
     </p>
 </form>
-<table border="1" style="border-collapse: collapse; width: 100%;">
-    <tbody>
+<table border="1" class="table" style="border-collapse: collapse; width: 100%;alignment: left">
+    <thead class="thead-dark">
     <tr>
         
-        <th style="width: 11.1111%;">Фамилия</th>
-        <th style="width: 11.1111%;">Имя</th>
-        <th style="width: 11.1111%;">Отчество</th>
+        <th></th>
+        <th style="width: 11.1111%;">ФИО</th>
+       
         <th style="width: 11.1111%;">Номер ВУ</th>
         <th style="width: 11.1111%;">Дата выдачи ВУ</th>
         <th style="width: 11.1111%;">Классы вождения</th>
         <th style="width: 11.1111%;">Стаж</th>
+        <th>Закрепленный автомобиль</th>
     </tr>
-
+    </thead>
+    <tbody>
     @foreach (var driver in Model)
     {
         <tr>
-            <td style="width: 11.1111%;">@driver.surname</td>
+            <td><a class="btn btn-primary" asp-action="DriverEdit" asp-route-id="@driver.id">Изменить</a></td>
             <td style="width: 11.1111%;">@driver.name</td>
-            <td style="width: 11.1111%;">@driver.patronymic</td>
+            
             <td style="width: 11.1111%;">@driver.drcertnum</td>
             <td style="width: 11.1111%;">@driver.drcertdate.ToShortDateString()</td>
             <td style="width: 11.1111%;">@driver.classs</td>
             <td style="width: 11.1111%;">@driver.timedriving</td>
             
-            <td><a asp-action="DriverDelete" asp-route-id="@driver.id">Удалить</a></td> 
-            <td><a asp-action="DriverEdit" asp-route-id="@driver.id">Изменить</a></td> 
+                @{
+                    List<CarNew> GetCars()
+                    {
+                        string comText =
+                            "select \"CarList\".* from \"CarList\", drivers where \"CarList\".id=drivers.auto and drivers.id="+driver.id;
+                        Console.WriteLine($"INFO:{comText}");
+                        return DbExecutor.Execute<CarNew>("Server=127.0.0.1;User Id=postgres;Password=6851;Database=Dilpom;", comText, new DBCarNewHandler());
+                    }
+
+                    List<CarNew> cars = GetCars();
+                    foreach (var car in cars)
+                    {
+                        <td>@car.govnum</td>
+                    }
+                }
+            
+           
+           
 
 
         </tr>

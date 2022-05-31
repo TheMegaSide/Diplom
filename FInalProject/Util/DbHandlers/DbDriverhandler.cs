@@ -12,13 +12,14 @@ namespace FInalProject.Util.DbHandlers
             return new Driver
             {
                 id = (int)rdr["id"],
-                surname = rdr["surname"].ToString(),
+                
                 name = rdr["name"].ToString(),
-                patronymic = rdr["patronymic"].ToString(),
+                
                 drcertnum = (int) rdr["drcertnum"],
                 drcertdate = (DateTime)rdr["drcertdate"],
                 classs = rdr["class"].ToString(),
-                timedriving = rdr["timedriving"].ToString()
+                timedriving = rdr["timedriving"].ToString(),
+                auto = (int)rdr["auto"]
 
 
             };

@@ -1,28 +1,26 @@
 ﻿@model List<FInalProject.Models.Race> 
 
 
-
+<a class="btn btn-primary" asp-controller="Home" asp-action="Index">На главную</a>
 <p>Совершенные рейсы</p>
 
 
-<form method="post" action="~/Car/CarSearch">
+<form method="post" action="~/Race/RaceSearch">
     <p>
-        <select name ="field">
-          <option value="govnum">Госномер</option>
-          <option value="tankvalue">Объем бензобака</option>
-        </select>
+        <label class="control-label">Значение</label>
+        <input type="date" name="startdate"/>
     </p>
     <p>
         <label class="control-label">Значение</label>
-        <input type="text" name="key"/>
+        <input type="date" name="enddate"/>
 
     </p>
     <p>
         <input type="submit" value="Отправить"/>
     </p>
 </form>
-<table border="1" style="border-collapse: collapse; width: 100%;">
-    <tbody>
+<table border="1" class="table" style="border-collapse: collapse; width: 100%;alignment: left">
+    <thead class="thead-dark">
     <tr>
         <th style="width: 11.1111%;">Объем груза</th>
         <th style="width: 11.1111%;">Время рейса</th>
@@ -30,7 +28,8 @@
         <th style="width: 11.1111%;">Автомобиль</th>
         <th style="width: 11.1111%;">Дата</th>
     </tr>
-
+    </thead>
+    <tbody>
     @foreach (var race in Model)
     {
         <tr>
@@ -47,7 +46,7 @@
     }
         
     
-    </tbody >
+    </tbody>
 </table >
 
 

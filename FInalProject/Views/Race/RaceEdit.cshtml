@@ -37,7 +37,7 @@
                                                         foreach (var driver in drivers)
                                                         {
                                                             
-                                                            <option value="@driver.id">@driver.surname @driver.name @driver.patronymic</option>
+                                                            <option value="@driver.id"> @driver.name </option>
                                                         }
                                                         
                                                    
@@ -47,15 +47,15 @@
                                                 <label asp-for="auto" class="control-label">Госномер автомобиля</label>
                                                 <select asp-for="auto">
                                                                     @{
-                                                                         List<Car> GetCarList()
+                                                                         List<CarNew> GetCarList()
                                                                                 {
                                                                                     string comText =
                                                                                         "Select * from cars;";
                                                                                     Console.WriteLine($"INFO:{comText}");
-                                                                                    return DbExecutor.Execute<Car>("Server=127.0.0.1;User Id=postgres;Password=6851;Database=Dilpom;", comText, new DbCarHandler());
+                                                                                    return DbExecutor.Execute<CarNew>("Server=127.0.0.1;User Id=postgres;Password=6851;Database=Dilpom;", comText, new DBCarNewHandler());
                                                                                 }
                                                 
-                                                                        List<Car> cars = GetCarList();
+                                                                        List<CarNew> cars = GetCarList();
                                                                         foreach (var car in cars)
                                                                         {
                                                                             

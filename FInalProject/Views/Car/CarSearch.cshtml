@@ -1,74 +1,81 @@
 ﻿@using ClosedXML.Excel
 @model List<FInalProject.Models.CarNew> 
 
-
+<a class="btn btn-primary" asp-controller="Home" asp-action="Index">На главную</a>
 <p>База данных автомобилей</p>
 
 
 
-<table border="1" style="border-collapse: collapse; width: 100%;">
-    <tbody>
-   <tr>
-           <th >Тип, модификация</th>
-           <th >Модель</th>
-           <th >Марка, модель</th>
-           <th >Год выпуска</th>
-           <th >Гос.авто.номер</th>
-           <th >Объём, м3</th>
-           <th >Масса без нагрузки кг</th>
-           <th >Разрешенная максимальная масса кг</th>
-           <th >Марка топлива, объём топливного бака</th>
-           <th >Техническое состояние (№ страхового полиса исправной техники)</th>
-           <th >Срок по ДК</th>
-           <th >Стаховая компания по ОСАГО</th>
-           <th >Стоимость ОСАГО</th>
-           <th >ПЛАТОН, №</th>
-           <th >Дата окончания срока службы БУ</th>
-           <th >Замена БУ ПЛАТОН на безвозмездной основе</th>
-           <th >Тип устройства глонасс</th>
-           <th >Номер СИМ</th>
-           <th >Дата установки</th>
-           <th >Вид работы</th>
-           <th >Собственник по ПТС</th>
-           <th >Собственник по СТС</th>
-           <th >Местонахождение транспорта (регион)</th>
-   
-   
-       </tr>
-   
-       @foreach (var car in Model)
-       {
-           <tr>
-               <td >@car.type</td>
-               <td >@car.model</td>
-               <td >@car.vin</td>
-               <td >@car.yearprod</td>
-               <td >@car.govnum</td>
-               <td >@car.value</td>
-               <td width="3%">@car.weight</td>
-               <td width="3%">@car.maxweight</td>
-               <td >@car.fueltype</td>
-               <td >@car.techstate</td>
-               <td >@car.srokpodk</td>
-               <td >@car.inscomp</td>
-               <td >@car.osagocost</td>
-               <td >@car.platonnum</td>
-               <td >@car.platondate</td>
-               <td >@car.platonreplace</td>
-               <td >@car.glonastype</td>
-               <td >@car.simnum</td>
-               <td >@car.glonasdate</td>
-               <td >@car.worktype</td>
-               <td >@car.ptsowner</td>
-               <td >@car.stsowner</td>
-               <td >@car.regionloc</td>
-               <td><a asp-action="CarDelete" asp-route-id="@car.id">Удалить</a></td>
-               <td><a asp-action="CarEdit" asp-route-id="@car.id">Изменить</a></td>
-   
-   
-           </tr>
+<table border="1" class="table" style="border-collapse: collapse; width: 100%;alignment: left">
+    <thead class="thead-dark" >
+    <tr>
+        <th></th>
+        <th >Тип, модификация</th>
+        <th >Модель</th>
+        <th >Марка, модель</th>
+        <th >Год выпуска</th>
+        <th >Гос.авто.номер</th>
+        <th >Объём, м3</th>
+        <th >Масса без нагрузки кг</th>
+        <th >Разрешенная максимальная масса кг</th>
+        <th >Марка топлива, объём топливного бака</th>
+        <th >Техническое состояние (№ страхового полиса исправной техники)</th>
+        <th >Срок по ДК</th>
+        <th >Стаховая компания по ОСАГО</th>
+        <th >Стоимость ОСАГО</th>
+        <th >ПЛАТОН, №</th>
+        <th >Дата окончания срока службы БУ</th>
+        <th >Замена БУ ПЛАТОН на безвозмездной основе</th>
+        <th >Тип устройства глонасс</th>
+        <th >Номер СИМ</th>
+        <th >Дата установки</th>
+        <th >Вид работы</th>
+        <th >Собственник по ПТС</th>
+        <th >Собственник по СТС</th>
+        <th >Местонахождение транспорта (регион)</th>
+
+
+    </tr>
+    </thead>
+ <tbody>
+    @foreach (var car in Model)
+    {
+        <tr>
+            <td><a class="btn btn-primary" asp-action="CarEdit" asp-route-id="@car.id">Профиль</a></td>
+            <td >@car.type</td>
+            <td >@car.model</td>
+            <td >@car.vin</td>
+            <td >@car.yearprod</td>
+            <td >@car.govnum</td>
+            <td >@car.value</td>
+            <td width="3%">@car.weight</td>
+            <td width="3%">@car.maxweight</td>
+            <td >@car.fueltype</td>
+            <td >@car.techstate</td>
+            <td >@car.srokpodk.Date</td>
+            <td >@car.inscomp</td>
+            <td >@car.osagocost</td>
+            <td >@car.platonnum</td>
+            <td >@car.platondate.Date</td>
+            <td >@car.platonreplace</td>
+            <td >@car.glonastype</td>
+            <td >@car.simnum</td>
+            <td >@car.glonasdate.Date</td>
+            <td >@car.worktype</td>
+            <td >@car.ptsowner</td>
+            <td >@car.stsowner</td>
+            <td >@car.regionloc</td>
+
+            @* <td><a asp-action="CarDelete" asp-route-id="@car.id">Удалить</a></td> *@
+            @* <td><a asp-action="GetAutoDoc" asp-route-id="@car.id">Получить паспорт</a></td> *@
+
+
+        </tr>
     }
-   
+        
+    
+    </tbody >
+</table >
 <div>
     <form method="post" action="~/Car/GetCarListExcel">
         <input type = "hidden" name="data" value="@ViewBag.Cars"/>
@@ -81,6 +88,5 @@
  
         
 
-    <a asp-action="CarTablePage">Вернуться назад</a>
-    </tbody >
-</table >
+ <a class="btn btn-primary" asp-controller="Car" asp-action="CarTablePage">Назад</a>
+ 

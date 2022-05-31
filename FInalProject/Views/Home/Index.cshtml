@@ -2,36 +2,40 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
+<div class="text-center" xmlns="http://www.w3.org/1999/html">
     <h1 class="display-4">Добро пожаловать</h1>
-    TO
-    График ТО за выбранную дату
-    <form method="post" action="~/TO/TOTablePage">
-        <p>
-            <label class="control-label">Месяц</label>
-            <select type="text" name="month">
-                <option value="01">Январь</option>
-                <option value="02">Февраль</option>
-                <option value="03">Март</option>
-                <option value="04">Апрель</option>
-                <option value="05">Май</option>
-                <option value="06">Июнь</option>
-                <option value="07">Июль</option>
-                <option value="08">Август</option>
-                <option value="09">Сентябрь</option>
-                <option value="10">Октябрь</option>
-                <option value="11">Ноябрь</option>
-                <option value="12">Декабрь</option>
-            </select>
-        </p>
-        <p>
-            <label class="control-label">Значение</label>
-            <input type="text" name="year"/>
-    
-        </p>
-        <p>
-            <input type="submit" value="Отправить"/>
-        </p>
-    </form>
+   
+        <div align="left">
+            <h2 >TO</h2>
+            <h3 >График ТО за выбранную дату</h3>
+            <form method="post" action="~/TO/TOTablePage">
+                <p>
+                    <label  class="control-label">Месяц</label>
 
-</div>
+                    <input  type="month" name="date"/>
+                </p>
+
+                <p>
+                    <input  class="btn btn-primary" type="submit" value="Перейти к графику"/>
+                </p>
+            </form>
+        
+        </div>
+        <div align="left">
+            <h2 >База автомашин</h2>
+            
+            <a class="text-primary" asp-controller="Car" asp-action="CarTablePage">Таблица автомашин</a>
+            <br>
+            <a class="text-primary" asp-controller="Car" asp-action="CarAdd">Добавить автомобиль</a>
+        </div>
+    <div align="left">
+        <h2 >База водителей</h2>
+        <a class="text-primary" asp-controller="Driver" asp-action="DriverTablePage">Таблица водителей</a>
+        <br>
+        <a class="text-primary" asp-controller="Driver" asp-action="DriverAdd">Добавить водителя</a>
+    </div>
+    <div align="left">
+                <h2 >Сводка по рейсам</h2>
+                <a class="text-primary" asp-controller="Race" asp-action="RaceTablePage">Таблица рейсов</a>
+                </div>
+    </div>

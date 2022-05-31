@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using FInalProject.Models;
 using FInalProject.Services;
 using Microsoft.AspNetCore.Authorization;
@@ -20,9 +21,10 @@ namespace FInalProject.Controllers
             List<Race> race = Dbservice.GetRaceList();
             return View(race);
         }
-        public ActionResult RaceAdd()
+        public ActionResult RaceAdd(int id)
         {
-           
+            Console.WriteLine(id);
+            ViewBag.Driver = id;
             return View();
         }
 
@@ -31,7 +33,7 @@ namespace FInalProject.Controllers
         public ActionResult Create(Race race)
         {
             Dbservice.AddRace(race);
-            return RedirectToAction(nameof(RaceAdd));
+            return RedirectToAction(nameof(RaceTablePage));
         }
         public IActionResult RaceEdit(int id)
         {
@@ -71,5 +73,12 @@ namespace FInalProject.Controllers
             //                               .Write();
             return null;
         }
+
+        public ActionResult RaceSearch(DateTime startdate, DateTime enddate)
+        {
+            List<Race> races = Dbservice.GetRaceByDate(startdate, enddate);
+            return View(races);
+        }
+        
     }
 }
