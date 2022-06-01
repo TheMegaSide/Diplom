@@ -21,6 +21,7 @@ namespace FInalProject.Util.DbHandlers
                 damagedtransport = (int) rdr["damagedtransport"],
                 driverfault = rdr["driverfault"].ToString(),
                 date = (DateTime) rdr["date"],
+                type = rdr["type"].ToString(),
                 region = rdr["region"].ToString(),
                 dtpcodintions = rdr["drpcoditions"].ToString(),
                 dtpreasons = rdr["dtpreasons"].ToString(),

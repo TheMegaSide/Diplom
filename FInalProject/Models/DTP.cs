@@ -13,6 +13,7 @@ namespace FInalProject.Models
         public string driverfault { get; set; }
         public DateTime date { get; set; }
         public string region { get; set; }
+        public string type { get; set; }
         public string dtpcodintions { get; set; }
         public string dtpreasons { get; set; }
         public int died { get; set; }

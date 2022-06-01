@@ -489,12 +489,10 @@ C:\Users\Александр\RiderProjects\DiplomFinal\FInalProject\obj\Debug\net
 C:\Users\Александр\RiderProjects\DiplomFinal\FInalProject\obj\Debug\net5.0\FInalProject.RazorCoreGenerate.cache
 C:\Users\Александр\RiderProjects\DiplomFinal\FInalProject\obj\Debug\net5.0\Razor\Areas\Identity\Pages\_ViewStart.cshtml.g.cs
 C:\Users\Александр\RiderProjects\DiplomFinal\FInalProject\obj\Debug\net5.0\Razor\Views\Car\CarAdd.cshtml.g.cs
-C:\Users\Александр\RiderProjects\DiplomFinal\FInalProject\obj\Debug\net5.0\Razor\Views\Car\CarDelete.cshtml.g.cs
 C:\Users\Александр\RiderProjects\DiplomFinal\FInalProject\obj\Debug\net5.0\Razor\Views\Car\CarEdit.cshtml.g.cs
 C:\Users\Александр\RiderProjects\DiplomFinal\FInalProject\obj\Debug\net5.0\Razor\Views\Car\CarSearch.cshtml.g.cs
 C:\Users\Александр\RiderProjects\DiplomFinal\FInalProject\obj\Debug\net5.0\Razor\Views\Car\CarTablePage.cshtml.g.cs
 C:\Users\Александр\RiderProjects\DiplomFinal\FInalProject\obj\Debug\net5.0\Razor\Views\Driver\DriverAdd.cshtml.g.cs
-C:\Users\Александр\RiderProjects\DiplomFinal\FInalProject\obj\Debug\net5.0\Razor\Views\Driver\DriverDelete.cshtml.g.cs
 C:\Users\Александр\RiderProjects\DiplomFinal\FInalProject\obj\Debug\net5.0\Razor\Views\Driver\DriverEdit.cshtml.g.cs
 C:\Users\Александр\RiderProjects\DiplomFinal\FInalProject\obj\Debug\net5.0\Razor\Views\Driver\DriverSearch.cshtml.g.cs
 C:\Users\Александр\RiderProjects\DiplomFinal\FInalProject\obj\Debug\net5.0\Razor\Views\Driver\DriverTablePage.cshtml.g.cs
@@ -530,3 +528,5 @@ C:\Users\Александр\RiderProjects\DiplomFinal\FInalProject\obj\Debug\net
 C:\Users\Александр\RiderProjects\DiplomFinal\FInalProject\obj\Debug\net5.0\Razor\Views\Init\Admin.cshtml.g.cs
 C:\Users\Александр\RiderProjects\DiplomFinal\FInalProject\obj\Debug\net5.0\Razor\Views\Init\User.cshtml.g.cs
 C:\Users\Александр\RiderProjects\DiplomFinal\FInalProject\obj\Debug\net5.0\Razor\Views\Race\RaceSearch.cshtml.g.cs
+C:\Users\Александр\RiderProjects\DiplomFinal\FInalProject\obj\Debug\net5.0\Razor\Views\DTP\DTPEdit.cshtml.g.cs
+C:\Users\Александр\RiderProjects\DiplomFinal\FInalProject\obj\Debug\net5.0\Razor\Views\DTP\DTPTablePage.cshtml.g.cs

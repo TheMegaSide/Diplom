@@ -23,8 +23,9 @@ namespace FInalProject.Controllers
 {
     public class CarController : Controller
     {
-        private BDService Dbservice;
         private Document doc = null;
+        private BDService Dbservice;
+        
         public CarController(BDService dbservice)
         {
             Dbservice = dbservice;
@@ -74,11 +75,7 @@ namespace FInalProject.Controllers
             return RedirectToAction(nameof(CarTablePage));
         }
         [AuthorizeRoles(Roles.Client, Roles.SuperAdmin)]
-        public IActionResult CarDelete(int id)
-        {
-            CarNew car = Dbservice.GetCarById(id);
-            return View(car);
-        }
+        
 
         [HttpPost]
         [AuthorizeRoles(Roles.Client, Roles.SuperAdmin)]

@@ -1,18 +1,38 @@
 ﻿@model List<Race>
 
-@{
-    Layout = null;
-}
 
-<!DOCTYPE html>
 
-<html>
-<head>
-    <title>title</title>
-</head>
-<body>
-<div>
+<<a class="btn btn-primary" asp-controller="Home" asp-action="Index">На главную</a>
+ <p>База данных рейсов</p>
+
+      <table border="1" class="table" style="border-collapse: collapse; width: 100%;alignment: left">
+          <thead class="thead-dark">
+          <tr>
+              <th style="width: 10%"> </th>
+              <th style="width: 11.1111%;">Объем груза</th>
+              <th style="width: 11.1111%;">Время рейса</th>
+              <th style="width: 11.1111%;">Водитель</th>
+              <th style="width: 11.1111%;">Автомобиль</th>
+              <th style="width: 11.1111%;">Дата</th>
+          </tr>
+          </thead>
+          <tbody>
+          @foreach (var race in Model)
+          {
+              <tr>
+                  <td  style="width: 10%"><a class="btn btn-primary" asp-action="RaceEdit" asp-route-id="@race.id">Изменить</a></td>
+                  <td style="width: 11.1111%;">@race.value</td>
+                  <td style="width: 11.1111%;">@race.raceTime</td>
+                  <td style="width: 11.1111%;">@race.driverName</td>
+                  <td style="width: 11.1111%;">@race.autoGovnum</td>
+                  <td style="width: 11.1111%;">@race.date.ToShortDateString()</td>
+                  
       
-</div>
-</body>
-</html>
+      
+              </tr>
+          }
+              
+          
+          </tbody>
+      </table >
+

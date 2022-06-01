@@ -44,18 +44,18 @@
                 <input type="number" max="@maxvalue" asp-for="value" class="form-control"/>
                 <span asp-validation-for="value" class="text-danger"></span>
                 <label asp-for="raceTime" class="control-label">Время, часы</label>
-                <input asp-for="raceTime" class="form-control"/>
+                <input  type="number" asp-for="raceTime" class="form-control"/>
                 <span asp-validation-for="raceTime" class="text-danger"></span>
                 <label asp-for="driver" class="control-label">Водитель</label>
-                <input asp-for="driver" value="@driver.id" class="hidden"/>
+                <input asp-for="driver" value="@driver.id" type="hidden"/>
                 <label class="form-control">@driver.name</label>
                 <span asp-validation-for="driver" class="control-label"></span>
                 <label asp-for="auto" class="control-label">Госномер автомобиля</label>
-                <input asp-for="auto" value="@car.id" class="hidden"/>
+                <input asp-for="auto" value="@car.id" type="hidden"/>
                 <label class="form-control">@car.govnum</label>
                 <span asp-validation-for="auto" class="control-label"></span>
                 <label asp-for="date" class="control-label">Дата</label>
-                <input asp-for="date" class="form-control"/>
+                <input type="date" asp-for="date" class="form-control"/>
                 <span asp-validation-for="date" class="text-danger"></span>
           </div>
             

@@ -1,0 +1,82 @@
+﻿@model List<FInalProject.Models.DTP> 
+
+
+<a class="btn btn-primary" asp-controller="Home" asp-action="Index">На главную</a>
+<p>Совершенные рейсы</p>
+
+
+@* <form method="post" action="~/Race/RaceSearch"> *@
+@*     <p> *@
+@*         <label class="control-label">Значение</label> *@
+@*         <input type="date" name="startdate"/> *@
+@*     </p> *@
+@*     <p> *@
+@*         <label class="control-label">Значение</label> *@
+@*         <input type="date" name="enddate"/> *@
+@* *@
+@*     </p> *@
+@*     <p> *@
+@*         <input class="btn btn-primary" type="submit" value="Поиск"/> *@
+@*     </p> *@
+@* </form> *@
+<table border="1" class="table" style="border-collapse: collapse; width: 100%;alignment: left">
+    <thead class="thead-dark">
+    <tr>
+        <th > </th>
+        <th >Данные о водителе</th>
+        <th >Данные о транспортном средстве</th>
+        <th >Условия организации и осуществлении перевозок</th>
+        <th >Сведения о пострадавших</th>
+        <th >Материальный ущерб (кол. Транспорта)</th>
+        <th >Вина водителя ООО «ЭкоЦентр»</th>
+        <th >Дата совершения ДТП</th>
+        <th >Место ДТП</th>
+        <th >Вид ДТП</th>
+        <th >Условия способствовавшие возникновению ДТП ДТП</th>
+        <th >Выявленные причины ДТП</th>
+        <th >Погибло (чел.)</th>
+        <th >Ранено (чел.)</th>
+        <th >Оформление ДТП</th>
+        <th >Примечания</th>
+        
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var dtp in Model)
+    {
+        <tr>
+            <td  style="width: 10%"><a class="btn btn-primary" asp-action="DTPEdit" asp-route-id="@dtp.id">Изменить</a></td>
+            <td>@dtp.drivername</td>
+            <td>@dtp.autodata</td>
+            <td>@dtp.conditions</td>
+            <td>@dtp.victimsdata</td>
+            <td>@dtp.damagedtransport</td>
+            <td>@dtp.driverfault</td>
+            <td>@dtp.date</td>
+            <td>@dtp.region</td>
+            <td>@dtp.type</td>
+            <td>@dtp.dtpcodintions</td>
+            <td>@dtp.dtpreasons</td>
+            <td>@dtp.died</td>
+            <td>@dtp.traumas</td>
+            <td>@dtp.oform</td>
+            <td>@dtp.addtitions</td>
+            
+
+
+        </tr>
+    }
+        
+    
+    </tbody>
+</table >
+
+
+<div class="form-group">
+    <a asp-area="" asp-controller="Car" asp-action="GetCarListExcel" >Excel таблица по автомобилям</a>
+</div>
+<form method="post" action="~/Car/GetCarListExcel">
+    <p>
+        <input type="submit" value="Отправить" />
+    </p>
+</form>

@@ -33,11 +33,7 @@ namespace FInalProject.Controllers
             Dbservice.AddDriver(driver);
             return RedirectToAction(nameof(DriverAdd));
         }
-        public IActionResult DriverDelete(int id)
-        {
-            Driver driver = Dbservice.GetDriverById(id);
-            return View(driver);
-        }
+        
 
         [HttpPost]
         [Authorize]

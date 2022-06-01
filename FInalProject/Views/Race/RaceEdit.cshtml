@@ -50,7 +50,7 @@
                                                                          List<CarNew> GetCarList()
                                                                                 {
                                                                                     string comText =
-                                                                                        "Select * from cars;";
+                                                                                        "Select \"CarList\".* from \"CarList\", drivers where drivers.auto=\"CarList\".id and drivers.id="+Model.driver;
                                                                                     Console.WriteLine($"INFO:{comText}");
                                                                                     return DbExecutor.Execute<CarNew>("Server=127.0.0.1;User Id=postgres;Password=6851;Database=Dilpom;", comText, new DBCarNewHandler());
                                                                                 }
@@ -64,7 +64,7 @@
                                                                         
                                                                    
                                                                     }
-                                                                </select>
+                                                    </select>
                                                 <span asp-validation-for="auto" class="text-danger"></span>
                                                 <label asp-for="date" class="control-label">Дата</label>
                                                 <input asp-for="date" class="form-control"/>
@@ -76,7 +76,12 @@
         </form>
     </div>
 </div>
-
+<form method="post" action="~/Race/Delete">
+    <input type="hidden" name="id" value="@Model.id"/>
+    <p>
+        <input type="submit" value="Удалить" class="btn btn-primary"/>
+    </p>
+</form>
 <div>
     <a asp-action="RaceTablePage">Вернуться назад</a>
 </div>

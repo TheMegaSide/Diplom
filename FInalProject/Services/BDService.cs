@@ -97,8 +97,8 @@ namespace FInalProject.Services
             string comText =
                 "Update drivers set name='" + driver.name +
                  "',drcertnum=" + driver.drcertnum + ",drcertdate='" +
-                driver.drcertdate + "',class='" + driver.classs + "',timedriving=" + driver.timedriving +
-                " where id=" + driver.id+",auto="+driver.auto;
+                driver.drcertdate + "',class='" + driver.classs + "',timedriving=" + driver.timedriving +" ,auto="+driver.auto+
+                " where id=" + driver.id;
             Console.WriteLine($"INFO:{comText}");
             DbExecutor.Execute(ConnectionString, comText, new DbDriverhandler());
         }
@@ -134,7 +134,7 @@ namespace FInalProject.Services
             if (enddate.ToString() == "01.01.0001 0:00:00")
             {
                 comText =
-                    "select *  from races,drivers,\"CarList\" where date>'"+startdate.ToShortDateString()+"'";
+                    "select *  from races,drivers,\"CarList\" where date>'"+startdate.ToShortDateString()+"' and drivers.id=races.driver and \"CarList\".id=drivers.auto";
             }
             else
             {
@@ -249,6 +249,13 @@ namespace FInalProject.Services
 
             comText = "INSERT INTO public.\"to\"(auto, totype, date, state)VALUES ("+auto+",'"+toType+"','"+newToDate+"','Запланировано' )";
             DbExecutor.Execute(ConnectionString, comText, new DBTOHandler());
+        }
+        public List<DTP> GetDTPList()
+        {
+            string comText =
+                "Select dtp.*,\"CarList\".govnum,drivers.name from dtp,\"CarList\",drivers where dtp.auto=\"CarList\".id and drivers.id=dtp.driver";
+            Console.WriteLine($"INFO:{comText}");
+            return DbExecutor.Execute<DTP>(ConnectionString, comText, new DBDTPHandler());
         }
         
     }

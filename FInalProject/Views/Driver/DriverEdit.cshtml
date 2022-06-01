@@ -35,6 +35,25 @@
                 <label asp-for="timedriving" class="control-label">Стаж</label>
                 <input asp-for="timedriving" class="form-control"/>
                 <span asp-validation-for="timedriving" class="text-danger"></span>
+                <label asp-for="auto" class="control-label">Прикрепленный автомобиль</label>
+                                <select asp-for="auto" class="custom-select">
+                                    @{
+                                        List<CarNew> GetFreeCars()
+                                        {
+                                            string comText =
+                                                "select \"CarList\".* from \"CarList\", drivers where \"CarList\".id not in (select auto from drivers) or \"CarList\".id="+Model.auto;
+                                            Console.WriteLine($"INFO:{comText}");
+                                            return DbExecutor.Execute<CarNew>("Server=127.0.0.1;User Id=postgres;Password=6851;Database=Dilpom;", comText, new DBCarNewHandler());
+                                        }
+                
+                                        List<CarNew> cars = GetFreeCars();
+                                        foreach (var car in cars)
+                                        {
+                                            <option value="@car.id">@car.govnum</option>
+                                        }
+                                    }
+                                </select>
+                                <span asp-validation-for="auto" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Сохранить" class="btn btn-primary"/>
@@ -48,9 +67,9 @@
     List<Race> GetRacesByDriver()
     {
         string comText =
-            "select * from races,drivers,\"CarList\" where races.driver="+Model.id+" and races.driver=drivers.id and \"CarList\".id=drivers.auto";
+            "select * from races where races.driver="+Model.id;
         Console.WriteLine($"INFO:{comText}");
-        return DbExecutor.Execute<Race>("Server=127.0.0.1;User Id=postgres;Password=6851;Database=Dilpom;", comText, new DbRaceHandler());
+        return DbExecutor.Execute<Race>("Server=127.0.0.1;User Id=postgres;Password=6851;Database=Dilpom;", comText, new DBOnlyRace());
     }
     CarNew GetAutoByDriver()
     {
@@ -64,16 +83,24 @@
     List<Race> races = GetRacesByDriver();
     int count = races.Count;
     double eff =0;
+    double sum = 0;
     foreach (var race in races)
     {
+        sum += race.value;
         Console.WriteLine(race.value+" "+currCar.value);
         var coef = (race.value / currCar.value * 100);
         eff = (eff+ coef);
         
     }
     eff = eff / count;
-    var result = eff.ToString().Substring(0, 5);
-    <label class="form-control">@result %</label>
+    var result = eff.ToString();
+    if (result.Length > 5)
+    {
+        result=result.Substring(0, 5);
+    }
+   
+    <label class="form-control">@result %, рейсов:@count, всего перевезено: @sum м<sup>3</sup>
+</label>
     
 }
 <form method="post" action="~/Driver/Delete">

@@ -16,12 +16,13 @@
 
     </p>
     <p>
-        <input type="submit" value="Отправить"/>
+        <input class="btn btn-primary" type="submit" value="Поиск"/>
     </p>
 </form>
 <table border="1" class="table" style="border-collapse: collapse; width: 100%;alignment: left">
     <thead class="thead-dark">
     <tr>
+        <th style="width: 10%"> </th>
         <th style="width: 11.1111%;">Объем груза</th>
         <th style="width: 11.1111%;">Время рейса</th>
         <th style="width: 11.1111%;">Водитель</th>
@@ -33,13 +34,13 @@
     @foreach (var race in Model)
     {
         <tr>
+            <td  style="width: 10%"><a class="btn btn-primary" asp-action="RaceEdit" asp-route-id="@race.id">Изменить</a></td>
             <td style="width: 11.1111%;">@race.value</td>
             <td style="width: 11.1111%;">@race.raceTime</td>
             <td style="width: 11.1111%;">@race.driverName</td>
             <td style="width: 11.1111%;">@race.autoGovnum</td>
-            <td style="width: 11.1111%;">@race.date.Date</td>
-            <td><a asp-action="RaceDelete" asp-route-id="@race.id">Удалить</a></td>
-            <td><a asp-action="RaceEdit" asp-route-id="@race.id">Изменить</a></td>
+            <td style="width: 11.1111%;">@race.date.ToShortDateString()</td>
+            
 
 
         </tr>
