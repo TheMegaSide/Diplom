@@ -1,5 +1,5 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "ООО 'ЭкоЦентр'";
 }
 
 <div class="text-center" xmlns="http://www.w3.org/1999/html">
@@ -10,9 +10,9 @@
             <h3 >График ТО за выбранную дату</h3>
             <form method="post" action="~/TO/TOTablePage">
                 <p>
-                    <label  class="control-label">Месяц</label>
+                    <label  class="control-label">Дата:</label>
 
-                    <input  type="month" name="date"/>
+                    <input  type="month" name="date" class="form-control"/>
                 </p>
 
                 <p>
@@ -24,22 +24,23 @@
         <div align="left">
             <h2 >База автомашин</h2>
             
-            <a class="text-primary" asp-controller="Car" asp-action="CarTablePage">Таблица автомашин</a>
-            <br>
-            <a class="text-primary" asp-controller="Car" asp-action="CarAdd">Добавить автомобиль</a>
+            <a class="btn btn-primary" asp-controller="Car" asp-action="CarTablePage">Таблица автомашин</a>
+            
+            <a class="btn btn-primary" asp-controller="Car" asp-action="CarAdd">Добавить автомобиль</a>
         </div>
     <div align="left">
         <h2 >База водителей</h2>
-        <a class="text-primary" asp-controller="Driver" asp-action="DriverTablePage">Таблица водителей</a>
-        <br>
-        <a class="text-primary" asp-controller="Driver" asp-action="DriverAdd">Добавить водителя</a>
+        <a class="btn btn-primary" asp-controller="Driver" asp-action="DriverTablePage">Таблица водителей</a>
+        
+        <a class="btn btn-primary" asp-controller="Driver" asp-action="DriverAdd">Добавить водителя</a>
     </div>
     <div align="left">
         <h2 >Сводка по рейсам</h2>
-        <a class="text-primary" asp-controller="Race" asp-action="RaceTablePage">Таблица рейсов</a>
+        <a class="btn btn-primary" asp-controller="Race" asp-action="RaceTablePage">Таблица рейсов</a>
     </div>
     <div align="left">
                     <h2 >Сводка по ДТП</h2>
-                    <a class="text-primary" asp-controller="DTP" asp-action="DTPTablePage">Таблица ДТП</a>
+        <a class="btn btn-primary" asp-controller="DTP" asp-action="DTPTablePage">Таблица ДТП</a>
+        <a class="btn btn-primary" asp-controller="DTP" asp-action="DTPAdd">Записать ДТП</a>
                     </div>
     </div>

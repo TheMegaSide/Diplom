@@ -3,7 +3,7 @@
 @model FInalProject.Models.Driver
 
 @{
-     ViewData["Title"] = "Edit";
+     ViewData["Title"] = "Профиль водителя";
 }
 
 <h1>Изменение данных</h1>
@@ -100,7 +100,22 @@
     }
    
     <label class="form-control">@result %, рейсов:@count, всего перевезено: @sum м<sup>3</sup>
-</label>
+    </label>
+    <h3>Аварийность</h3>
+    List<DTP> GetDTPByDriver()
+    {
+        string comText =
+            "select * from dtp where driver="+Model.id;
+        Console.WriteLine($"INFO:{comText}");
+        return DbExecutor.Execute<DTP>("Server=127.0.0.1;User Id=postgres;Password=6851;Database=Dilpom;", comText, new DTPOnly());
+    }
+
+    List<DTP> dtps = GetDTPByDriver();
+    float dtpcount = dtps.Count;
+    
+    double dtpres = dtpcount/count*100;
+    
+    <label class="form-control">@dtpres %, рейсов:@count   </label>
     
 }
 <form method="post" action="~/Driver/Delete">

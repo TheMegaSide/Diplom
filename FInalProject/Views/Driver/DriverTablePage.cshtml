@@ -1,7 +1,9 @@
 ﻿@using FInalProject.Util.DB
 @using FInalProject.Util.DbHandlers
 @model List<FInalProject.Models.Driver> 
-
+@{
+    ViewData["Title"] = "Таблица водителей";
+}
 <a class="btn btn-primary" asp-controller="Home" asp-action="Index">На главную</a>
 <h1>База данных автомобилей</h1>
 <h3>Поиск</h3>
@@ -18,11 +20,11 @@
     <p>
         <label class="control-label">Значение</label>
         <br/>
-        <input type="text" name="key"/>
+        <input type="text" name="key" class="form-control"/>
 
     </p>
     <p>
-        <input type="submit" value="Отправить"/>
+        <input class="btn btn-primary" type="submit" value="Поиск"/>
     </p>
 </form>
 <table border="1" class="table" style="border-collapse: collapse; width: 100%;alignment: left">

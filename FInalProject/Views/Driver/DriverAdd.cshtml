@@ -3,12 +3,12 @@
 @model FInalProject.Models.Driver
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Добавление водителя";
 }
 
-<h1>Добавление категории</h1>
+<h1>Добавление водителя</h1>
 
-<h4>Категория</h4>
+
 <hr/>
 <div class="row">
     <div class="col-md-4">
@@ -42,7 +42,6 @@
                             Console.WriteLine($"INFO:{comText}");
                             return DbExecutor.Execute<CarNew>("Server=127.0.0.1;User Id=postgres;Password=6851;Database=Dilpom;", comText, new DBCarNewHandler());
                         }
-
                         List<CarNew> cars = GetFreeCars();
                         foreach (var car in cars)
                         {

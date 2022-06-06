@@ -3,9 +3,12 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using FInalProject.Atribute;
+using FInalProject.Data;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using FInalProject.Models;
+using Microsoft.AspNetCore.Identity;
 
 namespace FInalProject.Controllers
 {
@@ -33,5 +36,7 @@ namespace FInalProject.Controllers
         {
             return View(new ErrorViewModel {RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier});
         }
+        
+       
     }
 }

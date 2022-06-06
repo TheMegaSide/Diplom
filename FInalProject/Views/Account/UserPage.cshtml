@@ -1,0 +1,29 @@
+﻿@model Microsoft.AspNetCore.Identity.IdentityUser
+
+@{
+    Layout = "_Layout";
+}
+@{
+    void changePassword()
+    {
+        
+    }
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>title</title>
+</head>
+<body>
+<div>
+    <form method="post" action="~/Account/ChangePassword">
+        <input type="hidden" value="@Model.Id" name="user">
+        <input class="form-control" name="oldPass">
+        <input class="form-control" name="newPass">
+        <input class="btn btn-primary" type="submit" value="Сменить пароль">
+    </form>
+</div>
+</body>
+</html>

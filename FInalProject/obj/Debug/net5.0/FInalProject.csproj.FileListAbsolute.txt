@@ -530,3 +530,6 @@ C:\Users\Александр\RiderProjects\DiplomFinal\FInalProject\obj\Debug\net
 C:\Users\Александр\RiderProjects\DiplomFinal\FInalProject\obj\Debug\net5.0\Razor\Views\Race\RaceSearch.cshtml.g.cs
 C:\Users\Александр\RiderProjects\DiplomFinal\FInalProject\obj\Debug\net5.0\Razor\Views\DTP\DTPEdit.cshtml.g.cs
 C:\Users\Александр\RiderProjects\DiplomFinal\FInalProject\obj\Debug\net5.0\Razor\Views\DTP\DTPTablePage.cshtml.g.cs
+C:\Users\Александр\RiderProjects\DiplomFinal\FInalProject\obj\Debug\net5.0\Razor\Views\DTP\DTPadd.cshtml.g.cs
+C:\Users\Александр\RiderProjects\DiplomFinal\FInalProject\obj\Debug\net5.0\Razor\Views\Account\Admin.cshtml.g.cs
+C:\Users\Александр\RiderProjects\DiplomFinal\FInalProject\obj\Debug\net5.0\Razor\Views\Account\UserPage.cshtml.g.cs

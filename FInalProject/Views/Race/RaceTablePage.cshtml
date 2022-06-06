@@ -8,11 +8,11 @@
 <form method="post" action="~/Race/RaceSearch">
     <p>
         <label class="control-label">Значение</label>
-        <input type="date" name="startdate"/>
+        <input type="date" name="startdate" class="form-control"/>
     </p>
     <p>
         <label class="control-label">Значение</label>
-        <input type="date" name="enddate"/>
+        <input type="date" name="enddate" class="form-control"/>
 
     </p>
     <p>
@@ -51,11 +51,3 @@
 </table >
 
 
-<div class="form-group">
-    <a asp-area="" asp-controller="Car" asp-action="GetCarListExcel" >Excel таблица по автомобилям</a>
-</div>
-<form method="post" action="~/Car/GetCarListExcel">
-    <p>
-        <input type="submit" value="Отправить" />
-    </p>
-</form>

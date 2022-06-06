@@ -5,7 +5,7 @@ using Npgsql;
 
 namespace FInalProject.Util.DbHandlers
 {
-    public class DBDTPHandler : IDbExecuteHandler<DTP>
+    public class DTPOnly: IDbExecuteHandler<DTP>
     {
         public DTP GetDataAfterExecute(NpgsqlDataReader rdr)
         {
@@ -14,8 +14,7 @@ namespace FInalProject.Util.DbHandlers
                 id = (int) rdr["id"],
                 driver = (int) rdr["driver"],
                 auto = (int) rdr["auto"],
-                drivername = rdr["name"].ToString(),
-                autodata = rdr["govnum"].ToString(),
+                
                 conditions = rdr["conditions"].ToString(),
                 victimsdata = rdr["victimsdata"].ToString(),
                 damagedtransport = (int) rdr["damagedtransport"],
@@ -34,6 +33,5 @@ namespace FInalProject.Util.DbHandlers
             };
         }
     }
-}
-        
     
+}

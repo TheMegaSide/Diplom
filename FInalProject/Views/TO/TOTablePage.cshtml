@@ -1,7 +1,9 @@
 ﻿@using FInalProject.Util.DB
 @using FInalProject.Util.DbHandlers
 @model List<FInalProject.Models.TO> 
-
+@{
+    ViewData["Title"] = "Таблица ТО";
+}
 @{
     string month="";
     if (ViewBag.Month == "01")
@@ -30,10 +32,22 @@
         month = "Декабрь";
         
     }
-<p>График ТО на @month @ViewBag.Year г.</p>
+    <h3 >График ТО за выбранную дату</h3>
+                <form method="post" action="~/TO/TOTablePage">
+                    <p>
+                        <label  class="control-label">Дата</label>
+    
+                        <input  type="month" name="date"/>
+                    </p>
+    
+                    <p>
+                        <input  class="btn btn-primary" type="submit" value="Перейти к графику"/>
+                    </p>
+                </form>
+<p1>График ТО на @month @ViewBag.Year г.</p1>
 
-<table border="1" style="border-collapse: collapse; width: 100%;">
-    <thead>
+<table class="table" border="1" style="border-collapse: collapse; width: 100%;">
+    <thead class="thead-dark">
     <tr>
         <th style="width: 11.1111%;">Автомашина</th>
         <th style="width: 11.1111%;">Шасси</th>
@@ -68,7 +82,7 @@
                                         <input type = "hidden" name="id" value="@to.id"/>
                                         
                                     <p>
-                                        <input type="submit" value="@to.toType | @to.state"/>
+                                        <input type="submit" class="btn btn-primary" value="@to.toType | @to.state"/>
                                     </p>
                                     </form> 
                             }
@@ -96,7 +110,7 @@
         <input type = "hidden" name="month" value="@ViewBag.Month"/>
         <input type = "hidden" name="year" value="@ViewBag.Year"/>
         <p>
-            <input type="submit" value="Добавить ТО"/>
+            <input class="btn btn-primary" type="submit" value="Добавить ТО"/>
         </p>
     </form>
 </div>

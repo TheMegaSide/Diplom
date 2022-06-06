@@ -1,0 +1,64 @@
+﻿@model IQueryable<Microsoft.AspNetCore.Identity.IdentityUser>
+
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Администрирование</title>
+</head>
+<body>
+<div>
+    <p>Управление аккаунтами</p>
+    <a class="btn btn-primary" asp-controller="Account" asp-action="RegisterAdmin">Добавить администратора</a>
+    <a class="btn btn-primary" asp-controller="Account" asp-action="RegisterClient">Добавить пользователя</a>
+    
+    @* <form method="post"> *@
+    @*     @{ *@
+    @*          *@
+    @*     } *@
+    @*     <select name="user"> *@
+    @* *@
+    @*     </select> *@
+    @* *@
+    @*     <input class="btn btn-primary" type="submit" value="Удалить пользователя"> *@
+    @* </form> *@
+    <p1>Список пользователей</p1>
+    <div>
+        <table class="table">
+            <thead>
+            <tr>
+                
+                <th>Имя пользователя</th>
+                <th>
+                                    
+                                </th>
+                
+            </tr>
+            </thead>
+            <tbody>
+            @{
+                foreach (var user in Model)
+                {<tr>
+                    
+                    <td>@user.UserName
+                    </td> 
+                     <td>
+                         <a class="btn btn-primary" asp-controller="Account" asp-action="UserPage" asp-route-user="@user.Id">Сменить пароль</a>
+                     </td>
+                     
+                     <td>
+                         <a class="btn btn-danger" asp-controller="Account" asp-action="dropUser" asp-route-user="@user.Id">Удалить</a>
+                     </td>
+                     
+                 </tr>
+            }
+            }
+            
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>

@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Transactions;
+using FInalProject.Atribute;
+using FInalProject.Data;
 using FInalProject.Models;
 using FInalProject.Services;
 using Microsoft.AspNetCore.Authorization;
@@ -16,12 +18,13 @@ namespace FInalProject.Controllers
         {
             Dbservice = dbservice;
         }
+        [AuthorizeRoles(Roles.Client, Roles.SuperAdmin)]
         public ActionResult GetAllTO()
         {
             
             return RedirectToAction(nameof(TOTablePage));
         }
-        [Authorize]
+        [AuthorizeRoles(Roles.Client, Roles.SuperAdmin)]
         public IActionResult TOTablePage(string date)
         {
             try
@@ -41,6 +44,7 @@ namespace FInalProject.Controllers
             }
             
         }
+        [AuthorizeRoles(Roles.Client, Roles.SuperAdmin)]
         public ActionResult TOAdd(string month, string year)
         {
             ViewBag.Month = month;
@@ -49,13 +53,13 @@ namespace FInalProject.Controllers
         }
 
         [HttpPost]
-        [Authorize]
+        [AuthorizeRoles(Roles.Client, Roles.SuperAdmin)]
         public ActionResult Create(TO to)
         {
             Dbservice.AddTO(to);
             return RedirectToAction(nameof(TOAdd));
         }
-
+        [AuthorizeRoles(Roles.Client, Roles.SuperAdmin)]
         public ActionResult TOEditPage(int id, string month, string year)
         {
             ViewBag.Month = month;
@@ -63,17 +67,20 @@ namespace FInalProject.Controllers
             TO to = Dbservice.GetToById(id);
             return View(to);
         }
+        [AuthorizeRoles(Roles.Client, Roles.SuperAdmin)]
         public void  Edit(TO to)
         {
             Dbservice.EditTO(to);
             
         }
+        [AuthorizeRoles(Roles.SuperAdmin)]
         public ActionResult  Delete(int id, int month1, int year1)
         {
             Dbservice.DeleteTO(id);
             return RedirectToAction(nameof(TOTablePage), new {month = month1, year = year1});
 
         }
+        [AuthorizeRoles(Roles.Client, Roles.SuperAdmin)]
         public ActionResult  CompleteTO(int id, string month1, string year1, DateTime date, int auto, string toType)
         {
             ViewBag.Month = month1;

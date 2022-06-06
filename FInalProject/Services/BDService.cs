@@ -139,7 +139,7 @@ namespace FInalProject.Services
             else
             {
                 comText =
-                    "select *  from races,drivers,\"CarList\" where date>'"+startdate.Date +"' and date<'"+enddate.Date+"'";
+                    "select *  from races,drivers,\"CarList\" where date>'"+startdate.Date +"' and date<'"+enddate.Date+"' and drivers.id=races.driver and \"CarList\".id=drivers.auto";
             }
             Console.WriteLine($"INFO:{comText}");
             return DbExecutor.Execute<Race>(ConnectionString, comText, new DbRaceHandler());
@@ -213,7 +213,7 @@ namespace FInalProject.Services
 
         public void AddTO(TO to)
         {
-            string comText = "INSERT INTO public.\"to\"(auto, totype, date) VALUES ("+to.auto+",'"+to.toType+"','"+to.date+"')";
+            string comText = "INSERT INTO public.\"to\"(auto, totype, date, state) VALUES ("+to.auto+",'"+to.toType+"','"+to.date+"','"+to.state+"')";
             DbExecutor.Execute(ConnectionString, comText, new DBCarNewHandler());
         }
         public void EditTO(TO to)
@@ -256,6 +256,43 @@ namespace FInalProject.Services
                 "Select dtp.*,\"CarList\".govnum,drivers.name from dtp,\"CarList\",drivers where dtp.auto=\"CarList\".id and drivers.id=dtp.driver";
             Console.WriteLine($"INFO:{comText}");
             return DbExecutor.Execute<DTP>(ConnectionString, comText, new DBDTPHandler());
+        }
+        public DTP GetDTPById(int id)
+        {
+            string comText =
+                "Select dtp.*,\"CarList\".govnum,drivers.name from dtp,\"CarList\",drivers where dtp.auto=\"CarList\".id and drivers.id=dtp.driver and dtp.id="+id;
+            Console.WriteLine($"INFO:{comText}");
+            return DbExecutor.Execute<DTP>(ConnectionString, comText, new DBDTPHandler())[0];
+        }
+        public void AddDTP(DTP dtp)
+        {
+            Driver driver = GetDriverById(dtp.driver);
+            
+            string comText =
+                "INSERT INTO public.dtp("+
+            "driver, auto, conditions, victimsdata, damagedtransport, driverfault, date, region, dtpcoditions, dtpreasons, died, traumas, oform, additions, type)"+
+            "VALUES ("+dtp.driver+", "+driver.auto+", '"+dtp.conditions+"', '"+dtp.victimsdata+"', "+dtp.damagedtransport+", '"+dtp.driverfault+"', '"+dtp.date+"', '"+dtp.region+
+                "', '"+dtp.dtpcodintions+"', '"+dtp.dtpreasons+"', "+dtp.died+", "+dtp.traumas+", '"+dtp.oform+"', '"+dtp.addtitions+"', '"+dtp.type+"')";
+            Console.WriteLine($"INFO:{comText}");
+            DbExecutor.Execute(ConnectionString, comText, new DBDTPHandler());
+        }
+
+        public void EditDTP(DTP dtp)
+        {
+            Driver driver = GetDriverById(dtp.driver);
+            string comText = "UPDATE public.dtp SET "+
+             "driver="+dtp.driver+", auto="+driver.auto+", conditions='"+dtp.conditions+"', victimsdata='"+dtp.victimsdata+"', damagedtransport="+dtp.damagedtransport+"," +
+             " driverfault='"+dtp.driverfault+"', date='"+dtp.date+"', region='"+dtp.region+"', dtpcoditions='"+dtp.dtpcodintions+"', dtpreasons='"+dtp.dtpreasons+"'," +
+             " died="+dtp.died+", traumas="+dtp.traumas+", oform='"+dtp.oform+"', additions='"+dtp.addtitions+"', type='"+dtp.type+"' "+
+            "WHERE id="+dtp.id;
+            Console.WriteLine($"INFO:{comText}");
+            DbExecutor.Execute(ConnectionString, comText, new DBDTPHandler());
+        }
+        public void DeleteDTP(int id)
+        {
+            string comText = "DELETE FROM public.dtp WHERE id="+id;
+            Console.WriteLine($"INFO:{comText}");
+            DbExecutor.Execute(ConnectionString, comText, new DBDTPHandler());
         }
         
     }

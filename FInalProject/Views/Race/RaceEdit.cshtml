@@ -3,7 +3,7 @@
 @model FInalProject.Models.Race
 
 @{
-     ViewData["Title"] = "Edit";
+     ViewData["Title"] = "Изменение рейса";
 }
 
 <h1>Изменение данных</h1>
@@ -23,7 +23,7 @@
                                                 <span asp-validation-for="raceTime" class="text-danger"></span>
                                                 <label asp-for="driver" class="control-label">Водитель</label>
                                                 @* <input asp-for="patronymic" class="form-control"/> *@
-                                                <select asp-for="driver">
+                                                <select asp-for="driver" class="custom-select">
                                                     @{
                                                          List<Driver> GetDriverList()
                                                                 {
@@ -45,7 +45,7 @@
                                                 </select>
                                                 <span asp-validation-for="driver" class="text-danger"></span>
                                                 <label asp-for="auto" class="control-label">Госномер автомобиля</label>
-                                                <select asp-for="auto">
+                                                <select asp-for="auto" class="custom-select">
                                                                     @{
                                                                          List<CarNew> GetCarList()
                                                                                 {

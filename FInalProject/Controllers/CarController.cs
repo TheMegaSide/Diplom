@@ -78,7 +78,7 @@ namespace FInalProject.Controllers
         
 
         [HttpPost]
-        [AuthorizeRoles(Roles.Client, Roles.SuperAdmin)]
+        [AuthorizeRoles(Roles.SuperAdmin)]
         public IActionResult Delete(int id)
         {
             Dbservice.DeleteCar(id);

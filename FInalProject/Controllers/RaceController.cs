@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using FInalProject.Atribute;
+using FInalProject.Data;
 using FInalProject.Models;
 using FInalProject.Services;
 using Microsoft.AspNetCore.Authorization;
@@ -15,12 +17,13 @@ namespace FInalProject.Controllers
         {
             Dbservice = dbservice;
         }
-        // GET
+        [AuthorizeRoles(Roles.Client, Roles.SuperAdmin)]
         public IActionResult RaceTablePage()
         {
             List<Race> race = Dbservice.GetRaceList();
             return View(race);
         }
+        [AuthorizeRoles(Roles.Client, Roles.SuperAdmin)]
         public ActionResult RaceAdd(int id)
         {
             Console.WriteLine(id);
@@ -29,24 +32,25 @@ namespace FInalProject.Controllers
         }
 
         [HttpPost]
-        [Authorize]
+        [AuthorizeRoles(Roles.Client, Roles.SuperAdmin)]
         public ActionResult Create(Race race)
         {
             Dbservice.AddRace(race);
             return RedirectToAction(nameof(RaceTablePage));
         }
+        [AuthorizeRoles(Roles.Client, Roles.SuperAdmin)]
         public IActionResult RaceEdit(int id)
         {
             Race race = Dbservice.GetRaceById(id);
             return View(race);
         }
-
+        [AuthorizeRoles(Roles.Client, Roles.SuperAdmin)]
         public IActionResult Edit(Race race)
         {
             Dbservice.RaceEdit(race);
             return RedirectToAction(nameof(RaceTablePage));
         }
-
+        [AuthorizeRoles(Roles.SuperAdmin)]
         public IActionResult RaceDelete(int id)
         {
             Race race = Dbservice.GetRaceById(id);
@@ -54,13 +58,13 @@ namespace FInalProject.Controllers
         }
 
         [HttpPost]
-        [Authorize]
+        [AuthorizeRoles(Roles.SuperAdmin)]
         public IActionResult Delete(int id)
         {
             Dbservice.DeleteRace(id);
             return RedirectToAction(nameof(RaceTablePage));
         }
-
+        
         public ActionResult GetRaceChart()
         {
             List<Race> race = Dbservice.GetRaceList();

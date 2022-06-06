@@ -1,4 +1,8 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using FInalProject.Atribute;
 using FInalProject.Data;
 using FInalProject.Models;
 using Microsoft.AspNetCore.Identity;
@@ -67,7 +71,7 @@ namespace FInalProject.Controllers
                     //add role our user
                     await _userManager.AddToRoleAsync(user, Roles.Client.ToString());
                     // установка куки
-                    await _signInManager.SignInAsync(user, false);
+                    
                     return RedirectToAction("Index", "Home");
                 }
                 else
@@ -101,8 +105,8 @@ namespace FInalProject.Controllers
                     //add role our user
                     await _userManager.AddToRoleAsync(user, Roles.Admin.ToString());
                     // установка куки
-                    await _signInManager.SignInAsync(user, false);
-                    return RedirectToAction("Index", "Home");
+                    
+                    return RedirectToAction(nameof(Admin));
                 }
                 else
                 {
@@ -127,6 +131,33 @@ namespace FInalProject.Controllers
         public IActionResult AccessDenied()
         {
             return View();
+        }
+
+        public IActionResult dropUser(string user)
+        {
+            
+            var userI = _userManager.FindByIdAsync(user);
+            _userManager.DeleteAsync(userI.Result);
+            return RedirectToAction(nameof(Admin));
+        }
+
+        [AuthorizeRoles(Roles.SuperAdmin)]
+        public IActionResult Admin()
+        {
+            var users1 = _userManager.Users;
+            return View(users1);
+        }
+        [AuthorizeRoles(Roles.SuperAdmin)]
+        public IActionResult ChangePassword(string user, string oldPass, string newPass)
+        {
+            _userManager.ChangePasswordAsync(_userManager.FindByIdAsync(user).Result,oldPass, newPass);
+            return RedirectToAction(nameof(Admin));
+        }
+        public IActionResult UserPage(string user)
+        {
+            var user1 = _userManager.FindByIdAsync(user).Result;
+           
+            return View(user1);
         }
     }
 }

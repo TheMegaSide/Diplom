@@ -1,6 +1,8 @@
 ﻿@using ClosedXML.Excel
 @model List<FInalProject.Models.CarNew> 
-
+@{
+    ViewData["Title"] = "Поиск";
+}
 <a class="btn btn-primary" asp-controller="Home" asp-action="Index">На главную</a>
 <p>База данных автомобилей</p>
 
@@ -77,13 +79,7 @@
     </tbody >
 </table >
 <div>
-    <form method="post" action="~/Car/GetCarListExcel">
-        <input type = "hidden" name="data" value="@ViewBag.Cars"/>
-
-    <p>
-        <input type="submit" value="Загрузить таблицу"/>
-    </p>
-    </form>
+   
     </div>
  
         

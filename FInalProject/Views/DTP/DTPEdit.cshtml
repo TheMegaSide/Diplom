@@ -1,18 +1,117 @@
-﻿@model DTP
+﻿@using FInalProject.Util.DB
+@using FInalProject.Util.DbHandlers
+@using Type = FInalProject.Models.Type
+@model FInalProject.Models.DTP
 
 @{
-    Layout = null;
+     ViewData["Title"] = "Профиль ДТП";
 }
 
-<!DOCTYPE html>
+<h1>Профиль автомобиля</h1>
 
-<html>
-<head>
-    <title>title</title>
-</head>
-<body>
-<div>
-      
+<h4>Автомобиль</h4>
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit" asp-route-id="@Model.id">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                  <label asp-for="driver" class="control-label">Водитель</label>
+                                <select asp-for="driver">
+                                    @{
+                                        List<Driver> GetTypes()
+                                        {
+                                            string comText =
+                                                "select * from drivers;";
+                                            Console.WriteLine($"INFO:{comText}");
+                                            return DbExecutor.Execute<Driver>("Server=127.0.0.1;User Id=postgres;Password=6851;Database=Dilpom;", comText, new DbDriverhandler());
+                                        }
+                
+                                        List<Driver> drivers = GetTypes();
+                                        foreach (var driver in drivers)
+                                        {
+                                            <option  value="@driver.id">@driver.name</option>
+                                            
+                                        }
+                                        
+                                        
+                                    }
+                                        
+                                    
+                                </select>
+                                <span asp-validation-for="driver" class="text-danger"></span>
+                                <label asp-for="conditions" class="control-label">Условия</label>
+                                <input asp-for="conditions" class="form-control"/>
+                                <span asp-validation-for="conditions" class="text-danger"></span>
+                                <label asp-for="victimsdata" class="control-label">Данные о потерпевших</label>
+                                <input asp-for="victimsdata" class="form-control"/>
+                                <span asp-validation-for="victimsdata" class="text-danger"></span>
+                                <label asp-for="damagedtransport" class="control-label">Поврежденный транспорт</label>
+                                <input asp-for="damagedtransport" type="number" class="form-control"/>
+                                <span asp-validation-for="damagedtransport" class="text-danger"></span>
+                                <label asp-for="driverfault" class="control-label">Вина водителя</label>
+                            <select asp-for="driverfault">
+                                <option value="Да">Да</option>
+                                <option value="Нет">Нет</option>
+                            </select>
+                                <span asp-validation-for="driverfault" class="text-danger"></span>
+                                <label asp-for="date" class="control-label">Дата, время</label>
+                                <input asp-for="date" class="form-control"/>
+                                <span asp-validation-for="date" class="text-danger"></span>
+                                <label asp-for="region" class="control-label">Регион</label>
+                                <input asp-for="region" class="form-control"/>
+                            <span asp-validation-for="region" class="text-danger"></span>
+                            <label asp-for="type" class="control-label">Тип ДТП</label>
+                                        <select asp-for="type">
+                                            <option>Наезд</option>
+                                            <option>Столкновение</option>
+                                            <option>Провал дорожного покрытия</option>
+                                        </select>
+                                            <span asp-validation-for="type" class="text-danger"></span>
+                                <label asp-for="dtpcodintions" class="control-label">Условия способствовавшие возникновению ДТП </label>
+                                <input asp-for="dtpcodintions" class="form-control"/>
+                                <span asp-validation-for="dtpcodintions" class="text-danger"></span>
+                                <label asp-for="dtpreasons" class="control-label">Выявленные причины ДТП</label>
+                                <input asp-for="dtpreasons" class="form-control"/>
+                                <span asp-validation-for="dtpreasons" class="text-danger"></span>
+                                <label asp-for="died" class="control-label">Погибших</label>
+                                <input asp-for="died" type="number" class="form-control"/>
+                                <span asp-validation-for="died" class="text-danger"></span>
+                                <label asp-for="traumas" class="control-label">Травмированных</label>
+                                <input asp-for="traumas" type="number" class="form-control"/>
+                                <span asp-validation-for="traumas" class="text-danger"></span>
+                                
+                                <label asp-for="oform" class="control-label">Оформление</label>
+                            <select asp-for="oform">
+                                <option>Извещение</option>
+                                <option>ГИБДД</option>
+                            </select>
+                                <span asp-validation-for="oform" class="text-danger"></span>
+                               <label asp-for="addtitions" class="control-label">Примечания</label>
+                                <input asp-for="addtitions" class="form-control"/>
+                                <span asp-validation-for="addtitions" class="text-danger"></span>
+                                
+            </div>
+            
+            <div class="form-group">
+                <input type="submit" value="Сохранить изменения" class="btn btn-primary"/>
+            </div>
+            
+        </form>
+        <form method="post" action="~/DTP/Delete">
+            <input type="hidden" name="id" value="@Model.id"/>
+            <p>
+                <input type="submit" value="Удалить" class="btn btn-primary"/>
+            </p>
+        </form>
+        
+    </div>
 </div>
-</body>
-</html>
+
+<div>
+    <a asp-action="DTPTablePage">Вернуться назад</a>
+</div>
+
+@section Scripts {
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+}

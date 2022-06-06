@@ -1,6 +1,8 @@
 ﻿@model List<FInalProject.Models.DTP> 
 
-
+@{
+    ViewData["Title"] = "Таблица ДТП";
+}
 <a class="btn btn-primary" asp-controller="Home" asp-action="Index">На главную</a>
 <p>Совершенные рейсы</p>
 
@@ -32,7 +34,7 @@
         <th >Дата совершения ДТП</th>
         <th >Место ДТП</th>
         <th >Вид ДТП</th>
-        <th >Условия способствовавшие возникновению ДТП ДТП</th>
+        <th >Условия способствовавшие возникновению ДТП</th>
         <th >Выявленные причины ДТП</th>
         <th >Погибло (чел.)</th>
         <th >Ранено (чел.)</th>
@@ -72,11 +74,3 @@
 </table >
 
 
-<div class="form-group">
-    <a asp-area="" asp-controller="Car" asp-action="GetCarListExcel" >Excel таблица по автомобилям</a>
-</div>
-<form method="post" action="~/Car/GetCarListExcel">
-    <p>
-        <input type="submit" value="Отправить" />
-    </p>
-</form>

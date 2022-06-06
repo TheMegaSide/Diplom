@@ -1,6 +1,9 @@
 ﻿@model LoginViewModel
 
 @{
+    ViewData["Title"] = "Авторизация";
+}
+@{
     ViewBag.Title = "title";
     Layout = "_Layout";
 }
@@ -29,14 +32,3 @@
 </form>
 
 
-<p>
-    Зарегистрироваться как
-    <a asp-action="RegisterClient">КЛИЕНТ</a>
-    ИЛИ
-    <a asp-action="RegisterAdmin">АДМИНИСТРАТОР</a>
-</p>
-
-<p>
-    *для создания расписания для своего клуба выберите
-    администратора, а для записи на занятия выберите клиента
-</p>

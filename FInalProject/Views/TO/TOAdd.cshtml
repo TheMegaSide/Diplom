@@ -6,7 +6,7 @@
 
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Добавление ТО";
 }
 
 <h1>Добавление ТО</h1>
@@ -49,6 +49,12 @@
                 <label asp-for="date" class="control-label">Дата</label>
                 <input asp-for="date" class="form-control"/>
                 <span asp-validation-for="date" class="text-danger"></span>
+                <label asp-for="state" class="control-label">Дата</label>
+                <select asp-for="state">
+                    <option value="Запланировано">Запланировано</option>
+                    <option value="Выполнено">Выполнено</option>
+                </select>
+                <span asp-validation-for="state" class="text-danger"></span>
           </div>
             
             <div class="form-group">
